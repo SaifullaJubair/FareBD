@@ -3,7 +3,7 @@
 const Navbar = () => {
    return (
       <div>
-         <h2>This is navbar</h2>
+         <h2 className="text-5xl">This is navbar</h2>
       </div>
    );
 };
