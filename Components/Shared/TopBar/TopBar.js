@@ -18,6 +18,7 @@ const TopBar = () => {
                </div>
                <div>
                   <p className="text-white text-xs">info.contact@gmail.com</p>
+                  <p className="text-white text-xs">info</p>
                </div>
             </div>
 
