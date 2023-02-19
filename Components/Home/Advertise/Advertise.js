@@ -7,15 +7,17 @@ const Advertise = () => {
       <h2 className="text-4xl text-center font-semibold mb-10">Advertised</h2>
       <div className="flex flex-wrap items-center gap-5 justify-center">
         {/* card 1 */}
-        <div
-          style={{
-            backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,.1), rgba(0,0,0.8)), url(${home4.src})`,
-            backgroundSize: "cover",
-          }}
-          className="w-[375px] h-80 object-cover object-center relative mb-60"
-        >
-          {/* Inner Pop Up Div */}
-          <div className="bg-gray-50 w-[330px] absolute -bottom-44 left-1/2 transform -translate-x-1/2 px-5 pt-5 pb-7">
+        <div>
+          <div
+            style={{
+              backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,.1), rgba(0,0,0.8)), url(${home4.src})`,
+              backgroundSize: "cover",
+            }}
+            className="w-[375px] h-80 object-cover object-center relative "
+          >
+            {/* Inner Pop Up Div */}
+          </div>
+          <div className="bg-gray-50 w-[330px] mx-auto px-5 pt-5 pb-7 transfrom -translate-y-11">
             <div className="flex items-center gap-5 text-gray-600">
               <div className="flex items-center gap-1">
                 <BsPersonFill className="text-xl" />
@@ -36,16 +38,18 @@ const Advertise = () => {
             <BsArrowRight className="text-2xl font-semibold absolute left-1/2 transform -translate-x-1/2 -bottom-3 bg-secondary/90 transtion duration-300 cursor-pointer hover:bg-secondary w-8 h-8 rounded-full p-1 text-white" />
           </div>
         </div>
-        {/* card 2 */}
-        <div
-          style={{
-            backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,.1), rgba(0,0,0.8)), url(${home4.src})`,
-            backgroundSize: "cover",
-          }}
-          className="w-[375px] h-80 object-cover object-center relative mb-60"
-        >
-          {/* Inner Pop Up Div */}
-          <div className="bg-gray-50 w-[330px] absolute -bottom-44 left-1/2 transform -translate-x-1/2 px-5 pt-5 pb-7">
+
+        <div>
+          <div
+            style={{
+              backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,.1), rgba(0,0,0.8)), url(${home4.src})`,
+              backgroundSize: "cover",
+            }}
+            className="w-[375px] h-80 object-cover object-center relative "
+          >
+            {/* Inner Pop Up Div */}
+          </div>
+          <div className="bg-gray-50 w-[330px] mx-auto px-5 pt-5 pb-7 transfrom -translate-y-11">
             <div className="flex items-center gap-5 text-gray-600">
               <div className="flex items-center gap-1">
                 <BsPersonFill className="text-xl" />
@@ -66,16 +70,18 @@ const Advertise = () => {
             <BsArrowRight className="text-2xl font-semibold absolute left-1/2 transform -translate-x-1/2 -bottom-3 bg-secondary/90 transtion duration-300 cursor-pointer hover:bg-secondary w-8 h-8 rounded-full p-1 text-white" />
           </div>
         </div>
-        {/* card 3 */}
-        <div
-          style={{
-            backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,.1), rgba(0,0,0.8)), url(${home4.src})`,
-            backgroundSize: "cover",
-          }}
-          className="w-[375px] h-80 object-cover object-center relative"
-        >
-          {/* Inner Pop Up Div */}
-          <div className="bg-gray-50 w-[330px] absolute -bottom-44 left-1/2 transform -translate-x-1/2 px-5 pt-5 pb-7">
+
+        <div>
+          <div
+            style={{
+              backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,.1), rgba(0,0,0.8)), url(${home4.src})`,
+              backgroundSize: "cover",
+            }}
+            className="w-[375px] h-80 object-cover object-center relative "
+          >
+            {/* Inner Pop Up Div */}
+          </div>
+          <div className="bg-gray-50 w-[330px] mx-auto px-5 pt-5 pb-7 transfrom -translate-y-11">
             <div className="flex items-center gap-5 text-gray-600">
               <div className="flex items-center gap-1">
                 <BsPersonFill className="text-xl" />
