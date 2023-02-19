@@ -12,7 +12,7 @@ const Advertise = () => {
             backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,.1), rgba(0,0,0.8)), url(${home4.src})`,
             backgroundSize: "cover",
           }}
-          className="w-[375px] h-80 object-cover object-center relative"
+          className="w-[375px] h-80 object-cover object-center relative mb-60"
         >
           {/* Inner Pop Up Div */}
           <div className="bg-gray-50 w-[330px] absolute -bottom-44 left-1/2 transform -translate-x-1/2 px-5 pt-5 pb-7">
@@ -42,7 +42,7 @@ const Advertise = () => {
             backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,.1), rgba(0,0,0.8)), url(${home4.src})`,
             backgroundSize: "cover",
           }}
-          className="w-[375px] h-80 object-cover object-center relative"
+          className="w-[375px] h-80 object-cover object-center relative mb-60"
         >
           {/* Inner Pop Up Div */}
           <div className="bg-gray-50 w-[330px] absolute -bottom-44 left-1/2 transform -translate-x-1/2 px-5 pt-5 pb-7">
