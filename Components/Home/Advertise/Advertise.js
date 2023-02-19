@@ -18,11 +18,11 @@ const Advertise = () => {
           <div className="bg-gray-50 w-[330px] absolute -bottom-44 left-1/2 transform -translate-x-1/2 px-5 pt-5 pb-7">
             <div className="flex items-center gap-5 text-gray-600">
               <div className="flex items-center gap-1">
-                <BsPersonFill />
+                <BsPersonFill className="text-xl" />
                 <span>By Admin</span>
               </div>
               <div className="flex items-center gap-1">
-                <BiCalendar />
+                <BiCalendar className="text-xl" />
                 <span>March 9, 2020</span>
               </div>
             </div>
@@ -33,7 +33,7 @@ const Advertise = () => {
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis
               aspernatur eligendi sed molestias necessitatibus quia.
             </p>
-            <BsArrowRight className="text-2xl font-semibold absolute left-1/2 transform -translate-x-1/2 -bottom-3 bg-secondary w-8 h-8 rounded-full p-1 text-white" />
+            <BsArrowRight className="text-2xl font-semibold absolute left-1/2 transform -translate-x-1/2 -bottom-3 bg-secondary/90 transtion duration-300 cursor-pointer hover:bg-secondary w-8 h-8 rounded-full p-1 text-white" />
           </div>
         </div>
         {/* card 2 */}
@@ -48,11 +48,11 @@ const Advertise = () => {
           <div className="bg-gray-50 w-[330px] absolute -bottom-44 left-1/2 transform -translate-x-1/2 px-5 pt-5 pb-7">
             <div className="flex items-center gap-5 text-gray-600">
               <div className="flex items-center gap-1">
-                <BsPersonFill />
+                <BsPersonFill className="text-xl" />
                 <span>By Admin</span>
               </div>
               <div className="flex items-center gap-1">
-                <BiCalendar />
+                <BiCalendar className="text-xl" />
                 <span>March 9, 2020</span>
               </div>
             </div>
@@ -63,7 +63,7 @@ const Advertise = () => {
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis
               aspernatur eligendi sed molestias necessitatibus quia.
             </p>
-            <BsArrowRight className="text-2xl font-semibold absolute left-1/2 transform -translate-x-1/2 -bottom-3 bg-secondary w-8 h-8 rounded-full p-1 text-white" />
+            <BsArrowRight className="text-2xl font-semibold absolute left-1/2 transform -translate-x-1/2 -bottom-3 bg-secondary/90 transtion duration-300 cursor-pointer hover:bg-secondary w-8 h-8 rounded-full p-1 text-white" />
           </div>
         </div>
         {/* card 3 */}
@@ -78,11 +78,11 @@ const Advertise = () => {
           <div className="bg-gray-50 w-[330px] absolute -bottom-44 left-1/2 transform -translate-x-1/2 px-5 pt-5 pb-7">
             <div className="flex items-center gap-5 text-gray-600">
               <div className="flex items-center gap-1">
-                <BsPersonFill />
+                <BsPersonFill className="text-xl" />
                 <span>By Admin</span>
               </div>
               <div className="flex items-center gap-1">
-                <BiCalendar />
+                <BiCalendar className="text-xl" />
                 <span>March 9, 2020</span>
               </div>
             </div>
@@ -93,7 +93,7 @@ const Advertise = () => {
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis
               aspernatur eligendi sed molestias necessitatibus quia.
             </p>
-            <BsArrowRight className="text-2xl font-semibold absolute left-1/2 transform -translate-x-1/2 -bottom-3 bg-secondary w-8 h-8 rounded-full p-1 text-white" />
+            <BsArrowRight className="text-2xl font-semibold absolute left-1/2 transform -translate-x-1/2 -bottom-3 bg-secondary/90 transtion duration-300 cursor-pointer hover:bg-secondary w-8 h-8 rounded-full p-1 text-white" />
           </div>
         </div>
       </div>
