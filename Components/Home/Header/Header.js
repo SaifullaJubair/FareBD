@@ -56,7 +56,7 @@ const Header = () => {
         effect={"coverflow"}
         slidesPerView={3}
         grabCursor={true}
-        centeredSlides={true}
+        centeredSlides={false}
         coverflowEffect={{
           rotate: 20,
           stretch: 0,
