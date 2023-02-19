@@ -17,6 +17,7 @@ import ContactUs from '@/Components/Home/Contactus/ContactUs'
 import Hero from '@/Components/Hero/Hero'
 
 
+
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
