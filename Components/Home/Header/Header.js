@@ -5,6 +5,8 @@ import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
 import "swiper/css";
 
+import { useEffect, useState } from "react";
+
 import home1 from "../../../assets/images/home-1.jpg";
 import home2 from "../../../assets/images/home-2.jpg";
 import home3 from "../../../assets/images/home-3.jpg";
@@ -12,14 +14,30 @@ import home3 from "../../../assets/images/home-3.jpg";
 const Header = () => {
   const swiperSlideStyles = {
     width: "270px",
-    height: "330px",
+    height: "300px",
     overflow: "hidden",
     borderRadius: "5px",
   };
 
+  const [loopTrigger, setLoopTrigger] = useState(false);
+  const setSlidesLoop = () => {
+    setLoopTrigger(window.innerWidth >= 1023 ? true : false);
+  };
+
+  useEffect(() => {
+    // Initially set the amount of slides on page load
+    setSlidesLoop();
+    // Add the event listener on component mount
+    window.addEventListener("resize", setSlidesLoop);
+    // Remove the listener on unmount
+    return () => {
+      window.removeEventListener("resize", setSlidesLoop);
+    };
+  }, []);
+
   return (
-    <div className="flex flex-col-reverse gap-10 md:gap-0 md:flex-row items-center justify-between overflow-x-hidden py-14">
-      <div className="w-full max-w-sm">
+    <div className="flex flex-col-reverse items-center justify-between gap-10 overflow-x-hidden lg:gap-0 lg:flex-row py-14">
+      <div className="w-full max-w-[530px] mx-auto">
         <h1 className="text-4xl font-semibold">
           Find your destination in an easy way
         </h1>
@@ -32,39 +50,14 @@ const Header = () => {
         </button>
       </div>
 
-      {/* <Swiper
-        spaceBetween={50}
-        slidesPerView={2}
-        style={{ transform: "translate(10%, 0)" }}
-      >
-        <SwiperSlide style={swiperSlideStyles}>
-          <div>
-            <img src={home1.src} alt="" />
-          </div>
-        </SwiperSlide>
-        <SwiperSlide style={swiperSlideStyles}>
-          <div>
-            <img src={home2.src} alt="" />
-          </div>
-        </SwiperSlide>
-        <SwiperSlide style={swiperSlideStyles}>
-          <div>
-            <img
-              className="object-cover object-center w-full h-full"
-              src={home3.src}
-              alt=""
-            />
-          </div>
-        </SwiperSlide>
-      </Swiper> */}
-
       <Swiper
+        loop={loopTrigger}
         effect={"coverflow"}
+        slidesPerView={3}
         grabCursor={true}
         centeredSlides={true}
-        slidesPerView={3}
         coverflowEffect={{
-          rotate: 50,
+          rotate: 20,
           stretch: 0,
           depth: 100,
           modifier: 1,
