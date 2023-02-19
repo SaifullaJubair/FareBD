@@ -13,7 +13,8 @@ import About from '@/Components/Home/About/About'
 import Review from '@/Components/Home/Review/Review'
 import Branding from '@/Components/Home/Branding/Branding'
 import PhotoGallery from '@/Components/Home/PhotoGallery/PhotoGallery'
-import ContactUs from '@/Components/Home/Contactus/Contactus'
+import ContactUs from '@/Components/Home/Contactus/ContactUs'
+
 
 const inter = Inter({ subsets: ['latin'] })
 
