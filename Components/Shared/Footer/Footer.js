@@ -6,7 +6,7 @@ import { GrPinterest, GrSkype } from 'react-icons/gr';
 const Footer = () => {
    return (
       // Footer Section Added
-      <footer className="bg-primary text-white">
+      <footer className="bg-primary text-white mt-16">
          <div className='max-w-[1440px] w-[95%] mx-auto py-20'>
             <div className="grid grid-cols-1 md:grid-cols-4">
                <div>
@@ -92,7 +92,7 @@ const Footer = () => {
             <div className="p-4 mt-20 rounded-lg shadow border md:flex md:items-center md:justify-between md:p-6 dark:bg-gray-800 items-center">
                <span className="text-sm text-white sm:text-center dark:text-gray-400">Copyright by Confidence. All right Reserved © 2023
                </span>
-               <button><IoIosArrowUp className='text-6xl text-secondary font-extrabold' /></button>
+               
                <ul className="flex flex-wrap items-center justify-center mt-3 text-3xl text-center text-white dark:text-gray-400 sm:mt-0 gap-4">
                   <li>
                      <a href="#" className="hover:underline"><FiFacebook className='border p-1 rounded-full' /></a>
