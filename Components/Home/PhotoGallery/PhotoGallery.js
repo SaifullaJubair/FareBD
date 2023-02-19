@@ -5,6 +5,9 @@ import gallery3 from "../../../assets/images/gallery-3.jpg";
 import gallery4 from "../../../assets/images/gallery-4.jpg";
 import gallery5 from "../../../assets/images/gallery-5.jpg";
 import gallery6 from "../../../assets/images/gallery-6.jpg";
+
+import { BsArrowRight } from "react-icons/bs";
+
 const items = [
   {
     img: gallery1,
@@ -39,13 +42,13 @@ const PhotoGallery = () => {
           ))}
         </Marquee>
       </div>
-      <div className="bg-yellow-600/60">
+      <div className="bg-primary">
         <div className="w-2/3 mx-auto">
-          <div className="flex flex-col sm:flex-row items-center justify-between py-10 gap-8">
+          <div className="flex flex-col items-center justify-between gap-8 py-10 sm:flex-row">
             <h4 className="text-4xl text-white ">Schedule A Visit</h4>
-            <button className="uppercase bg-primary text-white px-5 py-[6px] rounded-sm flex items-center justify-center gap-1">
+            <button className="uppercase bg-secondary text-white px-5 py-[6px] rounded-sm flex items-center justify-center gap-1">
               <span>Contact us</span>
-              <span className="text-2xl">&rarr;</span>
+              <BsArrowRight className="text-2xl font-semibold" />
             </button>
           </div>
         </div>

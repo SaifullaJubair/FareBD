@@ -36,8 +36,9 @@ const Header = () => {
   }, []);
 
   return (
-    <div className="flex flex-col-reverse items-center justify-between gap-10 overflow-x-hidden lg:gap-0 lg:flex-row py-14">
-      <div className="w-full max-w-[530px] mx-auto">
+    <div className="py-14">
+      {/* <div className="flex flex-col-reverse items-center justify-between gap-10 overflow-x-hidden lg:gap-0 lg:flex-row py-14"> */}
+      {/* <div className="w-full max-w-[530px] mx-auto">
         <h1 className="text-4xl font-semibold">
           Find your destination in an easy way
         </h1>
@@ -48,7 +49,7 @@ const Header = () => {
         <button className="px-5 py-2 font-semibold text-white transition duration-300 rounded-sm shadow-md bg-secondary shadow-secondary/60 hover:shadow-secondary/90 active:shadow-sm">
           Find Now!
         </button>
-      </div>
+      </div> */}
 
       <Swiper
         loop={loopTrigger}
