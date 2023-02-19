@@ -21,7 +21,6 @@ const TopBar = () => {
                </div>
             </div>
 
-
             <div className="flex justufy-between py-4">
                <div className="text-white text-xs">Register</div>
                <div className="text-white text-xs">Login</div>
