@@ -108,3 +108,17 @@ a {
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+/* SellAndRent css */
+.proparte-tab >.flex {
+  justify-content: center;
+  border: none;
+}
+
+.proparte-tab > button {
+  font-size: 26px;
+  padding: 19px 36px;
+  font-weight: 700;
+}
+
