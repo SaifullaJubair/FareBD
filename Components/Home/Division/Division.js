@@ -3,10 +3,8 @@ import { Button } from "flowbite-react";
 
 const Division = () => {
    return (
-      <div>
-
-
-         <div className="my-16">
+      <div className="max-w-[1440px] w-[95%] mx-auto ">
+         <div className="my-24">
             <h3 className="text-secondary text-sm text-center font-semibold">We are offering the best real estate</h3>
             <h1 className="font-bold mb-8 mt-2 text-center text-primary lg:text-5xl md:text-4xl text-3xl">Popular Neighborhoods</h1>
             <div className="grid grid-cols-1 w-full  md:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -120,9 +118,9 @@ const Division = () => {
                </div>
             </div>
             <div className="justify-center items-center flex my-8 " >
-               <Button gradientMonochrome="success" size='lg' className="rounded-none ">
-                  View All
-               </Button>
+            <button type="button" class="text-white bg-secondary hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium text-lg px-5 py-2.5 text-center mr-3 md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+               View All
+            </button>
             </div>
          </div >
 

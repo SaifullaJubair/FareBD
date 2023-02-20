@@ -36,7 +36,7 @@ const Header = () => {
   }, []);
 
   return (
-    <div className="py-14">
+    <div className="py-14 max-w-[1440px] w-[95%] mx-auto">
       {/* <div className="flex flex-col-reverse items-center justify-between gap-10 overflow-x-hidden lg:gap-0 lg:flex-row py-14"> */}
       {/* <div className="w-full max-w-[530px] mx-auto">
         <h1 className="text-4xl font-semibold">
