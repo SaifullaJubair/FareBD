@@ -3,7 +3,7 @@
 const SellAndRent = () => {
    return (
       <div>
-         <h2>This is sell and rent</h2>
+         <h2>This is sell and rent Amit paul</h2>
       </div>
    );
 };

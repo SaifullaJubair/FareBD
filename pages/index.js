@@ -13,8 +13,10 @@ import About from '@/Components/Home/About/About'
 import Review from '@/Components/Home/Review/Review'
 import Branding from '@/Components/Home/Branding/Branding'
 import PhotoGallery from '@/Components/Home/PhotoGallery/PhotoGallery'
-import ContactUs from '@/Components/Home/Contactus/Contactus'
+import ContactUs from '@/Components/Home/Contactus/ContactUs'
+import Hero from '@/Components/Hero/Hero'
 import Welcome from '@/Components/Home/Welcome/Welcome'
+
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -29,7 +31,7 @@ export default function Home() {
       </Head>
       <main className='max-w-[1440px] w-[95%] mx-auto'>
 
-
+        <Hero></Hero>
         <Header></Header>
         <Searchfield></Searchfield>
         <SellAndRent></SellAndRent>
