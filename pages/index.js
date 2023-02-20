@@ -1,22 +1,21 @@
-import Head from "next/head";
-import Image from "next/image";
-import { Inter } from "@next/font/google";
-import styles from "@/styles/Home.module.css";
-
-import Header from "@/Components/Home/Header/Header";
-import Searchfield from "@/Components/Home/Searchfield/Searchfield";
-import SellAndRent from "@/Components/Home/SellAndRent/SellAndRent";
-import Division from "@/Components/Home/Division/Division";
-import Advertise from "@/Components/Home/Advertise/Advertise";
-import About from "@/Components/Home/About/About";
-import Review from "@/Components/Home/Review/Review";
-import Branding from "@/Components/Home/Branding/Branding";
-import PhotoGallery from "@/Components/Home/PhotoGallery/PhotoGallery";
-import ContactUs from "@/Components/Home/Contactus/ContactUs";
-import Hero from "@/Components/Home/Hero/Hero";
-
+import Head from 'next/head'
+import Image from 'next/image'
+import { Inter } from '@next/font/google'
+import Header from '@/Components/Home/Header/Header'
+import Searchfield from '@/Components/Home/Searchfield/Searchfield'
+import SellAndRent from '@/Components/Home/SellAndRent/SellAndRent'
+import Division from '@/Components/Home/Division/Division'
+import Advertise from '@/Components/Home/Advertise/Advertise'
+import About from '@/Components/Home/About/About'
+import Review from '@/Components/Home/Review/Review'
+import Branding from '@/Components/Home/Branding/Branding'
+import PhotoGallery from '@/Components/Home/PhotoGallery/PhotoGallery'
+import ContactUs from '@/Components/Home/Contactus/ContactUs'
+import Hero from '@/Components/Hero/Hero'
+import Welcome from '@/Components/Home/Welcome/Welcome'
 
 const inter = Inter({ subsets: ["latin"] });
+
 
 export default function Home() {
   return (
@@ -34,6 +33,7 @@ export default function Home() {
         <SellAndRent></SellAndRent>
         <Division></Division>
         <Advertise></Advertise>
+        <Welcome></Welcome>
         <About></About>
         <Review></Review>
         <Branding></Branding>
