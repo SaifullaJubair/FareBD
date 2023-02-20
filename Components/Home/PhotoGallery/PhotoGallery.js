@@ -43,7 +43,7 @@ const PhotoGallery = () => {
         </Marquee>
       </div>
       <div className="bg-primary">
-        <div className="w-2/3 mx-auto">
+        <div className="max-w-[1440px] w-[75%] mx-auto">
           <div className="flex flex-col items-center justify-between gap-8 py-10 sm:flex-row">
             <h4 className="text-4xl text-white ">Schedule A Visit</h4>
             <button className="uppercase bg-secondary text-white px-5 py-[6px] rounded-sm flex items-center justify-center gap-1">

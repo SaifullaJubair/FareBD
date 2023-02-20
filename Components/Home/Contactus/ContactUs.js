@@ -3,8 +3,8 @@ import React from 'react';
 const ContactUs = () => {
    return (
       <div>
-         <section className="py-6 bg-primary text-gray-50">
-            <div className="grid  grid-cols-1  mx-auto items-center md:grid-cols-2 md:divide-x">
+         <section className="py-6 bg-primary text-gray-50 mb-28">
+            <div className="grid py-14 max-w-[1440px] w-[95%] mx-auto grid-cols-1 items-center md:grid-cols-2 md:divide-x">
                <div className="py-6 md:py-0 md:px-6">
                   <h1 className="text-4xl font-bold">Get in touch</h1>
                   <p className="pt-2 pb-4">Fill in the form to start a conversation</p>

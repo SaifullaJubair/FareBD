@@ -13,7 +13,7 @@ const Searchfield = () => {
 
 
    return (
-      <div className="max-w-4xl mx-auto shadow-lg border rounded-2xl p-10 text-primary bg-teal-50">
+      <div className="max-w-4xl -mt-36 mb-16 mx-auto shadow-lg border rounded-2xl p-10 text-primary bg-teal-50">
          <form className=" grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-8 lg:gap-12" onSubmit={handleSubmit(onSubmit)}>
             <div className="text-base flex flex-col">
                <label htmlFor="location" className="font-semibold text-lg">Location</label>

@@ -4,7 +4,7 @@ import { AiOutlineHeart } from "react-icons/ai";
 
 const SellAndRent = () => {
    return (
-      <div>
+      <div className="max-w-[1440px] w-[95%] mx-auto mt-24">
          <div className="proparte-title text-center mb-16">
             <p className=" text-sm font-medium text-secondary">Our Propartes</p>
             <h2 className="text-5xl font-bold text-primary">Our Propartes</h2>
