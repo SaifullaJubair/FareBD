@@ -24,7 +24,6 @@ const responsive = {
 };
 const Review = () => {
    return (
-
       <Carousel responsive={responsive}>
          <div className="container flex flex-col items-center justify-center mx-auto lg:flex-row lg:flex-wrap lg:justify-evenly lg:px-10">
             <div className="flex flex-col max-w-sm mx-4 my-6 shadow-lg">
@@ -112,7 +111,6 @@ const Review = () => {
          </div>
 
       </Carousel>
-
 
    );
 };
