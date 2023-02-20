@@ -3,8 +3,9 @@ import { FaFacebook, FaGripLinesVertical, FaInstagram, FaLocationArrow, FaPhoneA
 
 const TopBar = () => {
    return (
-      <div className="bg-secondary w-full h-12 invisible lg:visible md:visible">
+      <div className="bg-secondary w-full h-12 hidden md:inline-block">
          <div className='max-w-[1440px] w-[95%] mx-auto flex justify-between'>
+            {/* Contact section */}
             <div className="flex space-x-5 py-4">
                <div className='flex space-x-2'>
                   <div className='text-white text-xs'> <FaLocationArrow></FaLocationArrow></div>
@@ -20,6 +21,7 @@ const TopBar = () => {
                </div>
             </div>
 
+            {/* Signin/signup & social media section */}
             <div className="flex space-x-4 py-4">
                <div className="text-white text-xs"><button>Register</button></div>
                <div className="text-white text-xs"><button>Login</button></div>
