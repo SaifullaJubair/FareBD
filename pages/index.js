@@ -14,6 +14,7 @@ import Review from '@/Components/Home/Review/Review'
 import Branding from '@/Components/Home/Branding/Branding'
 import PhotoGallery from '@/Components/Home/PhotoGallery/PhotoGallery'
 import ContactUs from '@/Components/Home/Contactus/Contactus'
+import Welcome from '@/Components/Home/Welcome/Welcome'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -34,6 +35,7 @@ export default function Home() {
         <SellAndRent></SellAndRent>
         <Division></Division>
         <Advertise></Advertise>
+        <Welcome></Welcome>
         <About></About>
         <Review></Review>
         <Branding></Branding>
