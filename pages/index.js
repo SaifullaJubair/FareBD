@@ -13,7 +13,8 @@ import Review from "@/Components/Home/Review/Review";
 import Branding from "@/Components/Home/Branding/Branding";
 import PhotoGallery from "@/Components/Home/PhotoGallery/PhotoGallery";
 import ContactUs from "@/Components/Home/Contactus/ContactUs";
-import Hero from "@/Components/Hero/Hero";
+import Hero from "@/Components/Home/Hero/Hero";
+
 
 const inter = Inter({ subsets: ["latin"] });
 
