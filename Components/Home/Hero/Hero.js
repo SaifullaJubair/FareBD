@@ -2,7 +2,7 @@ import React from "react";
 
 const Hero = () => {
   return (
-    <div className="md:col-span-2 duration-300 ">
+    <div className="duration-300 md:col-span-2 ">
       <div
         className="flex min-h-[800px] h-full  items-end justify-center opacity-100"
         style={{
@@ -12,14 +12,14 @@ const Hero = () => {
           backgroundPosition: "center",
         }}
       >
-        <div className=" text-white pb-72">
-          <h2 className="text-5xl mb-2 px-3 py-6 text-center text-white font-bold">
+        <div className="text-white  pb-72">
+          <h2 className="px-3 py-6 mb-2 text-5xl font-bold text-center text-white">
             Find Your <span className="">Dream House</span>
           </h2>
 
           <div className="inline-flex items-center justify-center w-full mb-8">
-            <hr className="w-64 h-1 my-8 bg-secondary border-0 rounded dark:bg-gray-700 text-secondary" />
-            <div className="pt-1 absolute px-4 -translate-x-1/2 bg-secondary left-1/2 dark:bg-gray-900">
+            <hr className="w-64 h-1 my-8 border-0 rounded bg-secondary dark:bg-gray-700 text-secondary" />
+            <div className="absolute px-4 pt-1 -translate-x-1/2 bg-secondary left-1/2 dark:bg-gray-900">
               <svg
                 aria-hidden="true"
                 className="w-5 h-5 text-gray-700 dark:text-gray-300"
