@@ -3,7 +3,7 @@ import { BsPersonFill, BsArrowRight } from "react-icons/bs";
 import { BiCalendar } from "react-icons/bi";
 const Advertise = () => {
   return (
-    <div className="mt-28 mb-72">
+    <div className="mt-28 mb-16 max-w-[1440px] w-[95%] mx-auto ">
       <h2 className="text-4xl text-center font-semibold mb-10">Advertised</h2>
       <div className="flex flex-wrap items-center gap-5 justify-center">
         {/* card 1 */}
