@@ -66,6 +66,10 @@ const Header = () => {
         }}
         modules={[EffectCoverflow]}
         className="mySwiper"
+        autoplay={{
+          delay: 300,
+          disableOnInteraction: false,
+        }}
       >
         <SwiperSlide style={swiperSlideStyles}>
           {({ isActive }) => (
