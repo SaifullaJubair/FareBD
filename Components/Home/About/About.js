@@ -14,9 +14,9 @@ const About = () => {
                <h4 className="text-xl md:text-2xl font-bold my-6 text-center">6 Reasons to Choose FareBD</h4>
                <p className="text-center">Annually, thousands of clients choose FareBD as their real estate agency. Besides having years of experience in real estate industry, there is a variety of reasons why residents over the world choose us. Here are just some of them.</p>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-3">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
                {/* About cards */}
-               <div className="max-w-sm dark:bg-gray-800 dark:border-gray-700 flex flex-col items-center justify-center mt-8">
+               <div className="max-w-sm mx-auto dark:bg-gray-800 dark:border-gray-700 flex flex-col items-center justify-center mt-8">
                   <div className="p-4">
                      <div className='bg-secondary w-12 h-12 absolute rounded-full'></div>
                      <MdOutlineRealEstateAgent className='text-5xl relative left-6 font-thin' />
@@ -27,7 +27,7 @@ const About = () => {
                   <p className="mb-3 font-normal text-gray-500 dark:text-gray-400 text-center">Our agents are experienced and understanding experts who deliver fresh and effective solutions.</p>
                </div>
 
-               <div className="max-w-sm dark:bg-gray-800 dark:border-gray-700 flex flex-col items-center justify-center mt-8">
+               <div className="max-w-sm mx-auto dark:bg-gray-800 dark:border-gray-700 flex flex-col items-center justify-center mt-8">
                   <div className="p-4">
                      <div className='bg-secondary w-12 h-12 absolute rounded-full'></div>
                      <GrMapLocation className='text-5xl relative left-6 font-thin' />
@@ -38,7 +38,7 @@ const About = () => {
                   <p className="mb-3 font-normal text-gray-500 dark:text-gray-400 text-center">With FareBD, you can search for a desired property from any location.</p>
                </div>
 
-               <div className="max-w-sm dark:bg-gray-800 dark:border-gray-700 flex flex-col items-center justify-center mt-8">
+               <div className="max-w-sm mx-auto dark:bg-gray-800 dark:border-gray-700 flex flex-col items-center justify-center mt-8">
                   <div className="p-4">
                      <div className='bg-secondary w-12 h-12 absolute rounded-full'></div>
                      <AiFillFormatPainter className='text-5xl relative left-6 font-thin' />
@@ -49,7 +49,7 @@ const About = () => {
                   <p className="mb-3 font-normal text-gray-500 dark:text-gray-400 text-center">All our properties are furnished and decorated to meet your needs and expectations.</p>
                </div>
 
-               <div className="max-w-sm dark:bg-gray-800 dark:border-gray-700 flex flex-col items-center justify-center mt-8">
+               <div className="max-w-sm mx-auto dark:bg-gray-800 dark:border-gray-700 flex flex-col items-center justify-center mt-8">
                   <div className="p-4">
                      <div className='bg-secondary w-12 h-12 absolute rounded-full'></div>
                      <MdSupportAgent className='text-5xl relative left-6 font-thin' />
@@ -60,7 +60,7 @@ const About = () => {
                   <p className="mb-3 font-normal text-gray-500 dark:text-gray-400 text-center">FareBD's support experts are always ready to help you and answer your questions.</p>
                </div>
 
-               <div className="max-w-sm dark:bg-gray-800 dark:border-gray-700 flex flex-col items-center justify-center mt-8">
+               <div className="max-w-sm mx-auto dark:bg-gray-800 dark:border-gray-700 flex flex-col items-center justify-center mt-8">
                   <div className="p-4">
                      <div className='bg-secondary w-12 h-12 absolute rounded-full'></div>
                      <GoChecklist className='text-5xl relative left-6 font-thin' />
@@ -71,7 +71,7 @@ const About = () => {
                   <p className="mb-3 font-normal text-gray-500 dark:text-gray-400 text-center">All our properties are inspected to make sure they meet all standards and state regulations.</p>
                </div>
 
-               <div className="max-w-sm dark:bg-gray-800 dark:border-gray-700 flex flex-col items-center justify-center mt-8">
+               <div className="max-w-sm mx-auto dark:bg-gray-800 dark:border-gray-700 flex flex-col items-center justify-center mt-8">
                   <div className="p-4">
                      <div className='bg-secondary w-12 h-12 absolute rounded-full'></div>
                      <GiReceiveMoney className='text-5xl relative left-6 font-thin' />
