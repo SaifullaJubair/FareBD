@@ -12,7 +12,7 @@ import Branding from "@/Components/Home/Branding/Branding";
 import ContactUs from "@/Components/Home/Contactus/ContactUs";
 import Welcome from "@/Components/Home/Welcome/Welcome";
 import Hero from "@/Components/Home/Hero/Hero";
-import PhotoGallery from "@/Components/Home/PhotoGallery/PhotoGallery";
+// import PhotoGallery from "@/Components/Home/PhotoGallery/PhotoGallery";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -33,7 +33,7 @@ export default function Home() {
         <Header></Header>
         <Advertise></Advertise>
         <Welcome></Welcome>
-        <PhotoGallery></PhotoGallery>
+        {/* <PhotoGallery></PhotoGallery> */}
         <About></About>
         <Review></Review>
         <Branding></Branding>
