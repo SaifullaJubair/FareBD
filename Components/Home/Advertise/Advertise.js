@@ -50,9 +50,8 @@ const Advertise = () => {
             <div className="bg-gray-50 w-[330px] mx-auto px-5 pt-5 pb-7 transfrom -translate-y-11">
               <div className="flex items-center gap-5 text-gray-600">
                 <div className="flex items-center gap-1">
-                  
-                  <img src={advertised?.author_info[0]?.autor_image} className=' w-8 h-8 rounded-full' alt="" />
-                  <span>{advertised?.author_info[0]?.author_name}</span>
+                  <img src={advertised?.user_image} className=' w-8 h-8 rounded-full' alt="" />
+                  <span>{advertised?.user_name}</span>
                 </div>
                 <div className="flex items-center gap-1">
                   <BiCalendar className="text-xl" />
