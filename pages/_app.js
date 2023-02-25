@@ -28,7 +28,8 @@ import AuthProvider from '../Contexts/AuthProvider/AuthProvider';
 import ScrollToTop from 'react-scroll-up';
 import { HelmetProvider } from 'react-helmet-async';
 import { BsArrowUpCircleFill } from 'react-icons/bs';
-import { QueryClient, QueryClientProvider } from 'react-query';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+
 
 
 

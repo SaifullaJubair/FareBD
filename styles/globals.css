@@ -122,3 +122,22 @@ a {
   font-weight: 700;
 }
 
+/* team */
+
+img.mx-auto.rounded-full.team {
+  border: 7px solid #ffffff;
+  transition: 0.5s;
+}
+
+
+.single-team:hover img.mx-auto.rounded-full.team{
+  border: 7px solid #4bfc08;
+}
+
+.single-team{
+  transition: 0.5s;
+}
+
+.single-team:hover{
+  background-color: rgba(123, 122, 122, 0.582);
+}

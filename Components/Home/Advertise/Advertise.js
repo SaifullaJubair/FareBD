@@ -2,6 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 import home4 from "./../../../assets/images/home-4.jpg";
 import { BsPersonFill, BsArrowRight } from "react-icons/bs";
 import { BiCalendar } from "react-icons/bi";
+import Loader from '@/Components/Shared/Loader/Loader';
 const Advertise = () => {
 
   const { data: products, isLoading } = useQuery({
@@ -22,10 +23,11 @@ const Advertise = () => {
 
   // loading
   if (isLoading) {
-    return <Loading></Loading>
+    return <Loader></Loader>
   }
 
-  const detail = 
+  // const head = advertised?.property_heading.slice(50)
+  // const detail = advertised?.details.slice(150)
 
   console.log(products);
 
@@ -38,7 +40,7 @@ const Advertise = () => {
           products?.map(advertised => <div key={advertised?._id}>
             <div
               style={{
-                backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,.1), rgba(0,0,0.8)), url(${advertised.property_picture})`,
+                backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,.1), rgba(0,0,0.8)), url(${advertised?.property_picture})`,
                 backgroundSize: "cover",
               }}
               className="w-[375px] h-80 object-cover object-center relative "
@@ -49,8 +51,8 @@ const Advertise = () => {
               <div className="flex items-center gap-5 text-gray-600">
                 <div className="flex items-center gap-1">
                   
-                  <img src={advertised.author_info[0]?.autor_image} className=' w-8 h-8 rounded-full' alt="" />
-                  <span>{advertised.author_info[0]?.author_name}</span>
+                  <img src={advertised?.author_info[0]?.autor_image} className=' w-8 h-8 rounded-full' alt="" />
+                  <span>{advertised?.author_info[0]?.author_name}</span>
                 </div>
                 <div className="flex items-center gap-1">
                   <BiCalendar className="text-xl" />
@@ -58,10 +60,10 @@ const Advertise = () => {
                 </div>
               </div>
               <h4 className="text-2xl my-3 font-semibold hover:text-secondary transition duration-200">
-                {advertised?.property_heading}
+                {}
               </h4>
               <p>
-                {advertised?.details}
+                {}
               </p>
               <BsArrowRight className="text-2xl font-semibold absolute left-1/2 transform -translate-x-1/2 -bottom-3 bg-secondary/90 transtion duration-300 cursor-pointer hover:bg-secondary w-8 h-8 rounded-full p-1 text-white" />
             </div>
