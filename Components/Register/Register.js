@@ -6,11 +6,12 @@ import React, { useContext, useState, } from "react";
 import { toast } from "react-toastify";
 import { AuthContext } from "../../Contexts/AuthProvider/AuthProvider";
 import Loader from "../Shared/Loader/Loader";
+import { v4 as uuidv4 } from 'uuid';
 // import { FaBeer, FcGoogle } from "react-icons/fc";
 const Register = () => {
 
    const { logout, updateUserProfile, providerLogin, createUser, user } = useContext(AuthContext)
-   console.log(user)
+   // console.log(user)
 
    const router = useRouter()
    if (user) {
@@ -32,7 +33,7 @@ const Register = () => {
       providerLogin(googleProvider)
          .then((result) => {
             const user = result.user;
-            console.log(user);
+            // console.log(user);
 
             const currentUser = {
                displayName: user.displayName,
@@ -43,7 +44,7 @@ const Register = () => {
                   saveUser(user.displayName, user.email, user.photoURL)
                })
                .catch(error => console.error(error))
-            console.log(currentUser);
+            // console.log(currentUser);
             setError("");
          })
          .catch((error) => console.error(error, error.message));
@@ -51,8 +52,11 @@ const Register = () => {
    };
 
    const saveUser = (displayName, email, photoURL) => {
+      let myuuid = uuidv4();
+      console.log(myuuid);
       const createdAt = new Date().toISOString();
-      const user = { name: displayName, email, role: 'user', createdAt, img: photoURL }
+      const user = { name: displayName, email, role: 'user', uid: myuuid, createdAt, img: photoURL }
+      console.log(user);
       fetch('http://localhost:5000/adduser', {
          method: 'POST',
          headers: {
@@ -62,9 +66,9 @@ const Register = () => {
       })
          .then(res => res.json())
          .then(data => {
-            console.log(data)
+            // console.log(data)
             setCreateUserEmail(user.email)
-            console.log(user.email)
+            // console.log(user.email)
             toast("Register success", {
                position: toast.POSITION.TOP_CENTER,
             });
@@ -80,7 +84,7 @@ const Register = () => {
    const onchangeHande = (event) => {
       event.preventDefault();
       const form = event.target;
-      console.log(event.target.value)
+      // console.log(event.target.value)
       setPasswoedMatched(event.target.value)
    }
    const onchangeHande1 = (event) => {
@@ -113,12 +117,12 @@ const Register = () => {
       setLoading(true)
       setError('')
 
-      console.log(name, image, email, password, password2,);
+      // console.log(name, image, email, password, password2,);
 
       const formData = new FormData()
       formData.append('image', image)
 
-      const url = `https://api.imgbb.com/1/upload?key=2d5b1a5401d8ef6742d2329ac8957810`
+      const url = `https://api.imgbb.com/1/upload?key=a961418ae79abf29d124da5532f6b6d5`
 
       fetch(url, {
          method: "POST",
@@ -126,17 +130,17 @@ const Register = () => {
       })
          .then(res => res.json())
          .then(imgData => {
-            console.log(imgData)
+            // console.log(imgData)
             createUser(email, password)
                .then((result) => {
-                  console.log(result.user)
+                  // console.log(result.user)
                   // console.log(result.user)
                   const currentUser = { displayName: name, photoURL: imgData.data.url }
                   console.log(name)
                   updateUserProfile(currentUser)
                      .then(result => {
                         // const users =  { name, email, password, createdAt: new Date().toISOString(), photoURL: data?.data?.display_url };
-                        console.log(result)
+                        // console.log(result)
                         fetch('http://localhost:5000/adduser', {
                            method: 'POST',
                            headers: {
@@ -147,7 +151,7 @@ const Register = () => {
                            .then(res => res.json())
                            .then(data => {
                               setLoading(false)
-                              console.log(data)
+                              // console.log(data)
                               setCreateUserEmail(email)
                               toast("Registration successful", {
                                  position: toast.POSITION.TOP_CENTER
@@ -160,11 +164,11 @@ const Register = () => {
                            })
                            .catch(err => console.log(err))
                         const user = result.user;
-                        console.log(user)
+                        // console.log(user)
                         setLoading(false)
                         setError("");
                         if (user.email) {
-                           console.log(user)
+                           // console.log(user)
 
                            toast("Registration successful", {
                               position: toast.POSITION.TOP_CENTER
@@ -177,14 +181,16 @@ const Register = () => {
                      })
                      .catch(err => console.log(err))
 
-                  // code start data store to mongodb 
-                  console.log(user)
-                  const insertUser = { name: name, email: email, img: imgData.data.url, role: 'user', createdAt: new Date().toISOString(), }
+                  // code start data store to mongodb
+                  // console.log(user)
+                  let myuuid = uuidv4();
+
+                  const insertUser = { name: name, email: email, uid: myuuid, img: imgData.data.url, role: 'user', createdAt: new Date().toISOString(), }
 
 
                })
                .catch((e) => {
-                  console.log(e);
+                  // console.log(e);
                   setError(e.message);
                   setLoading(false)
                });

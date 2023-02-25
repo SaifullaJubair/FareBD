@@ -1,120 +1,97 @@
-import { Button } from "flowbite-react";
-import Carousel from "react-multi-carousel";
-import "react-multi-carousel/lib/styles.css";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Pagination, Autoplay } from "swiper";
+import { useEffect, useState } from "react";
 
-import { FaStar, IconName } from "react-icons/fa";
-const responsive = {
-   superLargeDesktop: {
-      // the naming can be any, depends on you.
-      breakpoint: { max: 4000, min: 3000 },
-      items: 5
-   },
-   desktop: {
-      breakpoint: { max: 3000, min: 1024 },
-      items: 3
-   },
-   tablet: {
-      breakpoint: { max: 1024, min: 464 },
-      items: 2
-   },
-   mobile: {
-      breakpoint: { max: 464, min: 0 },
-      items: 1
-   }
-};
+import "swiper/css/pagination";
+import "swiper/css/scrollbar";
+import "swiper/css";
+
+import person1 from "../../../assets/images/client1.jpg";
+import person2 from "../../../assets/images/client2.jpg";
+import person3 from "../../../assets/images/client3.jpg";
+import person4 from "../../../assets/images/client4.jpg";
+import ReviewSlide from "./ReviewSlide";
+
+const slideContent = [
+  {
+    img: person1,
+    text: "So happy with my hair and make up and the hair lasted until the next day photos also. Miss you and thank you again so much for everything.",
+    client: "Jacqui ",
+    corporation: "Hong Kong, China",
+  },
+  {
+    img: person2,
+    text: "Thank you again for your help in making me look glamorous and glad you liked the gift! All the best to you",
+    client: "Jessica",
+    corporation: "Sydney, Australia",
+  },
+  {
+    img: person3,
+    text: "Thank you so much for everything. Not only are you excellent at your job but I really enjoyed meeting you.",
+    client: "Katie",
+    corporation: "Austin, USA",
+  },
+  {
+    img: person4,
+    text: "Thank you so much! My mother, sister and I had such a nice day getting ready and we were all thrilled with our hair and makeup!!",
+    client: "Ivana",
+    corporation: "Moscow, Russia",
+  },
+];
+
 const Review = () => {
-   return (
-      <div className="py-14 max-w-[1440px] w-[95%] mx-auto">
-         <Carousel responsive={responsive}>
-            <div className="container flex flex-col items-center justify-center mx-auto lg:flex-row lg:flex-wrap lg:justify-evenly lg:px-10">
-               <div className="flex flex-col max-w-sm mx-4 my-6 shadow-lg">
-                  <div className="px-4 py-12 rounded-t-lg sm:px-8 md:px-12 dark:bg-gray-900">
-                     <p className="relative px-6 py-1 text-lg italic text-center dark:text-gray-100">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor" className="w-8 h-8 dark:text-violet-400">
-                           <path d="M232,246.857V16H16V416H54.4ZM48,48H200V233.143L48,377.905Z"></path>
-                           <path d="M280,416h38.4L496,246.857V16H280ZM312,48H464V233.143L312,377.905Z"></path>
-                        </svg>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam maiores ex aspernatur eaque corporis distinctio similique voluptatum labore eum vitae autem.
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor" className="absolute right-0 w-8 h-8 dark:text-violet-400">
-                           <path d="M280,185.143V416H496V16H457.6ZM464,384H312V198.857L464,54.1Z"></path>
-                           <path d="M232,16H193.6L16,185.143V416H232ZM200,384H48V198.857L200,54.1Z"></path>
-                        </svg>
-                     </p>
-                  </div>
-                  <div className="flex flex-col items-center justify-center p-8 rounded-b-lg bg-primary ">
-                     <img src='https://www.shutterstock.com/image-photo/young-buisnessman-wearing-eyeglasses-jacket-260nw-1713757231.jpg' alt="" className="w-20 h-20 mb-2 border-violet-600 -mt-16 bg-center bg-cover rounded-full border-2 dark:bg-gray-500 dark:bg-gray-700" />
-                     <p className="text-xl font-semibold leading-tight text-white ">Distinctio Animi</p>
-                     <p className="text-xl uppercase flex  justify-center items-center  text-white">4.5 <span className="text-yellow-400 ml-1"><FaStar></FaStar></span>  </p>
-                  </div>
-               </div>
-            </div>
-            <div className="container flex flex-col items-center justify-center mx-auto lg:flex-row lg:flex-wrap lg:justify-evenly lg:px-10">
-               <div className="flex flex-col max-w-sm mx-4 my-6 shadow-lg">
-                  <div className="px-4 py-12 rounded-t-lg sm:px-8 md:px-12 dark:bg-gray-900">
-                     <p className="relative px-6 py-1 text-lg italic text-center dark:text-gray-100">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor" className="w-8 h-8 dark:text-violet-400">
-                           <path d="M232,246.857V16H16V416H54.4ZM48,48H200V233.143L48,377.905Z"></path>
-                           <path d="M280,416h38.4L496,246.857V16H280ZM312,48H464V233.143L312,377.905Z"></path>
-                        </svg>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam maiores ex aspernatur eaque corporis distinctio similique voluptatum labore eum vitae autem.
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor" className="absolute right-0 w-8 h-8 dark:text-violet-400">
-                           <path d="M280,185.143V416H496V16H457.6ZM464,384H312V198.857L464,54.1Z"></path>
-                           <path d="M232,16H193.6L16,185.143V416H232ZM200,384H48V198.857L200,54.1Z"></path>
-                        </svg>
-                     </p>
-                  </div>
-                  <div className="flex flex-col items-center justify-center p-8 rounded-b-lg bg-primary ">
-                     <img src='https://www.shutterstock.com/image-photo/young-buisnessman-wearing-eyeglasses-jacket-260nw-1713757231.jpg' alt="" className="w-20 h-20 mb-2 border-violet-600 -mt-16 bg-center bg-cover rounded-full border-2 dark:bg-gray-500 dark:bg-gray-700" />
-                     <p className="text-xl font-semibold leading-tight text-white ">Distinctio Animi</p>
-                     <p className="text-xl uppercase flex  justify-center items-center  text-white">4.5 <span className="text-yellow-400 ml-1"><FaStar></FaStar></span>  </p>
-                  </div>
-               </div>
-            </div>
-            <div className="container flex flex-col items-center justify-center mx-auto lg:flex-row lg:flex-wrap lg:justify-evenly lg:px-10">
-               <div className="flex flex-col max-w-sm mx-4 my-6 shadow-lg">
-                  <div className="px-4 py-12 rounded-t-lg sm:px-8 md:px-12 dark:bg-gray-900">
-                     <p className="relative px-6 py-1 text-lg italic text-center dark:text-gray-100">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor" className="w-8 h-8 dark:text-violet-400">
-                           <path d="M232,246.857V16H16V416H54.4ZM48,48H200V233.143L48,377.905Z"></path>
-                           <path d="M280,416h38.4L496,246.857V16H280ZM312,48H464V233.143L312,377.905Z"></path>
-                        </svg>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam maiores ex aspernatur eaque corporis distinctio similique voluptatum labore eum vitae autem.
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor" className="absolute right-0 w-8 h-8 dark:text-violet-400">
-                           <path d="M280,185.143V416H496V16H457.6ZM464,384H312V198.857L464,54.1Z"></path>
-                           <path d="M232,16H193.6L16,185.143V416H232ZM200,384H48V198.857L200,54.1Z"></path>
-                        </svg>
-                     </p>
-                  </div>
-                  <div className="flex flex-col items-center justify-center p-8 rounded-b-lg bg-primary ">
-                     <img src='https://www.shutterstock.com/image-photo/young-buisnessman-wearing-eyeglasses-jacket-260nw-1713757231.jpg' alt="" className="w-20 h-20 mb-2 border-violet-600 -mt-16 bg-center bg-cover rounded-full border-2 dark:bg-gray-500 dark:bg-gray-700" />
-                     <p className="text-xl font-semibold leading-tight text-white ">Distinctio Animi</p>
-                     <p className="text-xl uppercase flex  justify-center items-center  text-white">4.5 <span className="text-yellow-400 ml-1"><FaStar></FaStar></span>  </p>
-                  </div>
-               </div>
-            </div>
-            <div className="container flex flex-col items-center justify-center mx-auto lg:flex-row lg:flex-wrap lg:justify-evenly lg:px-10">
-               <div className="flex flex-col max-w-sm mx-4 my-6 shadow-lg">
-                  <div className="px-4 py-12 rounded-t-lg sm:px-8 md:px-12 dark:bg-gray-900">
-                     <p className="relative px-6 py-1 text-lg italic text-center dark:text-gray-100">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor" className="w-8 h-8 dark:text-violet-400">
-                           <path d="M232,246.857V16H16V416H54.4ZM48,48H200V233.143L48,377.905Z"></path>
-                           <path d="M280,416h38.4L496,246.857V16H280ZM312,48H464V233.143L312,377.905Z"></path>
-                        </svg>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam maiores ex aspernatur eaque corporis distinctio similique voluptatum labore eum vitae autem.
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor" className="absolute right-0 w-8 h-8 dark:text-violet-400">
-                           <path d="M280,185.143V416H496V16H457.6ZM464,384H312V198.857L464,54.1Z"></path>
-                           <path d="M232,16H193.6L16,185.143V416H232ZM200,384H48V198.857L200,54.1Z"></path>
-                        </svg>
-                     </p>
-                  </div>
-                  <div className="flex flex-col items-center justify-center p-8 rounded-b-lg bg-primary ">
-                     <img src='https://www.shutterstock.com/image-photo/young-buisnessman-wearing-eyeglasses-jacket-260nw-1713757231.jpg' alt="" className="w-20 h-20 mb-2 border-violet-600 -mt-16 bg-center bg-cover rounded-full border-2 dark:bg-gray-500 dark:bg-gray-700" />
-                     <p className="text-xl font-semibold leading-tight text-white ">Distinctio Animi</p>
-                     <p className="text-xl uppercase flex  justify-center items-center  text-white">4.5 <span className="text-yellow-400 ml-1"><FaStar></FaStar></span>  </p>
-                  </div>
-               </div>
-            </div>
+  const [slides, setSlides] = useState(0);
+  const setSlidesPerview = () => {
+    setSlides(
+      window.innerWidth <= 550
+        ? 1
+        : window.innerWidth <= 768
+        ? 2
+        : window.innerWidth > 1023
+        ? 3
+        : 0
+    );
+  };
 
-         </Carousel>
+  useEffect(() => {
+    // Initially set the amount of slides on page load
+    setSlidesPerview();
+    // Add the event listener on component mount
+    window.addEventListener("resize", setSlidesPerview);
+    // Remove the listener on unmount
+    return () => {
+      window.removeEventListener("resize", setSlidesPerview);
+    };
+  }, []);
+
+  return (
+    <div className="pt-36 pb-20">
+      <div className="sm:max-w-[960px] mx-auto relative px-3 ">
+        <h2 className="text-3xl text-center font-bold mb-16">Reviews</h2>
+        <Swiper
+          modules={[Pagination, Autoplay]}
+          pagination={{ clickable: true }}
+          slidesPerView={slides}
+          spaceBetween={80}
+          autoplay={{
+            delay: 10000,
+            disableOnInteraction: false,
+          }}
+        >
+          {slideContent.map((el, i) => (
+            <SwiperSlide key={i}>
+              <ReviewSlide
+                client={el.client}
+                corporation={el.corporation}
+                img={el.img}
+                text={el.text}
+              />
+            </SwiperSlide>
+          ))}
+        </Swiper>
       </div>
-
-   );
+    </div>
+  );
 };
 
 export default Review;

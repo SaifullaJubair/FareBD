@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "next build && next export",
     "start": "next start",
     "lint": "next lint"
   },
@@ -12,6 +12,7 @@
     "@formspree/react": "^2.4.1",
     "@heroicons/react": "^2.0.16",
     "@next/font": "13.1.6",
+    "@tanstack/react-query": "^4.24.10",
     "@tanstack/react-query": "^4.24.10",
     "firebase": "^9.17.1",
     "flowbite": "^1.6.3",
@@ -30,7 +31,9 @@
     "react-scroll-up": "^1.4.0",
     "react-toastify": "^9.1.1",
     "styled-components": "^5.3.6",
-    "swiper": "^8.0.0"
+    "swiper": "^8.0.0",
+    "uuid": "^9.0.0",
+    "tailwind-datepicker-react": "^1.2.3"
   },
   "devDependencies": {
     "@zeit/next-css": "^1.0.1",
