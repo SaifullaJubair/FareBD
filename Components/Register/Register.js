@@ -7,6 +7,9 @@ import { toast } from "react-toastify";
 import { AuthContext } from "../../Contexts/AuthProvider/AuthProvider";
 import Loader from "../Shared/Loader/Loader";
 import { v4 as uuidv4 } from 'uuid';
+import { useForm } from "react-hook-form";
+import { FcGoogle } from "react-icons/fc";
+import { CiFacebook } from "react-icons/ci";
 // import { FaBeer, FcGoogle } from "react-icons/fc";
 const Register = () => {
 
@@ -17,6 +20,12 @@ const Register = () => {
    if (user) {
       router.push('/')
    }
+
+   const {
+      register,
+      handleSubmit,
+      formState: { errors },
+   } = useForm();
 
    const [error, setError] = useState("");
    const [loading, setLoading] = useState(false)
@@ -102,14 +111,17 @@ const Register = () => {
    }
 
 
-   const handleSubmit = async (event) => {
-      event.preventDefault();
-      const form = event.target;
-      const name = form.name.value;
-      const email = form.email.value;
-      const password2 = form.password2.value;
-      const password = form.password.value;
-      const image = form.photo.files[0];
+   const handleRegister = async (data) => {
+      const {
+         name,
+         email,
+         password,
+         password2,
+         photo,
+         userType
+      } = data;
+
+      const image = photo[0];
       if (password !== password2) {
          setError('password Password not matched')
          return
@@ -117,7 +129,8 @@ const Register = () => {
       setLoading(true)
       setError('')
 
-      // console.log(name, image, email, password, password2,);
+      // console.log(photo[0]);
+      console.log(name, image, email, password, password2, userType);
 
       const formData = new FormData()
       formData.append('image', image)
@@ -185,7 +198,7 @@ const Register = () => {
                   // console.log(user)
                   let myuuid = uuidv4();
 
-                  const insertUser = { name: name, email: email, uid: myuuid, img: imgData.data.url, role: 'user', createdAt: new Date().toISOString(), }
+                  const insertUser = { name: name, email: email, uid: myuuid, img: imgData.data.url, role: userType, createdAt: new Date().toISOString(), }
 
 
                })
@@ -213,88 +226,190 @@ const Register = () => {
             <div className=" bg-red-5 md:px-10 px-4 py-4 my-8 lg:w-4/5">
                <h1 className="text-black text-5xl font-bold mb-5 text-center ">Sign Up</h1>
                <form
-                  onSubmit={handleSubmit}
+                  onSubmit={handleSubmit(handleRegister)}
                   className="flex flex-col gap-4">
                   {/* name  */}
-                  <div>
-                     <div className="mb-2 block">
-                        <Label htmlFor="name" value="Your Name" />
-                     </div>
-                     <TextInput
-                        id="name"
-                        name="name"
+                  <div className="relative w-full mb-6 group">
+                     <input
                         type="text"
-                        placeholder="Type Your Name"
-                        required
-                        shadow
+                        name="floating_name"
+                        id="floating_name"
+                        className={`block shadow-md shadow-primary/10 py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-secondary focus:outline-none pl-2 focus:ring-0  peer ${errors.name
+                           ? "focus:border-red-500 border-red-500"
+                           : "focus:border-secondary"
+                           }`}
+                        placeholder=" "
+                        {...register("name", { required: true })}
                      />
+
+                     <label
+                        for="floating_name"
+                        className="pl-2 peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-secondary peer-focus:dark:text-secondary peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                     >
+                        Name
+                     </label>
+                     {errors.name && (
+                        <span className="text-xs text-red-500">
+                           This field is required
+                        </span>
+                     )}
                   </div>
                   {/* email  */}
-                  <div>
-                     <div className="mb-2 block">
-                        <Label htmlFor="email2" value="Your email" />
-                     </div>
-                     <TextInput
-                        id="email2"
-                        name="email"
+                  <div className="relative w-full mb-6 group">
+                     <input
                         type="email"
-                        placeholder="email@example.com"
-                        required
-                        shadow
+                        name="floating_email"
+                        id="floating_email"
+                        className={`block shadow-md shadow-primary/10 py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-secondary focus:outline-none pl-2 focus:ring-0  peer ${errors.email
+                           ? "focus:border-red-500 border-red-500"
+                           : "focus:border-secondary"
+                           }`}
+                        placeholder=" "
+                        {...register("email", { required: true })}
                      />
+
+                     <label
+                        for="floating_email"
+                        className="pl-2 peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-secondary peer-focus:dark:text-secondary peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                     >
+                        Enter your email
+                     </label>
+                     {errors.email && (
+                        <span className="text-xs text-red-500">
+                           This field is required
+                        </span>
+                     )}
                   </div>
                   {/* photo */}
-                  <div>
-                     <label
-                        className="block mb-2 text-sm font-medium text-red-900 dark:text-white"
-                        htmlFor="photo"
-                     >
-                        Upload Your photo
-                     </label>
+                  <div className="relative w-full mb-6 group">
                      <input
-                        className="block w-full text-sm text-gray-900 border border-green-500 rounded-lg cursor-pointer bg-gray-230 dark:text-gray-400 focus:outline-none dark:bg-red-700 dark:border-gray-600 dark:placeholder-gray-400"
-                        id="photo"
                         type="file"
-                        name="photo"
-                     ></input>
+                        name="floating_image"
+                        id="floating_image"
+                        className={`block shadow-md shadow-primary/10 py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-secondary focus:outline-none pl-2 focus:ring-0  peer ${errors.photo
+                           ? "focus:border-red-500 border-red-500"
+                           : "focus:border-secondary"
+                           }`}
+                        placeholder=" "
+                        {...register("photo", { required: true })}
+                     />
+
+                     <label
+                        for="floating_image"
+                        className="pl-2 peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-secondary peer-focus:dark:text-secondary peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                     >
+                        Upload Profile Picture
+                     </label>
+                     {errors.photo && (
+                        <span className="text-xs text-red-500">
+                           This field is required
+                        </span>
+                     )}
+                  </div>
+                  {/* Select user type */}
+                  <div className="relative w-full mb-2 group flex gap-8 pt-2">
+                     <div className="flex gap-3">
+                        <input
+                           type="radio"
+                           name="floating_user_type_buyer"
+                           value="buyer"
+                           id="floating_user_type_buyer"
+                           className={`block shadow-md shadow-primary/10 py-2.5 px-0 text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-secondary focus:outline-none pl-2 focus:ring-0  peer ${errors.userType
+                              ? "focus:border-red-500 border-red-500"
+                              : "focus:border-secondary"
+                              }`}
+                           placeholder="Buyer "
+                           {...register("userType", { required: true })}
+                           defaultChecked
+                        />
+                        <label for="floating_user_type_buyer">Buyer</label>
+                     </div>
+                     <div className="flex gap-3">
+                        <input
+                           type="radio"
+                           name="floating_user_type_seller"
+                           value="seller"
+                           id="floating_user_type_seller"
+                           className={`block shadow-md shadow-primary/10 py-2.5 px-0 text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-secondary focus:outline-none pl-2 focus:ring-0  peer ${errors.userType
+                              ? "focus:border-red-500 border-red-500"
+                              : "focus:border-secondary"
+                              }`}
+                           placeholder="Seller "
+                           {...register("userType", { required: true })}
+                        />
+                        <label for="floating_user_type_seller">Seller</label>
+                     </div>
+
+                     <label
+                        for="floating_image"
+                        className="pl-2 peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-secondary peer-focus:dark:text-secondary peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                     >
+                        Select user type
+                     </label>
+                     {errors.userType && (
+                        <span className="text-xs text-red-500">
+                           This field is required
+                        </span>
+                     )}
                   </div>
 
-
-                  {/* password 1  */}
-                  <div>
-                     <div className="mb-2 block">
-                        <Label htmlFor="password" value="Your password" />
-                     </div>
-                     <TextInput
-                        id="password"
+                  {/* password  */}
+                  <div className="relative w-full mb-6 group">
+                     <input
                         type="password"
-                        name="password"
-                        required
-                        onChange={onchangeHande}
-                        shadow
+                        name="floating_password"
+                        id="floating_password"
+                        className={`block shadow-md shadow-primary/10 py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-secondary focus:outline-none pl-2 focus:ring-0  peer ${errors.password
+                           ? "focus:border-red-500 border-red-500"
+                           : "focus:border-secondary"
+                           }`}
+                        placeholder=" "
+                        {...register("password", { required: true })}
                      />
+
+                     <label
+                        for="floating_password"
+                        className="pl-2 peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-secondary peer-focus:dark:text-secondary peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                     >
+                        Enter your password
+                     </label>
+                     {errors.password && (
+                        <span className="text-xs text-red-500">
+                           This field is required
+                        </span>
+                     )}
                   </div>
-                  {/* repeate password  */}
-                  <div>
-                     <div className="mb-2 block">
-                        <Label htmlFor="password2" value="Repeat password" />
-                     </div>
-                     <TextInput
-                        onChange={onchangeHande1}
-                        id="password2"
+                  {/* repeat password  */}
+                  <div className="relative w-full mb-6 group">
+                     <input
                         type="password"
-                        required
-                        shadow
-
-                        name="password2"
+                        name="floating_password2"
+                        id="floating_password2"
+                        className={`block shadow-md shadow-primary/10 py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-secondary focus:outline-none pl-2 focus:ring-0  peer ${errors.password2
+                           ? "focus:border-red-500 border-red-500"
+                           : "focus:border-secondary"
+                           }`}
+                        placeholder=" "
+                        {...register("password2", { required: true })}
                      />
+
+                     <label
+                        for="floating_password2"
+                        className="pl-2 peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-secondary peer-focus:dark:text-secondary peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                     >
+                        Re-enter your password
+                     </label>
+                     {errors.password2 && (
+                        <span className="text-xs text-red-500">
+                           This field is required
+                        </span>
+                     )}
                   </div>
 
                   {/* Error show  */}
-                  <p className="text-red-500">
+                  {error && <p className="text-red-500">
                      {error}
-
-                  </p>
+                  </p>}
                   {/* check box / mark  */}
                   <div className="flex items-center gap-2">
                      <Checkbox
@@ -313,7 +428,7 @@ const Register = () => {
                      </Label>{" "}
                   </div>
                   <p className="flex items-center gap-2">
-                     Already SIgn Up{" "}
+                     Already have an account?
                      <Link className="text-blue-500 underline" href="/login">
                         Login
                      </Link>
@@ -332,52 +447,39 @@ const Register = () => {
                         } */}
                   {
                      loading ? <Loader></Loader> :
-                        <Button className=" lg:mx-auto w-full"
-
+                        <Button
+                           className=" lg:mx-auto w-full bg-secondary hover:bg-primary"
                            disabled={!termsAccepted}
                            type="submit">
-                           Sign Up
+                           Register
                         </Button>
                   }
 
-                  <div className="flex justify-between  py-8">
+                  <div className="flex justify-between  py-4">
                      <div className="flex w-full">
                         <div className="flex flex-col w-full border-opacity-50">
-                           <div className=""></div>
-                           <div className="divider text-xl font-bold text-black">
-                              Or continue with
+                           <div className="text-xs text-black text-center z-10 inline-block font-semibold">
+                              Or Continue With
                            </div>
-                           <div className="grid w-full card  rounded-box place-items-center">
+                           <hr className="border -mt-2" />
+                           <div className="grid w-full card  rounded-box place-items-center pt-8">
                               <div className="flex gap-4 w-full">
                                  <Button
-                                    disabled={!termsAccepted}
-                                    gradientDuoTone="purpleToBlue"
-                                    className="btn btn-white text-3xl w-full"
+                                    outline={true}
+                                    className="hover:text-white text-3xl w-full bg-secondary"
                                     onClick={handleGoogleSignIn}
                                  >
-                                    {/* <FcGoogle className="mr-4 text-xl " /> */}
-                                    Google
+                                    <span className="flex items-center justify-center font-bold hover:text-white focus:text-white w-full"><FcGoogle className="mr-2 text-xl" />
+                                       Google</span>
                                  </Button>
                                  <Button
-                                    disabled={!termsAccepted}
-                                    gradientDuoTone="purpleToBlue"
-                                    className="btn btn-white text-3xl w-full "
-                                 // onClick={handleGoogleLogin}
+                                    outline={true}
+                                    className="text-3xl w-full bg-primary"
+                                 // onClick={handleFacebookLogin}
                                  >
-                                    {/* <FcGoogle className="mr-4 text-xl " /> */}
-                                    Facebook
+                                    <span className="flex items-center justify-center font-bold hover:text-white focus:text-white w-full"><CiFacebook className="mr-2 text-xl font-bold" />
+                                       Facebook</span>
                                  </Button>
-
-
-
-
-
-
-
-
-
-
-
                               </div>
                            </div>
                         </div>
