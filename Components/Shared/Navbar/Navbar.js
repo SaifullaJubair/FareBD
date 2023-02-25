@@ -1,6 +1,15 @@
-
+import { AuthContext } from "@/Contexts/AuthProvider/AuthProvider";
+import { useContext } from "react";
 
 const Navbar = () => {
+   const { user, logout } = useContext(AuthContext)
+
+   const handleLogOut = () => {
+      logout()
+         .then(() => { })
+         .catch(error => console.log(error))
+   }
+
    return (
       <div className="bg-primary">
          <nav className="max-w-[1440px] w-[95%] mx-auto text-white border-gray-200 px-2 sm:px-4 py-2.5 dark:bg-gray-900">
@@ -30,6 +39,9 @@ const Navbar = () => {
                      </li>
                      <li>
                         <a href="#" className="block py-2 pl-3 pr-4 text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Contact Us</a>
+                     </li>
+                     <li>
+                        <button onClick={handleLogOut}>LogOut</button>
                      </li>
                   </ul>
                </div>
