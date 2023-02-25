@@ -1,25 +1,5 @@
-// import Footer from "@/Components/Shared/Footer/Footer";
-// import Navbar from "@/Components/Shared/Navbar/Navbar";
-// import TopBar from "@/Components/Shared/TopBar/TopBar";
-// import "@/styles/globals.css";
-
-// export default function App({ Component, pageProps }) {
-//   return (
-//     <>
-//       <TopBar></TopBar>
-//       <Navbar></Navbar>
-//       <Component {...pageProps} />
-//       <Footer></Footer>
-//     </>
-//   );
-// }
-
-
 import 'react-toastify/dist/ReactToastify.css';
-
 import '../styles/globals.css';
-
-
 import { ToastContainer } from 'react-toastify';
 import Footer from "@/Components/Shared/Footer/Footer";
 import Navbar from "@/Components/Shared/Navbar/Navbar";
@@ -29,10 +9,7 @@ import ScrollToTop from 'react-scroll-up';
 import { BsArrowUpCircleFill } from 'react-icons/bs';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
-
-
 const queryClient = new QueryClient()
-
 
 export default function App({ Component, pageProps }) {
 
@@ -49,7 +26,6 @@ export default function App({ Component, pageProps }) {
         </ScrollToTop>
         <Footer></Footer>
       </AuthProvider>
-
     </QueryClientProvider >
   )
 }

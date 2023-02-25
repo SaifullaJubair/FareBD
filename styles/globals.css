@@ -109,9 +109,8 @@ a {
 @tailwind components;
 @tailwind utilities;
 
-
 /* SellAndRent css */
-.proparte-tab >.flex {
+.proparte-tab > .flex {
   justify-content: center;
   border: none;
 }
@@ -122,3 +121,10 @@ a {
   font-weight: 700;
 }
 
+.swiper {
+  padding: 0 0 60px 0 !important;
+}
+
+.swiper-pagination-bullet {
+  background-color: #5ba600 !important;
+}
