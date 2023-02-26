@@ -57,7 +57,7 @@ const Login = () => {
    const saveUser = (displayName, email, photoURL) => {
       const createdAt = new Date().toISOString();
       const user = { name: displayName, email, role: 'user', createdAt, img: photoURL }
-      fetch('http://localhost:5000/adduser', {
+      fetch('https://server-fare-bd.vercel.app/adduser', {
          method: 'POST',
          headers: {
             "content-type": "application/json"

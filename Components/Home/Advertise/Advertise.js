@@ -9,7 +9,7 @@ const Advertise = () => {
     queryKey: ['user'],
     queryFn: async () => {
       try {
-        const res = await fetch('http://localhost:5000/property', {
+        const res = await fetch('https://server-fare-bd.vercel.app/property', {
 
 
         })
