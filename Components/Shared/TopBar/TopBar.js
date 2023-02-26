@@ -1,8 +1,11 @@
 
+import { AuthContext } from '@/Contexts/AuthProvider/AuthProvider';
 import Link from 'next/link';
+// import { useContext } from 'react';
 import { FaFacebook, FaGripLinesVertical, FaInstagram, FaLocationArrow, FaPhoneAlt, FaSkype, FaTwitter, FaWhatsapp, FaRegEnvelope } from 'react-icons/fa';
 
 const TopBar = () => {
+   // const {user} = useContext(AuthContext);
    return (
       <div className="bg-secondary w-full h-12 hidden md:inline-block">
          <div className='max-w-[1440px] w-[95%] mx-auto flex justify-between'>
@@ -24,9 +27,9 @@ const TopBar = () => {
 
             {/* Signin/signup & social media section */}
             <div className="flex space-x-4 py-4">
-               <div className="text-white text-xs"><Link href={'/register'}>Register</Link></div>
+               {/* { !user && <><div className="text-white text-xs"><Link href={'/register'}>Register</Link></div>
                <div className="text-white text-xs"><Link href={'/login'}>Login</Link></div>
-               <div className="text-white text-xs"><FaGripLinesVertical /> </div>
+               <div className="text-white text-xs"><FaGripLinesVertical /> </div></>} */}
                <div className="text-white text-xs"><Link href={'https://www.facebook.com/'}><FaFacebook /></Link></div>
                <div className="text-white text-xs"><Link href={'https://twitter.com/'}><FaTwitter /></Link></div>
                <div className="text-white text-xs"><Link href={'https://www.instagram.com/?hl=en'}><FaInstagram /></Link></div>
