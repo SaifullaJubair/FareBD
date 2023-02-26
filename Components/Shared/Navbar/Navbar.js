@@ -24,11 +24,13 @@ const Navbar = () => {
                <div className="flex md:order-2 gap-2">
                   {user ?
                      <div className="hidden md:flex">
-                        <Avatar
-                           img={user?.photoURL}
-                           rounded={true}
-                           className="border rounded-full"
-                        />
+                        <Link href='/userprofile'>
+                           <Avatar
+                              img={user?.photoURL}
+                              rounded={true}
+                              className="border rounded-full"
+                           />
+                        </Link>
                         <button type="button" onClick={handleLogOut} className="ml-2 text-white bg-red-500 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium text-sm px-5 py-2.5 text-center mr-3 md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Logout</button>
                      </div>
                      :
