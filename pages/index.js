@@ -29,6 +29,7 @@ export default function Home() {
         <Hero></Hero>
         <Searchfield></Searchfield>
         <SellAndRent></SellAndRent>
+        <RecentPost></RecentPost>
         <Division></Division>
         <Header></Header>
         <Advertise></Advertise>
