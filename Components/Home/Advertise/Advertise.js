@@ -59,18 +59,18 @@ const Advertise = () => {
                 </div>
               </div>
               <h4 className="text-2xl my-3 font-semibold hover:text-secondary transition duration-200">
-                {}
+                { }
               </h4>
               <p>
-                {}
+                { }
               </p>
               <BsArrowRight className="text-2xl font-semibold absolute left-1/2 transform -translate-x-1/2 -bottom-3 bg-secondary/90 transtion duration-300 cursor-pointer hover:bg-secondary w-8 h-8 rounded-full p-1 text-white" />
             </div>
           </div>)
         }
-        
 
-      
+
+
 
 
       </div>

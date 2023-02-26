@@ -28,7 +28,7 @@ const Register = () => {
    } = useForm();
 
    const [error, setError] = useState("");
-   const [loading, setLoading] = useState(false)
+   const [loading, setLoading] = useState(false);
    const [loginUserEmail, setLoginUserEmail] = useState('')
    const googleProvider = new GoogleAuthProvider();
    const [createUserEmail, setCreateUserEmail] = useState('')
@@ -217,7 +217,7 @@ const Register = () => {
       <div className="md:mx-6">
          <div className="w-full justify-around my-8 lg:flex">
             <div className="w-full text-center text-xl font-bold flex flex-col justify-center items-center">
-               <h2 className="text-2xl text-black my-auto">Welcome To Our Page</h2>
+               {/* <h2 className="text-2xl text-black my-auto">Welcome To Our Page</h2> */}
                <img
                   src="https://i.ibb.co/FDFvSHx/119048-login-verification.gif"
                   alt=""

@@ -18,7 +18,7 @@ const Navbar = () => {
          <nav className="max-w-[1440px] w-[95%] mx-auto text-white border-gray-200 px-2 sm:px-4 py-2.5 dark:bg-gray-900">
             <div className="container flex flex-wrap items-center justify-between mx-auto">
                <Link href="/" className="flex items-center">
-                  <img src="https://i.ibb.co/9vLTqg9/image.png" className="h-9 mr-3 sm:h-12" alt="Flowbite Logo" />
+                  <img src="https://i.ibb.co/9vLTqg9/image.png" className="h-9 mr-3 sm:h-12" alt="farebd Logo" />
                   <span className="self-center text-4xl font-bold whitespace-nowrap dark:text-white">Fare<span className="text-secondary">BD</span></span>
                </Link>
                <div className="flex md:order-2 gap-2">
@@ -33,8 +33,8 @@ const Navbar = () => {
                      </div>
                      :
                      <>
-                        <Link href='/login' ><button type="button" className="text-white btn btn-outline border hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium text-sm px-5 py-2.5 text-center mr-3 md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Login</button></Link>
-                        <Link href='/register' ><button type="button" className="text-white btn border bg-secondary hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium text-sm px-5 py-2.5 text-center mr-3 md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Sign Up</button></Link>
+                        <Link href='/login' ><button type="button" className="text-white btn btn-xs btn-outline border hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium text-sm px-5 py-2.5 text-center mr-3 md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Login</button></Link>
+                        <Link href='/register' ><button type="button" className="hidden lg:flex text-white btn border bg-secondary hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium text-sm px-5 py-2.5 text-center mr-3 md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Sign Up</button></Link>
                      </>}
                   <button data-collapse-toggle="navbar-cta" type="button" className="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-cta" aria-expanded="false">
                      <span className="sr-only">Open main menu</span>
