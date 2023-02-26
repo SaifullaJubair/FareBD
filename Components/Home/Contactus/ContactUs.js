@@ -1,9 +1,17 @@
-import React from 'react';
 
+import { useForm } from '@formspree/react';
+import { toast } from 'react-toastify';
 const ContactUs = () => {
+   const [state, handleSubmit] = useForm("mlevqzpe");
+   if (state.succeeded) {
+      toast("login success", {
+         position: toast.POSITION.TOP_CENTER,
+      });
+
+   }
    return (
       <div>
-         <section className="py-6 bg-primary text-gray-50 mb-28">
+         <section className="py-6 bg-primary text-gray-50 ">
             <div className="grid py-14 max-w-[1440px] w-[95%] mx-auto grid-cols-1 items-center md:grid-cols-2 md:divide-x">
                <div className="py-6 md:py-0 md:px-6">
                   <h1 className="text-4xl font-bold">Get in touch</h1>
@@ -30,35 +38,36 @@ const ContactUs = () => {
                      </p>
                   </div>
                </div>
-               <form className="flex flex-col  py-6 space-y-6 md:py-0 md:px-6 ng-untouched ng-pristine ng-valid">
+               <form onSubmit={handleSubmit} className="flex flex-col  py-6 space-y-6 md:py-0 md:px-6 ng-untouched ng-pristine ng-valid">
                   <div className="gap-8  grid md:grid-cols-2 lg:grid-cols-2 sm:grid-cols-1">
                      <label className="block">
                         <span className="mb-1">First name</span>
-                        <input type="text" placeholder="Leroy Jenkins" className="block w-full text-black rounded-md shadow-sm focus:ring focus:ring-opacity-75 focus:ring-violet-400 dark:bg-gray-800" />
+                        <input type="text" name='firstName' placeholder="Leroy Jenkins" className="block w-full text-black rounded-md shadow-sm focus:ring focus:ring-opacity-75 focus:ring-violet-400 dark:bg-gray-800" />
                      </label>
                      <label className="block">
                         <span className="mb-1">Lest name</span>
-                        <input type="text" placeholder="Leroy Jenkins" className="block w-full text-black rounded-md shadow-sm focus:ring focus:ring-opacity-75 focus:ring-violet-400 dark:bg-gray-800" />
+                        <input type="text" name='lastName' placeholder="Leroy Jenkins" className="block w-full text-black rounded-md shadow-sm focus:ring focus:ring-opacity-75 focus:ring-violet-400 dark:bg-gray-800" />
                      </label>
                      <label className="block">
                         <span className="mb-1">Email address</span>
-                        <input type="email" placeholder="leroy@jenkins.com" className="block w-full text-black rounded-md shadow-sm focus:ring focus:ring-opacity-75 focus:ring-violet-400 dark:bg-gray-800" />
+                        <input type="email" name='email' placeholder="leroy@jenkins.com" className="block w-full text-black rounded-md shadow-sm focus:ring focus:ring-opacity-75 focus:ring-violet-400 dark:bg-gray-800" />
                      </label>
                      <label className="block">
-                        <span className="mb-1">Password</span>
-                        <input type="password" placeholder="leroy@jenkins.com" className="block w-full text-black rounded-md shadow-sm focus:ring focus:ring-opacity-75 focus:ring-violet-400 dark:bg-gray-800" />
+                        <span className="mb-1">Subject</span>
+                        <input name='subject' type="text" placeholder="Subject" className="block w-full text-black rounded-md shadow-sm focus:ring focus:ring-opacity-75 focus:ring-violet-400 dark:bg-gray-800" />
                      </label>
                   </div>
 
 
                   <label className="block">
                      <span className="mb-1">Message</span>
-                     <textarea rows="3" className="block w-full rounded-md focus:ring focus:ring-opacity-75 text-black focus:ring-violet-400 dark:bg-gray-800"></textarea>
+                     <textarea name='message' rows="3" className="block w-full rounded-md focus:ring focus:ring-opacity-75 text-black focus:ring-violet-400 dark:bg-gray-800"></textarea>
                   </label>
-                  <button type="button" className="self-center  ease-in duration-300 bg-secondary px-8 py-3 text-lg hover:bg-primary ">Submit</button>
+                  <button type="submit" className="self-center  ease-in duration-300 bg-secondary px-8 py-3 text-lg hover:bg-primary ">Submit</button>
                </form>
             </div>
          </section>
+
       </div>
    );
 };
