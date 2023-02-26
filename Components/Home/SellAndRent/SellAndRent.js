@@ -10,7 +10,7 @@ const SellAndRent = () => {
    const [toRent, setToRent] = useState([]);
 
    useEffect(() => {
-      fetch('https://server-fare-bd.vercel.app/forSell')
+      fetch('http://localhost:5000/forSell')
          .then(res => res.json())
          .then(data => {
             setToSell(data)
@@ -19,7 +19,7 @@ const SellAndRent = () => {
    }, []);
 
    useEffect(() => {
-      fetch('https://server-fare-bd.vercel.app/forRent')
+      fetch('http://localhost:5000/forRent')
          .then(res => res.json())
          .then(data => {
             setToRent(data)
