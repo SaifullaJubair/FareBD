@@ -28,7 +28,7 @@ const Advertise = () => {
 
   // const head = advertised?.property_heading.slice(50)
   // const detail = advertised?.details.slice(150)
-
+  const head = products.slice(-3)
   console.log(products);
 
   return (
@@ -37,7 +37,7 @@ const Advertise = () => {
       <div className="flex flex-wrap items-center gap-5 justify-center">
         {/* card 1 */}
         {
-          products?.map(advertised => <div key={advertised?._id}>
+          head?.map(advertised => <div key={advertised?._id}>
             <div
               style={{
                 backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,.1), rgba(0,0,0.8)), url(${advertised?.property_picture})`,
