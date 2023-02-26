@@ -1,4 +1,5 @@
 
+import Link from 'next/link';
 import { FaFacebook, FaGripLinesVertical, FaInstagram, FaLocationArrow, FaPhoneAlt, FaSkype, FaTwitter, FaWhatsapp, FaRegEnvelope } from 'react-icons/fa';
 
 const TopBar = () => {
@@ -23,14 +24,14 @@ const TopBar = () => {
 
             {/* Signin/signup & social media section */}
             <div className="flex space-x-4 py-4">
-               <div className="text-white text-xs"><button>Register</button></div>
-               <div className="text-white text-xs"><button>Login</button></div>
-               <div className="text-white text-xs"><FaGripLinesVertical /></div>
-               <div className="text-white text-xs"><button><FaFacebook /></button></div>
-               <div className="text-white text-xs"><button><FaTwitter /></button></div>
-               <div className="text-white text-xs"><button><FaInstagram /></button></div>
-               <div className="text-white text-xs"><button><FaSkype /></button></div>
-               <div className="text-white text-xs"><button><FaWhatsapp /></button></div>
+               <div className="text-white text-xs"><Link href={'/register'}>Register</Link></div>
+               <div className="text-white text-xs"><Link href={'/login'}>Login</Link></div>
+               <div className="text-white text-xs"><FaGripLinesVertical /> </div>
+               <div className="text-white text-xs"><Link href={'https://www.facebook.com/'}><FaFacebook /></Link></div>
+               <div className="text-white text-xs"><Link href={'https://twitter.com/'}><FaTwitter /></Link></div>
+               <div className="text-white text-xs"><Link href={'https://www.instagram.com/?hl=en'}><FaInstagram /></Link></div>
+               <div className="text-white text-xs"><Link href={'https://www.skype.com/en/'}><FaSkype /></Link></div>
+               <div className="text-white text-xs"><Link href={'/'}><FaWhatsapp /></Link></div>
             </div>
          </div>
       </div>

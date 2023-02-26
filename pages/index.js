@@ -1,22 +1,20 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import { Inter } from '@next/font/google'
-import Header from '@/Components/Home/Header/Header'
-import Searchfield from '@/Components/Home/Searchfield/Searchfield'
-import SellAndRent from '@/Components/Home/SellAndRent/SellAndRent'
-import Division from '@/Components/Home/Division/Division'
-import Advertise from '@/Components/Home/Advertise/Advertise'
-import About from '@/Components/Home/About/About'
-import Review from '@/Components/Home/Review/Review'
-import Branding from '@/Components/Home/Branding/Branding'
-import ContactUs from '@/Components/Home/Contactus/ContactUs'
-import Welcome from '@/Components/Home/Welcome/Welcome'
-import Hero from '@/Components/Home/Hero/Hero'
-import PhotoGallery from '@/Components/Home/PhotoGallery/PhotoGallery'
-import RecentPost from '@/Components/Home/RecentPost/RecentPost'
+import Head from "next/head";
+import Image from "next/image";
+import { Inter } from "@next/font/google";
+import Header from "@/Components/Home/Header/Header";
+import Searchfield from "@/Components/Home/Searchfield/Searchfield";
+import SellAndRent from "@/Components/Home/SellAndRent/SellAndRent";
+import Division from "@/Components/Home/Division/Division";
+import Advertise from "@/Components/Home/Advertise/Advertise";
+import About from "@/Components/Home/About/About";
+import Review from "@/Components/Home/Review/Review";
+import Branding from "@/Components/Home/Branding/Branding";
+import ContactUs from "@/Components/Home/Contactus/ContactUs";
+import Welcome from "@/Components/Home/Welcome/Welcome";
+import Hero from "@/Components/Home/Hero/Hero";
+// import PhotoGallery from "@/Components/Home/PhotoGallery/PhotoGallery";
 
 const inter = Inter({ subsets: ["latin"] });
-
 
 export default function Home() {
   return (
@@ -36,7 +34,7 @@ export default function Home() {
         <Header></Header>
         <Advertise></Advertise>
         <Welcome></Welcome>
-        <PhotoGallery></PhotoGallery>
+        {/* <PhotoGallery></PhotoGallery> */}
         <About></About>
         <Review></Review>
         <Branding></Branding>

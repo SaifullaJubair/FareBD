@@ -2,7 +2,6 @@ import { Button } from "flowbite-react";
 import Link from "next/link";
 // import { useEffect, useState } from "react";
 
-
 const Division = () => {
    // const [divisions, setdivision] = useState([]);
    // const [otherDivisions, setOtherDivisions] = useState([]);

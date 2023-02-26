@@ -1,6 +1,5 @@
 import { Swiper, SwiperSlide } from "swiper/react";
-import { EffectCoverflow } from "swiper";
-
+import { EffectCoverflow, Autoplay } from "swiper";
 import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
 import "swiper/css";
@@ -36,7 +35,7 @@ const Header = () => {
   }, []);
 
   return (
-    <div className="py-14 max-w-[1440px] w-[95%] mx-auto">
+    <div className="pt-14 pb-10 max-w-[1440px] w-[95%] mx-auto">
       {/* <div className="flex flex-col-reverse items-center justify-between gap-10 overflow-x-hidden lg:gap-0 lg:flex-row py-14"> */}
       {/* <div className="w-full max-w-[530px] mx-auto">
         <h1 className="text-4xl font-semibold">
@@ -64,56 +63,36 @@ const Header = () => {
           modifier: 1,
           slideShadows: true,
         }}
-        modules={[EffectCoverflow]}
+        modules={[EffectCoverflow, Autoplay]}
         className="mySwiper"
+        autoplay={{
+          delay: 4000,
+          disableOnInteraction: false,
+        }}
       >
         <SwiperSlide style={swiperSlideStyles}>
-          {({ isActive }) => (
-            <div
-              className={`${
-                isActive
-                  ? " border-4 rounded-md overflow-hidden border-primary/50"
-                  : null
-              } w-full h-full`}
-            >
-              <img
-                className={`object-cover w-full h-full transition duration-300 `}
-                src={home1.src}
-              />
-            </div>
-          )}
+          <div className=" border-4 rounded-md overflow-hidden border-primary/50 w-full h-full">
+            <img
+              className="object-cover w-full h-full transition duration-300"
+              src={home1.src}
+            />
+          </div>
         </SwiperSlide>
         <SwiperSlide style={swiperSlideStyles}>
-          {({ isActive }) => (
-            <div
-              className={`${
-                isActive
-                  ? " border-4 rounded-md overflow-hidden border-primary/50"
-                  : null
-              } w-full h-full`}
-            >
-              <img
-                className={`object-cover w-full h-full transition duration-300 `}
-                src={home2.src}
-              />
-            </div>
-          )}
+          <div className=" border-4 rounded-md overflow-hidden border-primary/50 w-full h-full">
+            <img
+              className="object-cover w-full h-full transition duration-300"
+              src={home2.src}
+            />
+          </div>
         </SwiperSlide>
         <SwiperSlide style={swiperSlideStyles}>
-          {({ isActive }) => (
-            <div
-              className={`${
-                isActive
-                  ? " border-4 rounded-md overflow-hidden border-primary/50"
-                  : null
-              } w-full h-full`}
-            >
-              <img
-                className={`object-cover w-full h-full transition duration-300 `}
-                src={home3.src}
-              />
-            </div>
-          )}
+          <div className=" border-4 rounded-md overflow-hidden border-primary/50 w-full h-full">
+            <img
+              className="object-cover w-full h-full transition duration-300"
+              src={home3.src}
+            />
+          </div>
         </SwiperSlide>
       </Swiper>
     </div>
