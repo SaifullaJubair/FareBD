@@ -66,7 +66,7 @@ const Register = () => {
       const createdAt = new Date().toISOString();
       const user = { name: displayName, email, role: 'user', uid: myuuid, createdAt, img: photoURL }
       console.log(user);
-      fetch('http://localhost:5000/adduser', {
+      fetch('https://server-fare-bd.vercel.app/adduser', {
          method: 'POST',
          headers: {
             "content-type": "application/json"
@@ -154,7 +154,7 @@ const Register = () => {
                      .then(result => {
                         // const users =  { name, email, password, createdAt: new Date().toISOString(), photoURL: data?.data?.display_url };
                         // console.log(result)
-                        fetch('http://localhost:5000/adduser', {
+                        fetch('https://server-fare-bd.vercel.app/adduser', {
                            method: 'POST',
                            headers: {
                               "content-type": "application/json"

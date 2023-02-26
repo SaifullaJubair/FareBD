@@ -7,7 +7,7 @@ const Division = () => {
    // const [otherDivisions, setOtherDivisions] = useState([]);
 
    // useEffect(() => {
-   //    fetch("http://localhost:5000/property")
+   //    fetch("https://server-fare-bd.vercel.app/property")
    //       .then((res) => res.json())
    //       .then((data) => {
    //          setdivision(data.slice(0, 4));
