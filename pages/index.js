@@ -13,6 +13,7 @@ import ContactUs from '@/Components/Home/Contactus/ContactUs'
 import Welcome from '@/Components/Home/Welcome/Welcome'
 import Hero from '@/Components/Home/Hero/Hero'
 import PhotoGallery from '@/Components/Home/PhotoGallery/PhotoGallery'
+import RecentPost from '@/Components/Home/RecentPost/RecentPost'
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -30,6 +31,7 @@ export default function Home() {
         <Hero></Hero>
         <Searchfield></Searchfield>
         <SellAndRent></SellAndRent>
+        <RecentPost></RecentPost>
         <Division></Division>
         <Header></Header>
         <Advertise></Advertise>
