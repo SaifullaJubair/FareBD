@@ -2,15 +2,17 @@ import { Card, Dropdown, Tabs } from "flowbite-react";
 import { CiLocationOn } from "react-icons/ci";
 import { AiOutlineHeart } from "react-icons/ai";
 import { useEffect, useState } from "react";
+import Link from "next/link";
 
 
 const SellAndRent = () => {
 
    const [toSell, setToSell] = useState([]);
    const [toRent, setToRent] = useState([]);
+   const [singleProperty, setSingleProperty] = useState({});
 
    useEffect(() => {
-      fetch('https://server-fare-bd.vercel.app/forSell')
+      fetch('http://localhost:5000/forSell')
          .then(res => res.json())
          .then(data => {
             setToSell(data)
@@ -19,7 +21,7 @@ const SellAndRent = () => {
    }, []);
 
    useEffect(() => {
-      fetch('https://server-fare-bd.vercel.app/forRent')
+      fetch('http://localhost:5000/forRent')
          .then(res => res.json())
          .then(data => {
             setToRent(data)
@@ -67,93 +69,26 @@ const SellAndRent = () => {
                                     </div>
                                  </div>
                               </div>
-                              <div className="product-details-inner bg-gray-200 py-5 px-9 ">
-                                 <h4 className="font-medium mb-3 text-primary text-2xl hover:text-secondary ease-in duration-300"><a href="property-details.html">{rent?.property_name}</a></h4>
-                                 <ul className="meta-inner flex mb-3 justify-items-start">
-                                    <li className="flex mr-3 text-sm"><span className="text-xl mr-2"></span><CiLocationOn ></CiLocationOn>{rent?.location}</li>
-                                    <li className="bg-secondary text-sm font-medium text-white px-4"><a href="#">For Sell</a></li>
-                                 </ul>
-                                 <p >{rent?.property_heading}</p>
-                              </div>
-                              <div className="product-meta-bottom font-medium text-primary bg-gray-300 py-5 px-9">
-                                 <span className="price">$ {rent?.price}</span>
-                                 <span className="mx-4">For sale</span>
-                                 <span>{rent?.post_date}</span>
-                              </div>
+                              <Link href={`/singleproperty/${rent?._id}`}>
+                                 <div className="product-details-inner bg-gray-200 py-5 px-9 ">
+                                    <h4 className="font-medium mb-3 text-primary text-2xl hover:text-secondary ease-in duration-300"><a href="property-details.html">{rent?.property_name}</a></h4>
+                                    <ul className="meta-inner flex mb-3 justify-items-start">
+                                       <li className="flex mr-3 text-sm"><span className="text-xl mr-2"></span><CiLocationOn ></CiLocationOn>{rent?.location}</li>
+                                       <li className="bg-secondary text-sm text-white px-2">For Rent</li>
+                                    </ul>
+                                    <p >{rent?.property_heading}</p>
+                                 </div>
+                                 <div className="product-meta-bottom font-medium text-primary bg-gray-300 py-5 px-9">
+                                    <span className="price">$ {rent?.price}</span>
+                                    <span className="mx-4">For sale</span>
+                                    <span>{rent?.post_date}</span>
+                                 </div></Link>
                            </div>
                         </div>
 
                      )
                   }
-                  {/* 
-                        <div className="w-full">
-                           <div className="single-product-wrap style-bottom ">
-                              <div className="thumb relative">
-                                 <img src="https://flowbite.com/docs/images/blog/image-1.jpg" alt="img" />
-                                 <div className="product-wrap-details absolute bottom-0 left-0 w-full px-9 text-white">
-                                    <div className="media flex items-center mb-4 justify-between">
-                                       <div className="author">
-                                          <img className=" mr-4" src="https://solverwp.com/demo/html/mingrand/assets/img/author/4.png" alt="img" />
-                                       </div>
-                                       <div className="media-body text-xs font-medium">
-                                          <h6 className=""><a href="#">Owner Name</a></h6>
-                                          <p className="flex"><span className="text-xl"><CiLocationOn ></CiLocationOn></span>New York real
-                                             estate </p>
-                                       </div>
-                                       <a className="fav-btn float-right" href="#"><span className="text-3xl hover:text-secondary ease-in duration-300"><AiOutlineHeart> </AiOutlineHeart></span> </a>
-                                    </div>
-                                 </div>
-                              </div>
-                              <div className="product-details-inner bg-gray-200 py-5 px-9 ">
-                                 <h4 className="font-medium mb-3 text-primary text-2xl hover:text-secondary ease-in duration-300"><a href="property-details.html">Daily Apartment</a></h4>
-                                 <ul className="meta-inner flex mb-3 justify-items-start">
-                                    <li className="flex mr-3 text-sm"><span className="text-xl mr-2"></span><CiLocationOn ></CiLocationOn>New York</li>
-                                    <li className="bg-secondary text-sm font-medium text-white px-4"><a href="#">For Sell</a></li>
-                                 </ul>
-                                 <p >Lorem ipsum dolor consectetur iicing elit, sed do eius Lorem ipsum dolo amet,
-                                    costur adipisicing eiusmod.</p>
-                              </div>
-                              <div className="product-meta-bottom font-medium text-primary bg-gray-300 py-5 px-9">
-                                 <span className="price">$ 80,650.00</span>
-                                 <span className="mx-4">For sale</span>
-                                 <span>1 year ago</span>
-                              </div>
-                           </div>
-                        </div>
-                        <div className="w-full">
-                           <div className="single-product-wrap style-bottom ">
-                              <div className="thumb relative">
-                                 <img src="https://flowbite.com/docs/images/blog/image-1.jpg" alt="img" />
-                                 <div className="product-wrap-details absolute bottom-0 left-0 w-full px-9 text-white">
-                                    <div className="media flex items-center mb-4 justify-between">
-                                       <div className="author">
-                                          <img className=" mr-4" src="https://solverwp.com/demo/html/mingrand/assets/img/author/4.png" alt="img" />
-                                       </div>
-                                       <div className="media-body text-xs font-medium">
-                                          <h6 className=""><a href="#">Owner Name</a></h6>
-                                          <p className="flex"><span className="text-xl"><CiLocationOn ></CiLocationOn></span>New York real
-                                             estate </p>
-                                       </div>
-                                       <a className="fav-btn float-right" href="#"><span className="text-3xl hover:text-secondary ease-in duration-300"><AiOutlineHeart> </AiOutlineHeart></span> </a>
-                                    </div>
-                                 </div>
-                              </div>
-                              <div className="product-details-inner bg-gray-200 py-5 px-9 ">
-                                 <h4 className="font-medium mb-3 text-primary text-2xl hover:text-secondary ease-in duration-300"><a href="property-details.html">Daily Apartment</a></h4>
-                                 <ul className="meta-inner flex mb-3 justify-items-start">
-                                    <li className="flex mr-3 text-sm"><span className="text-xl mr-2"></span><CiLocationOn ></CiLocationOn>New York</li>
-                                    <li className="bg-secondary text-sm font-medium text-white px-4"><a href="#">For Sell</a></li>
-                                 </ul>
-                                 <p >Lorem ipsum dolor consectetur iicing elit, sed do eius Lorem ipsum dolo amet,
-                                    costur adipisicing eiusmod.</p>
-                              </div>
-                              <div className="product-meta-bottom font-medium text-primary bg-gray-300 py-5 px-9">
-                                 <span className="price">$ 80,650.00</span>
-                                 <span className="mx-4">For sale</span>
-                                 <span>1 year ago</span>
-                              </div>
-                           </div>
-                        </div>  */}
+
                </div>
             </Tabs.Item>
 
@@ -183,19 +118,19 @@ const SellAndRent = () => {
                                     </div>
                                  </div>
                               </div>
-                              <div className="product-details-inner bg-gray-200 py-5 px-9 ">
+                              <Link href={`/singleproperty/${sell?._id}`}> <div className="product-details-inner bg-gray-200 py-5 px-9 ">
                                  <h4 className="font-medium mb-3 text-primary text-2xl hover:text-secondary ease-in duration-300"><a href="property-details.html">{sell?.property_name}</a></h4>
                                  <ul className="meta-inner flex mb-3 justify-items-start">
                                     <li className="flex mr-3 text-sm"><span className="text-xl mr-2"></span><CiLocationOn ></CiLocationOn>{sell?.location}</li>
-                                    <li className="bg-secondary text-sm font-medium text-white px-4"><a href="#">For Sell</a></li>
+                                    <li className="bg-secondary text-sm font-medium text-white px-4">For Sell</li>
                                  </ul>
                                  <p >{sell?.property_heading}</p>
                               </div>
-                              <div className="product-meta-bottom font-medium text-primary bg-gray-300 py-5 px-9">
-                                 <span className="price">$ {sell?.price}</span>
-                                 <span className="mx-4">For sale</span>
-                                 <span>{sell?.post_date}</span>
-                              </div>
+                                 <div className="product-meta-bottom font-medium text-primary bg-gray-300 py-5 px-9">
+                                    <span className="price">$ {sell?.price}</span>
+                                    <span className="mx-4">For sale</span>
+                                    <span>{sell?.post_date}</span>
+                                 </div></Link>
                            </div>
                         </div>
 

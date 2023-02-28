@@ -151,7 +151,7 @@ function AddProperty() {
         body: JSON.stringify(property),
       };
 
-      const res = await fetch("https://server-fare-bd.vercel.app/property", config);
+      const res = await fetch("http://localhost:5000/property", config);
       const data = await res.json();
 
       if (data.acknowledged) {
