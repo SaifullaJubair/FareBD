@@ -1,11 +1,12 @@
+import { AuthContext } from "@/Contexts/AuthProvider/AuthProvider";
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import DatePicker from "tailwind-datepicker-react";
 
 function AddProperty() {
   const router = useRouter();
-
+  const { user } = useContext(AuthContext);
   const options = {
     title: "Registered Date",
     autoHide: true,
@@ -119,6 +120,9 @@ function AddProperty() {
         property_type: category,
         location,
         owner_name: ownerName,
+        user_email: user?.email,
+        user_image: user?.photoURL,
+        user_name: user?.displayName,
         phone,
         price,
         property_heading: propertyHeading,
@@ -691,16 +695,16 @@ function AddProperty() {
               className="block shadow-md shadow-primary/10 py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-secondary focus:outline-none focus:ring-0  peer focus:border-secondary"
               {...register("division")}
             >
-              <option value="Dhaka">Complete</option>
+              <option value="Dhaka">Dhaka</option>
               <option selected value="Chattogram">
                 Chattogram
               </option>
-              <option value="Rajsahi">Rajsahi</option>
+              <option value="Rajsahi">Rajshahi</option>
               <option value="Khulna">Khulna</option>
               <option value="Rangpur">Rangpur</option>
               <option value="Barisal">Barisal</option>
               <option value="Sylhet">Sylhet</option>
-              <option value="Mymensing">Mymensing</option>
+              <option value="Mymensing">Mymensingh</option>
             </select>
           </div>
         </div>
