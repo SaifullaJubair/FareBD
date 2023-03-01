@@ -2,15 +2,30 @@ import SinglePropertyPage from '@/Components/SinglePropertyPage/SinglePropertyPa
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
 
+// if(){
+    
+// }
 
 const singleproperty = () => {
+    const [propertyDetails, setPropertyDetails] = useState(null)
+    const [isLoading, setIsLoading] = useState(true)
     const router = useRouter();
-    let { propertyid } = router.query;
-    // console.log(propertyid);
+    const PropertyId = (router.query.singleproperty);
+    
+        useEffect(() => {
+            fetch(`http://localhost:5000/singleproperty/${PropertyId ? PropertyId: ''}`)
+               .then(res => res.json())
+               .then(data => {
+                  setPropertyDetails(data)
+               })
+         }, [PropertyId]);
+    
 
     return (
         <div>
-            <SinglePropertyPage></SinglePropertyPage>
+            {propertyDetails?<SinglePropertyPage
+            propertyDetails={propertyDetails}
+            ></SinglePropertyPage>:''}
         </div>
     );
 };

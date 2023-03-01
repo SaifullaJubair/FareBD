@@ -29,7 +29,7 @@ const Footer = () => {
       pullJson();
    }, [])
 
-   console.log(recentPosts);
+   // console.log(recentPosts);
    return (
       // Footer Section Added
       <footer className="bg-primary text-white mt-16">
