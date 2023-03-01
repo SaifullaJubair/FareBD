@@ -1,4 +1,4 @@
-import { Card, Dropdown, Tabs } from "flowbite-react";
+import { Button, Card, Dropdown, Tabs } from "flowbite-react";
 import { CiLocationOn } from "react-icons/ci";
 import { AiOutlineHeart } from "react-icons/ai";
 import { useEffect, useState } from "react";
@@ -11,6 +11,13 @@ const SellAndRent = () => {
    const [toRent, setToRent] = useState([]);
    const [singleProperty, setSingleProperty] = useState({});
 
+   // Date Formatter function 
+   function formatDate(dateStr) {
+      const date = new Date(dateStr);
+      const options = { year: 'numeric', month: 'long', day: 'numeric' };
+      return (date.toLocaleDateString('en-US', options))
+   }
+
    useEffect(() => {
       fetch('http://localhost:5000/forSell')
          .then(res => res.json())
@@ -19,6 +26,7 @@ const SellAndRent = () => {
             // console.log(data);
          })
    }, []);
+   const forSell = toSell.slice(-3)
 
    useEffect(() => {
       fetch('http://localhost:5000/forRent')
@@ -28,6 +36,7 @@ const SellAndRent = () => {
             // console.log(data);
          })
    }, []);
+   const forRent = toRent.slice(-6)
 
    return (
       <div className="max-w-[1440px] w-[95%] mx-auto mt-24">
@@ -50,7 +59,7 @@ const SellAndRent = () => {
             >
                <div className="gap-8  grid md:grid-cols-2 lg:grid-cols-3 sm:grid-cols-1">
                   {
-                     toRent?.map(rent =>
+                     forRent?.map(rent =>
 
                         <div className="w-full">
                            <div className="single-product-wrap style-bottom ">
@@ -70,22 +79,27 @@ const SellAndRent = () => {
                                  </div>
                               </div>
                               <Link href={`/singleproperty/${rent?._id}`}>
-                                 <div className="product-details-inner bg-gray-200 py-5 px-9 ">
-                                    <h4 className="font-medium mb-3 text-primary text-2xl hover:text-secondary ease-in duration-300"><a href="property-details.html">{rent?.property_name}</a></h4>
-                                    <ul className="meta-inner flex mb-3 justify-items-start">
-                                       <li className="flex mr-3 text-sm"><span className="text-xl mr-2"></span><CiLocationOn ></CiLocationOn>{rent?.location}</li>
-                                       <li className="bg-secondary text-sm text-white px-2">For Rent</li>
-                                    </ul>
+                                 <div className="product-details-inner bg-gray-200 py-5 px-9 h-48">
+                                    <div className="flex justify-between mb-4"><h4 className="font-medium mb-3 text-primary text-2xl hover:text-secondary ease-in duration-300"><a href="property-details.html">{rent?.property_name}</a></h4>
+                                       {/* <ul className="meta-inner flex mb-5 justify-between">
+                                       <li className="flex mr-3 text-sm"><span className="text-xl mr-2">
+                                          </span><CiLocationOn className="mt-1 mr-1"></CiLocationOn>{rent?.location}</li>
+                                    </ul> */}
+                                       <Button className="bg-secondary text-sm text-white px-2" size="xs">For Rent</Button>
+                                    </div>
                                     <p >{rent?.property_heading}</p>
                                  </div>
-                                 <div className="product-meta-bottom font-medium text-primary bg-gray-300 py-5 px-9">
+
+
+                                 <div className="flex justify-between product-meta-bottom font-medium text-primary bg-gray-300 py-5 px-9">
                                     <span className="price">$ {rent?.price}</span>
-                                    <span className="mx-4">For sale</span>
-                                    <span>{rent?.post_date}</span>
-                                 </div></Link>
+                                    <span className="mx-4">{rent?.property_type}</span>
+                                    <span>{formatDate(rent?.post_date.split(' ').join(''))}</span>
+                                    {/* <span>{rent?.post_date}</span> */}
+                                 </div>
+                              </Link>
                            </div>
                         </div>
-
                      )
                   }
 
@@ -118,18 +132,21 @@ const SellAndRent = () => {
                                     </div>
                                  </div>
                               </div>
-                              <Link href={`/singleproperty/${sell?._id}`}> <div className="product-details-inner bg-gray-200 py-5 px-9 ">
-                                 <h4 className="font-medium mb-3 text-primary text-2xl hover:text-secondary ease-in duration-300"><a href="property-details.html">{sell?.property_name}</a></h4>
-                                 <ul className="meta-inner flex mb-3 justify-items-start">
-                                    <li className="flex mr-3 text-sm"><span className="text-xl mr-2"></span><CiLocationOn ></CiLocationOn>{sell?.location}</li>
-                                    <li className="bg-secondary text-sm font-medium text-white px-4">For Sell</li>
-                                 </ul>
+                              <Link href={`/singleproperty/${sell?._id}`}> <div className="product-details-inner bg-gray-200 py-5 px-9 h-48">
+                                 <div className="flex justify-between mb-4">
+                                    <h4 className="font-medium mb-3 text-primary text-2xl hover:text-secondary ease-in duration-300"><a href="property-details.html">{sell?.property_name}</a></h4>
+                                    {/* <ul className="meta-inner flex mb-5 justify-between">
+                                    <li className="flex mr-3 text-sm"><span className="text-xl mr-2"></span><CiLocationOn className="mt-1 mr-1"></CiLocationOn>{sell?.location}</li>
+                                 </ul> */}
+                                    <Button className="bg-secondary text-sm font-medium text-white px-4" size="xs">For Sell</Button>
+                                 </div>
                                  <p >{sell?.property_heading}</p>
                               </div>
-                                 <div className="product-meta-bottom font-medium text-primary bg-gray-300 py-5 px-9">
+                                 <div className="flex justify-between product-meta-bottom font-medium text-primary bg-gray-300 py-5 px-9">
                                     <span className="price">$ {sell?.price}</span>
-                                    <span className="mx-4">For sale</span>
-                                    <span>{sell?.post_date}</span>
+                                    <span className="mx-4">{sell?.property_type}</span>
+                                    <span>{formatDate(sell?.post_date.split(' ').join(''))}</span>
+                                    {/* <span>{sell?.post_date}</span> */}
                                  </div></Link>
                            </div>
                         </div>
