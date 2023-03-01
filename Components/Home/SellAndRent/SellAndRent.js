@@ -1,4 +1,4 @@
-import { Card, Dropdown, Tabs } from "flowbite-react";
+import { Button, Card, Dropdown, Tabs } from "flowbite-react";
 import { CiLocationOn } from "react-icons/ci";
 import { AiOutlineHeart } from "react-icons/ai";
 import { useEffect, useState } from "react";
@@ -12,6 +12,13 @@ const SellAndRent = () => {
    const [toRent, setToRent] = useState([]);
    const [singleProperty, setSingleProperty] = useState({});
 
+   // Date Formatter function 
+   function formatDate(dateStr) {
+      const date = new Date(dateStr);
+      const options = { year: 'numeric', month: 'long', day: 'numeric' };
+      return (date.toLocaleDateString('en-US', options))
+   }
+
    useEffect(() => {
       fetch('http://localhost:5000/forSell')
          .then(res => res.json())
@@ -19,6 +26,7 @@ const SellAndRent = () => {
             setToSell(data)
          })
    }, []);
+   const forSell = toSell.slice(-3)
 
    useEffect(() => {
       fetch('http://localhost:5000/forRent')
