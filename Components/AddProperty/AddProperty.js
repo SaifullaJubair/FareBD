@@ -114,7 +114,7 @@ function AddProperty() {
       const featureImgBbData = await featureImgBbRes.json();
 
       if (!propertyImgBbData.success && !featureImgBbData.success) return;
-
+      const createdAt = new Date().toISOString();
       const property = {
         area_type: areaType,
         property_type: category,
@@ -144,6 +144,7 @@ function AddProperty() {
         completation_status: status,
         property_picture: propertyImgBbData.data.url,
         post_date: new Date().toISOString(),
+        post_date: createdAt
       };
 
       const config = {
