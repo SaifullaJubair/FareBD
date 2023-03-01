@@ -17,7 +17,6 @@ const SellAndRent = () => {
          .then(res => res.json())
          .then(data => {
             setToSell(data)
-            // console.log(data);
          })
    }, []);
 
@@ -26,10 +25,8 @@ const SellAndRent = () => {
          .then(res => res.json())
          .then(data => {
             setToRent(data)
-            // console.log(data);
          })
    }, []);
-   // console.log(toRent);
    return (
       <div className="max-w-[1440px] w-[95%] mx-auto mt-24">
          <div className="proparte-title text-center mb-16">
@@ -52,7 +49,6 @@ const SellAndRent = () => {
                <div className="gap-8  grid md:grid-cols-2 lg:grid-cols-3 sm:grid-cols-1">
                   {
                      toRent?.map(propertyData =>
-                        // console.log(propertyData)
                         <PropertyCard
                         key={propertyData._id}
                         propertyData={propertyData}
