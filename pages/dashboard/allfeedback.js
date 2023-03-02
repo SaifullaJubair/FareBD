@@ -1,8 +1,11 @@
+import AllFeedBack from "@/Components/Dashboard/AllFeedBack/AllFeedBack";
+import DashboardSideBar from "@/Components/Dashboard/DashboardSideBar/DashboardSideBar";
 
 const allfeedback = () => {
    return (
       <div>
-         all feedback
+         <DashboardSideBar></DashboardSideBar>
+         <AllFeedBack></AllFeedBack>
       </div>
    );
 };

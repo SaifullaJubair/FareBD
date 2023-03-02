@@ -1,13 +1,13 @@
 import DashboardSideBar from "@/Components/Dashboard/DashboardSideBar/DashboardSideBar";
-import MyProperties from "@/Components/Dashboard/MyProperties/MyProperties";
+import MyWishList from "@/Components/Dashboard/MyWishList/MyWishList";
 
-const myproperties = () => {
+const mywishlist = () => {
    return (
       <div>
          <DashboardSideBar></DashboardSideBar>
-         <MyProperties></MyProperties>
+         <MyWishList></MyWishList>
       </div>
    );
 };
 
-export default myproperties;
+export default mywishlist;

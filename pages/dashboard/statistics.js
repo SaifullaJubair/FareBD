@@ -1,8 +1,11 @@
+import Statistics from "@/Components/Dashboard/AddProperty/Statistics/Statistics";
+import DashboardSideBar from "@/Components/Dashboard/DashboardSideBar/DashboardSideBar";
 
 const statistics = () => {
    return (
       <div>
-         statistics
+         <DashboardSideBar></DashboardSideBar>
+         <Statistics></Statistics>
       </div>
    );
 };

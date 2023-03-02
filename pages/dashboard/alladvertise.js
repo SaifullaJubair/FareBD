@@ -1,8 +1,9 @@
+import AllAdvertise from "@/Components/Dashboard/AllAdvertise/AllAdvertise";
 
 const alladvertise = () => {
    return (
       <div>
-         all ad
+         <AllAdvertise></AllAdvertise>
       </div>
    );
 };
