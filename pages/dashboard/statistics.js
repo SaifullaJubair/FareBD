@@ -1,10 +1,9 @@
-import Statistics from "@/Components/Dashboard/AddProperty/Statistics/Statistics";
+import Statistics from "@/Components/Dashboard/Statistics/Statistics";
 import DashboardSideBar from "@/Components/Dashboard/DashboardSideBar/DashboardSideBar";
 
 const statistics = () => {
    return (
       <div>
-         <DashboardSideBar></DashboardSideBar>
          <Statistics></Statistics>
       </div>
    );
