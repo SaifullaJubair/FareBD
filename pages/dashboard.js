@@ -1,11 +1,24 @@
+import Dashboard from "@/Components/Dashboard/Dashboard/Dashboard";
+import PleaseLogin from "@/Components/PleaseLogin/PleaseLogin";
+import Loader from "@/Components/Shared/Loader/Loader";
+import { AuthContext } from "@/Contexts/AuthProvider/AuthProvider";
+import { useContext } from "react";
 
-
-const dashboard = () => {
+const DashboardPage = () => {
+   const { user, loading } = useContext(AuthContext)
+   if (loading) {
+      return <Loader></Loader>
+   }
+   if (!user?.email) {
+      return <PleaseLogin></PleaseLogin>
+   }
    return (
+
       <div>
-         this is dashboard
+         <title>DashBoard</title>
+         <Dashboard></Dashboard>
       </div>
    );
 };
 
-export default dashboard;
+export default DashboardPage;

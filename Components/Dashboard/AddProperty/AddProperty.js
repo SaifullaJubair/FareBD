@@ -1,11 +1,12 @@
+import { AuthContext } from "@/Contexts/AuthProvider/AuthProvider";
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import DatePicker from "tailwind-datepicker-react";
 
 function AddProperty() {
   const router = useRouter();
-
+  const { user } = useContext(AuthContext);
   const options = {
     title: "Registered Date",
     autoHide: true,
@@ -113,12 +114,15 @@ function AddProperty() {
       const featureImgBbData = await featureImgBbRes.json();
 
       if (!propertyImgBbData.success && !featureImgBbData.success) return;
-
+      const createdAt = new Date().toISOString();
       const property = {
         area_type: areaType,
         property_type: category,
         location,
         owner_name: ownerName,
+        user_email: user?.email,
+        user_image: user?.photoURL,
+        user_name: user?.displayName,
         phone,
         price,
         property_heading: propertyHeading,
@@ -140,6 +144,7 @@ function AddProperty() {
         completation_status: status,
         property_picture: propertyImgBbData.data.url,
         post_date: new Date().toISOString(),
+        post_date: createdAt
       };
 
       const config = {
@@ -187,11 +192,10 @@ function AddProperty() {
               type="text"
               name="floating_name"
               id="floating_name"
-              className={`block shadow-md shadow-primary/10 py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-secondary focus:outline-none focus:ring-0  peer ${
-                errors.propertyName
-                  ? "focus:border-red-500 border-red-500"
-                  : "focus:border-secondary"
-              }`}
+              className={`block shadow-md shadow-primary/10 py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-secondary focus:outline-none focus:ring-0  peer ${errors.propertyName
+                ? "focus:border-red-500 border-red-500"
+                : "focus:border-secondary"
+                }`}
               placeholder=" "
               {...register("propertyName", { required: true })}
             />
@@ -213,11 +217,10 @@ function AddProperty() {
               type="text"
               name="floating_name"
               id="floating_name"
-              className={`block shadow-md shadow-primary/10 py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-secondary focus:outline-none focus:ring-0  peer ${
-                errors.ownerName
-                  ? "focus:border-red-500 border-red-500"
-                  : "focus:border-secondary"
-              }`}
+              className={`block shadow-md shadow-primary/10 py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-secondary focus:outline-none focus:ring-0  peer ${errors.ownerName
+                ? "focus:border-red-500 border-red-500"
+                : "focus:border-secondary"
+                }`}
               placeholder=" "
               {...register("ownerName", { required: true })}
             />
@@ -240,11 +243,10 @@ function AddProperty() {
             type="text"
             name="floating_heading"
             id="floating_heading"
-            className={`block shadow-md shadow-primary/10 py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-secondary focus:outline-none focus:ring-0  peer ${
-              errors.propertyHeading
-                ? "focus:border-red-500 border-red-500"
-                : "focus:border-secondary"
-            }`}
+            className={`block shadow-md shadow-primary/10 py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-secondary focus:outline-none focus:ring-0  peer ${errors.propertyHeading
+              ? "focus:border-red-500 border-red-500"
+              : "focus:border-secondary"
+              }`}
             placeholder=" "
             {...register("propertyHeading", { required: true })}
           />
@@ -265,11 +267,10 @@ function AddProperty() {
               type="text"
               name="floating_location"
               id="floating_location"
-              className={`block shadow-md shadow-primary/10 py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-secondary focus:outline-none focus:ring-0  peer ${
-                errors.location
-                  ? "focus:border-red-500 border-red-500"
-                  : "focus:border-secondary"
-              }`}
+              className={`block shadow-md shadow-primary/10 py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-secondary focus:outline-none focus:ring-0  peer ${errors.location
+                ? "focus:border-red-500 border-red-500"
+                : "focus:border-secondary"
+                }`}
               placeholder=" "
               {...register("location", { required: true })}
             />
@@ -313,11 +314,10 @@ function AddProperty() {
               minLength={11}
               name="floating_phone"
               id="floating_phone"
-              className={`block py-2.5 shadow-md shadow-primary/10 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-secondary focus:outline-none focus:ring-0  peer ${
-                errors.phone
-                  ? "focus:border-red-500 border-red-500"
-                  : "focus:border-secondary"
-              }`}
+              className={`block py-2.5 shadow-md shadow-primary/10 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-secondary focus:outline-none focus:ring-0  peer ${errors.phone
+                ? "focus:border-red-500 border-red-500"
+                : "focus:border-secondary"
+                }`}
               placeholder=" "
               {...register("phone", {
                 required: true,
@@ -467,9 +467,8 @@ function AddProperty() {
             </label>
             <select
               id="status"
-              className={`block shadow-md shadow-primary/10 py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-secondary focus:outline-none focus:ring-0  peer focus:border-secondary ${
-                propertyPurpose === "toRent" && "cursor-not-allowed"
-              }`}
+              className={`block shadow-md shadow-primary/10 py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-secondary focus:outline-none focus:ring-0  peer focus:border-secondary ${propertyPurpose === "toRent" && "cursor-not-allowed"
+                }`}
               {...register("status")}
               disabled={propertyPurpose === "toRent"}
             >
@@ -611,11 +610,10 @@ function AddProperty() {
               type="number"
               name="floating_size"
               id="floating_size"
-              className={`block py-2.5 shadow-md shadow-primary/10 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-secondary focus:outline-none focus:ring-0 peer ${
-                parseInt(errSize) < 0
-                  ? "border-red-500 focus:border-red-500"
-                  : "focus:border-secondary"
-              }`}
+              className={`block py-2.5 shadow-md shadow-primary/10 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-secondary focus:outline-none focus:ring-0 peer ${parseInt(errSize) < 0
+                ? "border-red-500 focus:border-red-500"
+                : "focus:border-secondary"
+                }`}
               placeholder=" "
               {...register("size", { required: true })}
             />
@@ -638,11 +636,10 @@ function AddProperty() {
               min="1"
               name="floating_price"
               id="floating_price"
-              className={`block py-2.5 shadow-md shadow-primary/10 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-secondary focus:outline-none focus:ring-0 peer ${
-                parseInt(errPrice) < 0
-                  ? "border-red-500 focus:border-red-500"
-                  : "focus:border-secondary"
-              }`}
+              className={`block py-2.5 shadow-md shadow-primary/10 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-secondary focus:outline-none focus:ring-0 peer ${parseInt(errPrice) < 0
+                ? "border-red-500 focus:border-red-500"
+                : "focus:border-secondary"
+                }`}
               placeholder=" "
               {...register("price", { required: true })}
             />
@@ -699,16 +696,16 @@ function AddProperty() {
               className="block shadow-md shadow-primary/10 py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-secondary focus:outline-none focus:ring-0  peer focus:border-secondary"
               {...register("division")}
             >
-              <option value="Dhaka">Complete</option>
+              <option value="Dhaka">Dhaka</option>
               <option selected value="Chattogram">
                 Chattogram
               </option>
-              <option value="Rajsahi">Rajsahi</option>
+              <option value="Rajsahi">Rajshahi</option>
               <option value="Khulna">Khulna</option>
               <option value="Rangpur">Rangpur</option>
               <option value="Barisal">Barisal</option>
               <option value="Sylhet">Sylhet</option>
-              <option value="Mymensing">Mymensing</option>
+              <option value="Mymensing">Mymensingh</option>
             </select>
           </div>
         </div>
@@ -758,9 +755,8 @@ function AddProperty() {
 
         <button
           type="submit"
-          className={`mt-2 text-white bg-secondary hover:bg-secondary focus:ring-4 focus:outline-none focus:ring-secondary/60  font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-secondary dark:hover:bg-secondary dark:focus:ring-secondary/60 transition  duration-300  ${
-            agree && "transform active:translate-y-1"
-          }`}
+          className={`mt-2 text-white bg-secondary hover:bg-secondary focus:ring-4 focus:outline-none focus:ring-secondary/60  font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-secondary dark:hover:bg-secondary dark:focus:ring-secondary/60 transition  duration-300  ${agree && "transform active:translate-y-1"
+            }`}
           disabled={!agree || loading}
         >
           {loading ? "Uploading..." : "Submit"}
