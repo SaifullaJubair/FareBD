@@ -39,7 +39,7 @@ const Advertise = () => {
         {/* card 1 */}
         {
           head?.map(advertised =>
-            <Link href={`/singleproperty/${advertised._id}`}><div key={advertised?._id}>
+            <Link href={`/singleproperty/${advertised?._id}`}><div key={advertised?._id}>
               <div
                 style={{
                   backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,.1), rgba(0,0,0.8)), url(${advertised?.property_picture})`,

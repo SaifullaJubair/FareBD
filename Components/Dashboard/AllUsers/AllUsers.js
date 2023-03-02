@@ -5,7 +5,6 @@ import { toast } from 'react-toastify';
 import DashboardSideBar from '../DashboardSideBar/DashboardSideBar';
 
 
-
 const AllUsers = () => {
    const [users, setUsers] = useState(null)
    const [refetch, setRefetch] = useState(false)
@@ -21,7 +20,7 @@ const AllUsers = () => {
    }, [refetch])
 
    const handleMakeAdmin = (id) => {
-      fetch(`https://localhost:5000/users/update/${id}`, {
+      fetch(`http://localhost:5000/users/update/${id}`, {
          method: 'PUT',
          headers: {
             'content-type': "application/json"
@@ -75,7 +74,7 @@ const AllUsers = () => {
       <div className='max-w-[1440px] w-[95%] mx-auto flex gap-6 mt-7'>
          <DashboardSideBar></DashboardSideBar>
          <div className='flex-grow'>
-            <h2 className='title uppercase p-10 text-center mb-10 bg-purple-300 text-black text-2xl font-semibold'>All Users </h2>
+            <h2 className='title uppercase p-10 text-center mb-10 bg-primary text-white text-2xl font-semibold'>All Users </h2>
 
             <Table striped={true}>
                <Table.Head>

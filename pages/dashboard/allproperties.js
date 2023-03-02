@@ -1,8 +1,11 @@
+import AllProperties from "@/Components/Dashboard/AllProperties/AllProperties";
+import DashboardSideBar from "@/Components/Dashboard/DashboardSideBar/DashboardSideBar";
 
 const allproperties = () => {
    return (
       <div>
-         all property
+         <DashboardSideBar></DashboardSideBar>
+         <AllProperties></AllProperties>
       </div>
    );
 };

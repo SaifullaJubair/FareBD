@@ -1,11 +1,11 @@
 import React from 'react';
 
-const FeedBack = () => {
+const AllWishList = () => {
    return (
       <div>
-         this is feedback
+
       </div>
    );
 };
 
-export default FeedBack;
+export default AllWishList;
