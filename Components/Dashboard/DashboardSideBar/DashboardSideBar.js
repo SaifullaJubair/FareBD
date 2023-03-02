@@ -36,7 +36,7 @@ const DashboardSideBar = () => {
 
 
    return (
-      <div className='bg-primary min-h-screen text-white  w-fit z-50 ' onMouseEnter={() => setHide(false)} onMouseLeave={() => setHide(true)}  >
+      <div className='bg-primary min-h-screen text-white  w-fit ' onMouseEnter={() => setHide(false)} onMouseLeave={() => setHide(true)} >
          <div className={hide ? `h-full p-3 space-y-2 w-[80px] ` : `h-full p-3 space-y-2 w-[200px]  `}>
             <div className={hide ? `flex flex-col gap-4 py-2 items-center` : `flex flex-col gap-4 py-2 ml-4`}>
                <span onClick={() => handleToggle()} className={hide ? 'flex items-center justify-center text-center text-xl' : `flex text-lg`}><HiOutlineMenu className={`${!hide} && 'ml-20' `}></HiOutlineMenu> </span>

@@ -1,5 +1,4 @@
 import AllWishList from "@/Components/Dashboard/AllWishList/AllWishList";
-import DashboardSideBar from "@/Components/Dashboard/DashboardSideBar/DashboardSideBar";
 
 const allwishlist = () => {
    return (

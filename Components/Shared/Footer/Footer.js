@@ -32,7 +32,7 @@ const Footer = () => {
    // console.log(recentPosts);
    return (
       // Footer Section Added
-      <footer className="bg-primary text-white mt-16">
+      <footer className="bg-primary text-white">
          <div className='max-w-[1440px] w-[95%] mx-auto py-20'>
             <div className="grid grid-cols-1 md:grid-cols-4">
                <div>
