@@ -4,7 +4,6 @@ import DashboardSideBar from "@/Components/Dashboard/DashboardSideBar/DashboardS
 const addpropertytype = () => {
    return (
       <div>
-         <DashboardSideBar></DashboardSideBar>
          <AddPropertyType></AddPropertyType>
       </div>
    );

@@ -4,7 +4,6 @@ import DashboardSideBar from "@/Components/Dashboard/DashboardSideBar/DashboardS
 const allwishlist = () => {
    return (
       <div>
-         <DashboardSideBar></DashboardSideBar>
          <AllWishList></AllWishList>
       </div>
    );
