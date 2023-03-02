@@ -51,6 +51,11 @@ const DashboardSideBar = () => {
 
                   <li>
                      <BiLike className='inline-block ml-4 mr-6 h-7' ></BiLike>
+                     <Link href={`/dashboard/mywishlist`}>
+                        <span className={hide ? 'hidden' : 'inline'} >My Wishlist</span></Link>
+                  </li>
+                  <li>
+                     <BiLike className='inline-block ml-4 mr-6 h-7' ></BiLike>
                      <Link href={`/dashboard/allwishlist`}>
                         <span className={hide ? 'hidden' : 'inline'} >All Wishlist</span></Link>
                   </li>
