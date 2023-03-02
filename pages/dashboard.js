@@ -1,8 +1,8 @@
-import React, { useContext } from 'react';
-import Dashboard from '../components/Dashboard/Dashboard/Dashboard';
-import PleaseLogin from '../components/PleaseLogin/PleaseLogin';
-import Loader from '../components/Shared/Loader/Loader';
-import { AuthContext } from '../Contexts/AuthProvider/AuthProvider';
+import Dashboard from "@/Components/Dashboard/Dashboard/Dashboard";
+import PleaseLogin from "@/Components/PleaseLogin/PleaseLogin";
+import Loader from "@/Components/Shared/Loader/Loader";
+import { AuthContext } from "@/Contexts/AuthProvider/AuthProvider";
+import { useContext } from "react";
 
 const DashboardPage = () => {
    const { user, loading } = useContext(AuthContext)

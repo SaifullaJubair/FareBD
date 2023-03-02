@@ -1,7 +1,8 @@
+import { AuthContext } from "@/Contexts/AuthProvider/AuthProvider";
 import { useRouter } from "next/router";
 import { useContext, useEffect, useState } from "react";
-import { AuthContext } from "../../../Contexts/AuthProvider/AuthProvider";
-import DashboardSideBar from "../../Shared/DashboardSideBar/DashboardSideBar";
+import DashboardSideBar from "../DashboardSideBar/DashboardSideBar";
+
 
 const Dashboard = () => {
    const [userData, setUserData] = useState(null)
@@ -18,12 +19,12 @@ const Dashboard = () => {
    }, [user?.email])
 
    const router = useRouter()
-   if (userData?.role == 'user') {
-      router.push('/dashboard/allcomments')
-   }
-   else if (userData?.role == 'user') {
-      router.push('/dashboard/allnews')
-   }
+   // if (userData?.role == 'user') {
+   //    router.push('/dashboard')
+   // }
+   // else if (userData?.role == 'user') {
+   //    router.push('/dashboard/allnews')
+   // }
 
    return (
       <div className="max-w-[1440px] w-[95%] mx-auto flex gap-6 mt-7">

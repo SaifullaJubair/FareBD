@@ -16,14 +16,14 @@ const PleaseLogin = () => {
                <Link href={'/'}> <Button
                   outline={true}
                >
-                  <FaHome></FaHome> <span className='ml-2'>Home</span>
+                  <div className='flex items-center'><FaHome></FaHome> <p className='ml-2'>Home</p></div>
                </Button></Link>
                <Link href={'/login'}>
                   <Button
                      outline={true}
                      gradientDuoTone="purpleToBlue"
                   >
-                     <FaUser></FaUser> <span className='ml-2'>LogIn</span>
+                     <div className='flex items-center'><FaUser></FaUser> <span className='ml-2'>LogIn</span></div>
                   </Button>
                </Link>
             </div>
