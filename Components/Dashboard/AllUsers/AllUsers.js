@@ -67,7 +67,7 @@ const AllUsers = () => {
   return (
     <div className="flex">
       <DashboardSideBar></DashboardSideBar>
-      <div className="mx-auto">
+      <div className="mx-auto flex-grow">
         <h2 className="title uppercase p-10 text-center mb-10 bg-secondary text-white text-2xl font-semibold">
           All Users{" "}
         </h2>

@@ -165,11 +165,10 @@ const Login = () => {
                   type="email"
                   name="floating_email"
                   id="floating_email"
-                  className={`block shadow-md shadow-primary/10 py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-secondary focus:outline-none pl-2 focus:ring-0  peer ${
-                    errors.email
-                      ? "focus:border-red-500 border-red-500"
-                      : "focus:border-secondary"
-                  }`}
+                  className={`block shadow-md shadow-primary/10 py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-secondary focus:outline-none pl-2 focus:ring-0  peer ${errors.email
+                    ? "focus:border-red-500 border-red-500"
+                    : "focus:border-secondary"
+                    }`}
                   placeholder=" "
                   {...register("email", { required: true })}
                 />
@@ -194,11 +193,10 @@ const Login = () => {
                   type="password"
                   name="floating_password"
                   id="floating_password"
-                  className={`block shadow-md shadow-primary/10 py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-secondary focus:outline-none pl-2 focus:ring-0  peer ${
-                    errors.password
-                      ? "focus:border-red-500 border-red-500"
-                      : "focus:border-secondary"
-                  }`}
+                  className={`block shadow-md shadow-primary/10 py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-secondary focus:outline-none pl-2 focus:ring-0  peer ${errors.password
+                    ? "focus:border-red-500 border-red-500"
+                    : "focus:border-secondary"
+                    }`}
                   placeholder=" "
                   {...register("password", { required: true })}
                 />
@@ -274,7 +272,7 @@ const Login = () => {
                     <Button
                       outline={true}
                       className="text-3xl w-full bg-primary"
-                      // onClick={handleFacebookLogin}
+                    // onClick={handleFacebookLogin}
                     >
                       <span className="flex items-center justify-center font-bold hover:text-white focus:text-white w-full">
                         <CiFacebook className="mr-2 text-xl font-bold" />

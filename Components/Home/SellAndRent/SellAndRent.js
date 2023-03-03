@@ -48,18 +48,18 @@ const SellAndRent = () => {
             className="proparte-tab"
          >
 
-            
+
             {/* rent properties */}
             <Tabs.Item
                active={true}
                title="Rent"
-               >
+            >
                <div className="gap-8  grid md:grid-cols-2 lg:grid-cols-3 sm:grid-cols-1">
                   {
                      toRent?.map(propertyData =>
                         <PropertyCard
-                        key={propertyData._id}
-                        propertyData={propertyData}
+                           key={propertyData._id}
+                           propertyData={propertyData}
                         ></PropertyCard>
                      )
                   }
@@ -76,8 +76,8 @@ const SellAndRent = () => {
                   {
                      toSell?.map(propertyData =>
                         <PropertyCard
-                        key={propertyData._id}
-                        propertyData={propertyData}
+                           key={propertyData._id}
+                           propertyData={propertyData}
                         ></PropertyCard>
                      )
 

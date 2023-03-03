@@ -42,7 +42,7 @@ const DashboardSideBar = () => {
 
   const handleLogOut = () => {
     logout()
-      .then(() => {})
+      .then(() => { })
       .catch((error) => console.log(error));
   };
 
