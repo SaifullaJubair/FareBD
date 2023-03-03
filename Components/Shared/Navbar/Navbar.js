@@ -14,7 +14,7 @@ const Navbar = () => {
          .catch(error => console.log(error))
    }
    return (
-      <div className="bg-primary">
+      <div className="bg-primary sticky top-0 z-40">
          <nav className="max-w-[1440px] w-[95%] mx-auto text-white border-gray-200 px-2 sm:px-4 py-2.5 dark:bg-gray-900">
             <div className="container flex flex-wrap items-center justify-between mx-auto">
                <Link href="/" className="flex items-center">
