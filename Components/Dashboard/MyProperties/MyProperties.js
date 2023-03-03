@@ -1,11 +1,5 @@
-import React from 'react';
-
 const MyProperties = () => {
-   return (
-      <div>
-         This is my Properties
-      </div>
-   );
+  return <h2>This is my Properties</h2>;
 };
 
 export default MyProperties;

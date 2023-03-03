@@ -1,11 +1,5 @@
-import React from 'react';
-
 const MyFeedBack = () => {
-   return (
-      <div>
-
-      </div>
-   );
+  return <h2>My feedback</h2>;
 };
 
 export default MyFeedBack;
