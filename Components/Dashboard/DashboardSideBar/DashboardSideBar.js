@@ -1,4 +1,7 @@
 import { AuthContext } from "@/Contexts/AuthProvider/AuthProvider";
+import useAdmin from "@/Hooks/useAdmin";
+import useBuyer from "@/Hooks/useBuyer";
+import useSeller from "@/Hooks/useSeller";
 import Link from "next/link";
 import React, { useContext, useEffect, useState } from "react";
 import { AiOutlineLogout } from "react-icons/ai";
@@ -85,67 +88,89 @@ const DashboardSideBar = () => {
         </div>
         <div className="divide-y divide-gray-700">
           <ul className="pt-2 pb-4 space-y-1 text-lg flex flex-col gap-4">
-            <li>
-              <BiLike className="inline-block ml-4 mr-6 h-7"></BiLike>
-              <Link href={`/dashboard/mywishlist`}>
-                <span className={hide ? "hidden" : "inline"}>My Wishlist</span>
-              </Link>
-            </li>
-            <li>
-              <BiLike className="inline-block ml-4 mr-6 h-7"></BiLike>
-              <Link href={`/dashboard/allwishlist`}>
-                <span className={hide ? "hidden" : "inline"}>All Wishlist</span>
-              </Link>
-            </li>
-            <li>
-              <BiDislike className="inline-block ml-4 mr-6 h-7"></BiDislike>
-              <Link href={`/dashboard/myfeedback`}>
-                <span className={hide ? "hidden" : "inline"}>My Feedback</span>
-              </Link>
-            </li>
-            <li>
-              <BiCommentDetail className="inline-block ml-4 mr-6 h-7"></BiCommentDetail>
-              <Link href={`/dashboard/allfeedback`}>
-                <span className={hide ? "hidden" : "inline"}>All Feedback</span>
-              </Link>
-            </li>
-            <li className="dark:bg-gray-800 dark:text-gray-50">
-              <CgAddR className="inline-block ml-4 mr-6 h-7 text-white"></CgAddR>
-              <Link href={`/dashboard/addproperty`}>
-                <span className={hide ? "hidden" : "inline"}>
-                  {" "}
-                  Add Property
-                </span>
-              </Link>
-            </li>
-            <li>
-              <BsNewspaper className="inline-block ml-4 mr-6 h-7"></BsNewspaper>
-              <Link href={`/dashboard/allproperties`}>
-                <span className={hide ? "hidden" : "inline"}>
-                  All Properties
-                </span>
-              </Link>
-            </li>
-            <li>
-              <BsNewspaper className="inline-block ml-4 mr-6 h-7"></BsNewspaper>
-              <Link href={`/dashboard/myproperties`}>
-                <span className={hide ? "hidden" : "inline"}>
-                  My Properties
-                </span>
-              </Link>
-            </li>
-            <li>
-              <BiGroup className="inline-block ml-4 mr-6 h-7"></BiGroup>
-              <Link href={`/dashboard/allusers`}>
-                <span className={hide ? "hidden" : "inline"}>All Users</span>
-              </Link>
-            </li>
-            <li>
-              <BiCategory className="inline-block ml-4 mr-6 h-7"></BiCategory>
-              <Link href={`/dashboard/categories`}>
-                <span className={hide ? "hidden" : "inline"}>addprope</span>
-              </Link>
-            </li>
+            {isBuyer && (
+              <>
+                <li>
+                  <BiLike className="inline-block ml-4 mr-6 h-7"></BiLike>
+                  <Link href={`/dashboard/mywishlist`}>
+                    <span className={hide ? "hidden" : "inline"}>
+                      My Wishlist
+                    </span>
+                  </Link>
+                </li>
+                <li>
+                  <BiDislike className="inline-block ml-4 mr-6 h-7"></BiDislike>
+                  <Link href={`/dashboard/myfeedback`}>
+                    <span className={hide ? "hidden" : "inline"}>
+                      My Feedback
+                    </span>
+                  </Link>
+                </li>
+              </>
+            )}
+
+            {isSeller && (
+              <>
+                <li className="dark:bg-gray-800 dark:text-gray-50">
+                  <CgAddR className="inline-block ml-4 mr-6 h-7 text-white"></CgAddR>
+                  <Link href={`/dashboard/addproperty`}>
+                    <span className={hide ? "hidden" : "inline"}>
+                      {" "}
+                      Add Property
+                    </span>
+                  </Link>
+                </li>
+                <li>
+                  <BsNewspaper className="inline-block ml-4 mr-6 h-7"></BsNewspaper>
+                  <Link href={`/dashboard/myproperties`}>
+                    <span className={hide ? "hidden" : "inline"}>
+                      My Properties
+                    </span>
+                  </Link>
+                </li>
+              </>
+            )}
+
+            {isAdmin && (
+              <>
+                <li>
+                  <BiLike className="inline-block ml-4 mr-6 h-7"></BiLike>
+                  <Link href={`/dashboard/allwishlist`}>
+                    <span className={hide ? "hidden" : "inline"}>
+                      All Wishlist
+                    </span>
+                  </Link>
+                </li>
+
+                <li>
+                  <BiCommentDetail className="inline-block ml-4 mr-6 h-7"></BiCommentDetail>
+                  <Link href={`/dashboard/allfeedback`}>
+                    <span className={hide ? "hidden" : "inline"}>
+                      All Feedback
+                    </span>
+                  </Link>
+                </li>
+
+                <li>
+                  <BsNewspaper className="inline-block ml-4 mr-6 h-7"></BsNewspaper>
+                  <Link href={`/dashboard/allproperties`}>
+                    <span className={hide ? "hidden" : "inline"}>
+                      All Properties
+                    </span>
+                  </Link>
+                </li>
+
+                <li>
+                  <BiGroup className="inline-block ml-4 mr-6 h-7"></BiGroup>
+                  <Link href={`/dashboard/allusers`}>
+                    <span className={hide ? "hidden" : "inline"}>
+                      All Users
+                    </span>
+                  </Link>
+                </li>
+              </>
+            )}
+
             <li>
               <BsGraphUp className="inline-block ml-4 mr-6 h-7"></BsGraphUp>
               <Link href={`/dashboard/statistics`}>
