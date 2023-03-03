@@ -1,3 +1,4 @@
+import { AuthContext } from '@/Contexts/AuthProvider/AuthProvider';
 import Link from 'next/link';
 import React, { useContext, useEffect, useState } from 'react';
 import { AiOutlineLogout } from 'react-icons/ai';
@@ -6,7 +7,6 @@ import { BsGraphUp, BsNewspaper } from 'react-icons/bs';
 import { CgAddR } from 'react-icons/cg';
 import { HiOutlineMenu } from 'react-icons/hi';
 import { MdOutlineAccountCircle } from 'react-icons/md';
-import { AuthContext } from '../../../Contexts/AuthProvider/AuthProvider';
 
 const DashboardSideBar = () => {
    const { user, logout } = useContext(AuthContext)
@@ -34,6 +34,7 @@ const DashboardSideBar = () => {
          .catch(error => console.log(error))
    }
 
+   
 
    return (
       <div className='bg-primary min-h-screen text-white  w-fit ' onMouseEnter={() => setHide(false)} onMouseLeave={() => setHide(true)} >
@@ -92,6 +93,11 @@ const DashboardSideBar = () => {
                      <BsGraphUp className='inline-block ml-4 mr-6 h-7' ></BsGraphUp>
                      <Link href={`/dashboard/statistics`}>
                         <span className={hide ? 'hidden' : 'inline'} >Statistics</span></Link>
+                  </li>
+                  <li>
+                     <BsGraphUp className='inline-block ml-4 mr-6 h-7' ></BsGraphUp>
+                     <Link href={`/dashboard/myblog`}>
+                        <span className={hide ? 'hidden' : 'inline'} >My Blog</span></Link>
                   </li>
 
 

@@ -72,7 +72,6 @@ const AllUsers = () => {
          <DashboardSideBar></DashboardSideBar>
          <div className='mx-auto'>
             <h2 className='title uppercase p-10 text-center mb-10 bg-secondary text-white text-2xl font-semibold'>All Users </h2>
-
             <Table striped={true}>
                <Table.Head>
                   <Table.HeadCell>
