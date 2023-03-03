@@ -27,6 +27,9 @@ const myPosts = () => {
 
         getMyPosts();
     }, [])
+
+    const post = myPosts?.filter(userPost => userPost?.user_email === user?.email)
+
     console.log(myPosts);
     return (
         <div className="min-h-screen">
@@ -60,7 +63,7 @@ const myPosts = () => {
                     </thead>
                     <tbody>
                         {
-                            myPosts?.map(post => <tr key={post._id} className="bg-white border-b border-b-gra dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                            post?.map(post => <tr key={post._id} className="bg-white border-b border-b-gra dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                                 <td className="w-32 p-4">
                                     <Image src={post.property_picture} width={64} height={32} alt="Apple Watch" />
                                 </td>

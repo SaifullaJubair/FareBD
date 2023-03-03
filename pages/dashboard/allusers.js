@@ -4,7 +4,6 @@ import DashboardSideBar from '@/Components/Dashboard/DashboardSideBar/DashboardS
 const allusers = () => {
    return (
       <div>
-         <DashboardSideBar></DashboardSideBar>
          <AllUsers></AllUsers>
       </div>
    );

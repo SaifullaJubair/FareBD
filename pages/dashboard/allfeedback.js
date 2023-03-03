@@ -4,7 +4,6 @@ import DashboardSideBar from "@/Components/Dashboard/DashboardSideBar/DashboardS
 const allfeedback = () => {
    return (
       <div>
-         <DashboardSideBar></DashboardSideBar>
          <AllFeedBack></AllFeedBack>
       </div>
    );
