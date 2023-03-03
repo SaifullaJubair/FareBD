@@ -1,8 +1,10 @@
+import AddPropertyType from "@/Components/Dashboard/AddPropertyType/AddPropertyType";
+import DashboardSideBar from "@/Components/Dashboard/DashboardSideBar/DashboardSideBar";
 
 const addpropertytype = () => {
    return (
       <div>
-         this is addpropertytype
+         <AddPropertyType></AddPropertyType>
       </div>
    );
 };

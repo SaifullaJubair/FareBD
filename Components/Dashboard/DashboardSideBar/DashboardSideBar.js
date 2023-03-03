@@ -36,7 +36,7 @@ const DashboardSideBar = () => {
 
 
    return (
-      <div className='bg-blue-700 min-h-screen text-white  rounded-sm w-fit ' onMouseEnter={() => setHide(false)} >
+      <div className='bg-primary min-h-screen text-white  w-fit ' onMouseEnter={() => setHide(false)} onMouseLeave={() => setHide(true)} >
          <div className={hide ? `h-full p-3 space-y-2 w-[80px] ` : `h-full p-3 space-y-2 w-[200px]  `}>
             <div className={hide ? `flex flex-col gap-4 py-2 items-center` : `flex flex-col gap-4 py-2 ml-4`}>
                <span onClick={() => handleToggle()} className={hide ? 'flex items-center justify-center text-center text-xl' : `flex text-lg`}><HiOutlineMenu className={`${!hide} && 'ml-20' `}></HiOutlineMenu> </span>
@@ -49,6 +49,11 @@ const DashboardSideBar = () => {
             <div className="divide-y divide-gray-700">
                <ul className="pt-2 pb-4 space-y-1 text-lg flex flex-col gap-4">
 
+                  <li>
+                     <BiLike className='inline-block ml-4 mr-6 h-7' ></BiLike>
+                     <Link href={`/dashboard/mywishlist`}>
+                        <span className={hide ? 'hidden' : 'inline'} >My Wishlist</span></Link>
+                  </li>
                   <li>
                      <BiLike className='inline-block ml-4 mr-6 h-7' ></BiLike>
                      <Link href={`/dashboard/allwishlist`}>

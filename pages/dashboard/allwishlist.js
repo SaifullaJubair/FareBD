@@ -1,8 +1,9 @@
+import AllWishList from "@/Components/Dashboard/AllWishList/AllWishList";
 
 const allwishlist = () => {
    return (
       <div>
-         all wishlist
+         <AllWishList></AllWishList>
       </div>
    );
 };
