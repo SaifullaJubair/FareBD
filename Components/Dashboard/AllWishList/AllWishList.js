@@ -1,11 +1,5 @@
-import React from 'react';
-
 const AllWishList = () => {
-   return (
-      <div>
-
-      </div>
-   );
+  return <h2>All wishlist</h2>;
 };
 
 export default AllWishList;

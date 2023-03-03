@@ -1,11 +1,5 @@
-import React from 'react';
-
 const AllProperties = () => {
-   return (
-      <div>
-
-      </div>
-   );
+  return <h2>All Properties</h2>;
 };
 
 export default AllProperties;
