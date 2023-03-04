@@ -64,7 +64,7 @@ const Division = () => {
                      </div>
                   </div></Link>
 
-                  <Link href={`/division/Chittagong`}><div className=" shadow-md h-52 w-full duration-300 hover:-translate-y-2" style={{
+                  <Link href={`/division/Chattogram`}><div className=" shadow-md h-52 w-full duration-300 hover:-translate-y-2" style={{
                      background: `linear-gradient(0deg, #0D1741 12%, rgba(6, 10, 10, 0) 100%) , url(https://cdn.britannica.com/73/137173-050-EFEC85FB/Zia-Memorial-Museum-Chittagong-Bangl.jpg)`,
                      backgroundRepeat: 'no-repeat',
                      backgroundSize: 'cover',
@@ -77,7 +77,7 @@ const Division = () => {
                      </div>
                   </div></Link>
 
-                  <Link href={`/division/Shylet`}><div className=" shadow-md h-52 w-full duration-300 hover:-translate-y-2" style={{
+                  <Link href={`/division/Sylhet`}><div className=" shadow-md h-52 w-full duration-300 hover:-translate-y-2" style={{
                      background: `linear-gradient(0deg, #0D1741 12%, rgba(6, 10, 10, 0) 100%) , url(https://tourismwindow.com/wp-content/uploads/sylhet-nature-tour-6-days-5-nights-1.jpg)`,
                      backgroundRepeat: 'no-repeat',
                      backgroundSize: 'cover',
@@ -85,7 +85,7 @@ const Division = () => {
                   }}>
                      <div className="flex items-end h-full  justify-center">
                         <div className="p-4 text-white">
-                           <h2 className="text-lg mb-1 bg-secondary w-full p-1 rounded text-center">Shylet</h2>
+                           <h2 className="text-lg mb-1 bg-secondary w-full p-1 rounded text-center">Sylhet</h2>
                         </div>
                      </div>
                   </div></Link>
