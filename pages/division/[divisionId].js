@@ -8,6 +8,7 @@ import { MdApartment, MdOutlineApartment, MdOutlineBathroom, MdOutlineBedroomChi
 import { TbCurrencyTaka } from 'react-icons/tb';
 import { TfiLocationPin } from 'react-icons/tfi';
 import Review from "@/Components/Home/Review/Review";
+import DivisionSidebar from '@/Components/Home/Division/DivisionSidebar';
 
 
 const Division = () => {
@@ -36,7 +37,7 @@ const Division = () => {
 
                     {
                         divisions?.map(division =>
-                            <Link href={`/singleproperty/${division?._id}`} className="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 h-64 my-4">
+                            <Link href={`/singleproperty/${division?._id}`} className="flex flex-col items-center bg-white border border-gray-200 shadow-lg md:flex-row hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 h-72 my-4 mb-8">
 
                                 <img className="h-full w-96" src={division?.property_picture} alt="img" />
 
@@ -44,9 +45,9 @@ const Division = () => {
                                     <div className='grid gap-1.5'>
                                         <p ><span className='flex font-bold text-xl'>{division?.price}<TbCurrencyTaka className='mt-1' /></span></p>
                                         {/* <FaGripLinesVertical className='mt-1' /> */}
-                                        <p className='font-bold text-start'>{division?.property_type}</p>
+                                        <p className='font-bold text-start text-primary'>{division?.property_type}</p>
                                         {/* <FaGripLinesVertical className='mt-1' /> */}
-                                        <p><span className='flex text-xs'><TfiLocationPin className='mt-1' /> {division?.location} </span></p>
+                                        <p><span className='flex text-sm'><TfiLocationPin className='mr-1 mt-1' /> {division?.location} </span></p>
                                     </div>
                                     <h2 className='text-sm mt-4 text-start'>{division?.property_heading}</h2>
 
@@ -69,31 +70,8 @@ const Division = () => {
                     }
                 </div>
 
-                <div className=''>
-                    <div className="h-64 sm:h-64 xl:h-80 2xl:h-96">
-                        <Carousel slide={false}>
-                            <img
-                                src="https://flowbite.com/docs/images/carousel/carousel-1.svg"
-                                alt="..."
-                            />
-                            <img
-                                src="https://flowbite.com/docs/images/carousel/carousel-2.svg"
-                                alt="..."
-                            />
-                            <img
-                                src="https://flowbite.com/docs/images/carousel/carousel-3.svg"
-                                alt="..."
-                            />
-                            <img
-                                src="https://flowbite.com/docs/images/carousel/carousel-4.svg"
-                                alt="..."
-                            />
-                            <img
-                                src="https://flowbite.com/docs/images/carousel/carousel-5.svg"
-                                alt="..."
-                            />
-                        </Carousel>
-                    </div>
+                <div>
+                    <DivisionSidebar></DivisionSidebar>
                 </div>
             </div>
 

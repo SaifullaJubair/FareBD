@@ -2,14 +2,14 @@ import Link from "next/link";
 
 
 const Blogs = ({ blogtext }) => {
-    const { title, message, image,_id } = blogtext
+    const { title, message, image, _id } = blogtext
 
     const titles = title.slice(0, 30)
     const messages = message.slice(0, 200)
     console.log(titles, blogtext);
     return (
         <div>
-            <Link href={`/blogdetails/${_id}`}>
+            <Link href={`/singleblog/${blogtext?._id}`}>
                 <div className="bg-white  items-center shadow-md  overflow-hidden">
                     <img src={image} className=" h-72   w-full md:object-cover" alt="" />
                     <div className="p-8 flex-1">
