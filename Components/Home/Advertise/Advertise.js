@@ -10,8 +10,7 @@ const Advertise = () => {
     queryKey: ['user'],
     queryFn: async () => {
       try {
-        const res = await fetch('http://localhost:5000/property', {
-
+        const res = await fetch('http://localhost:5000/advertise', {
 
         })
         const data = await res.json();
@@ -27,10 +26,7 @@ const Advertise = () => {
     return <Loader></Loader>
   }
 
-  // const head = advertised?.property_heading.slice(50)
-  // const detail = advertised?.details.slice(150)
-  const head = products.slice(-3)
-  console.log(products);
+ 
 
   return (
     <div className="mt-28 mb-16 max-w-[1440px] w-[95%] mx-auto ">
@@ -38,7 +34,7 @@ const Advertise = () => {
       <div className="flex flex-wrap items-center gap-5 justify-center">
         {/* card 1 */}
         {
-          head?.map(advertised =>
+          products?.map(advertised =>
             <Link href={`/singleproperty/${advertised?._id}`}><div key={advertised?._id}>
               <div
                 style={{
