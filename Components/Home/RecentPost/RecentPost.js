@@ -42,7 +42,7 @@ const RecentPost = () => {
                 <div className="grid w-full grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
                     {/* Last added property */}
                     <div className="duration-300 md:col-span-2 hover:-translate-y-2 cursor-pointer">
-                        <Link href={`/property/${lastProperty?._id}`} >
+                        <Link href={`/singleproperty/${lastProperty?._id}`} >
                             <div className="flex h-52 md:h-full  items-end "
                                 style={{
                                     backgroundImage: `linear-gradient(0deg, #0D1741 12%, rgba(6, 6, 6, 0) 100%) , url(${lastProperty?.property_picture})`,
@@ -74,7 +74,7 @@ const RecentPost = () => {
                     <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:col-span-2 ">
                         {/* Next four goes there */}
                         {
-                            lastFourProperty?.map(property => <Link key={property._id} href={`/property/${property._id}`} >
+                            lastFourProperty?.map(property => <Link key={property._id} href={`/singleproperty/${property._id}`} >
                                 <div className="w-full duration-300 shadow-md h-52 hover:-translate-y-2 cursor-pointer"
                                     style={{
                                         backgroundImage: `linear-gradient(0deg, #0D1741 12%, rgba(6, 10, 10, 0) 100%) , url(${property.property_picture})`,

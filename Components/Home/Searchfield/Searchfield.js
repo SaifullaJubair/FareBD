@@ -14,7 +14,7 @@ const Searchfield = () => {
   console.log(errors);
 
   return (
-    <div className="max-w-4xl -mt-36 mb-16 mx-auto shadow-lg border rounded-2xl p-10 text-primary bg-teal-50">
+    <div className="max-w-4xl -mt-36 mb-16 mx-auto shadow-lg border rounded-2xl p-10 text-white bg-gray-400 bg-opacity-25">
       <form
         className=" grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-8 lg:gap-12"
         onSubmit={handleSubmit(onSubmit)}
@@ -25,7 +25,7 @@ const Searchfield = () => {
           </label>
           <input
             id="location"
-            className="focus:outline-none rounded-md py-2.5"
+            className="focus:outline-none rounded-md py-2.5 text-primary"
             type="text"
             placeholder="Location (city, state, area)"
             {...register("location", { required: true })}
@@ -36,7 +36,7 @@ const Searchfield = () => {
             Property Type
           </label>
           <select
-            className="focus:outline-none rounded-md py-2.5"
+            className="focus:outline-none rounded-md py-2.5 text-primary"
             {...register("propertyType", { required: true })}
           >
             <option value="" disabled>
@@ -54,7 +54,7 @@ const Searchfield = () => {
             Property Size
           </label>
           <select
-            className="focus:outline-none rounded-md bg-lime-900 py-2.5"
+            className="focus:outline-none rounded-md bg-lime-900 py-2.5 text-primary"
             {...register("sqft", { required: true })}
           >
             <option value="" disabled>

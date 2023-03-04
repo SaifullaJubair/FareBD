@@ -1,45 +1,41 @@
-import { useQuery } from '@tanstack/react-query';
+import { useQuery } from "@tanstack/react-query";
 import home4 from "./../../../assets/images/home-4.jpg";
 import { BsPersonFill, BsArrowRight } from "react-icons/bs";
 import { BiCalendar } from "react-icons/bi";
-import Loader from '@/Components/Shared/Loader/Loader';
-import Link from 'next/link';
+import Loader from "@/Components/Shared/Loader/Loader";
+import Link from "next/link";
 const Advertise = () => {
-
   const { data: products, isLoading } = useQuery({
-    queryKey: ['user'],
+    queryKey: ["user"],
     queryFn: async () => {
       try {
-        const res = await fetch('http://localhost:5000/property', {
-
-
-        })
+        const res = await fetch("http://localhost:5000/property", {});
         const data = await res.json();
         return data;
       } catch (error) {
         console.log(error);
       }
-    }
-  })
+    },
+  });
 
   // loading
   if (isLoading) {
-    return <Loader></Loader>
+    return <Loader></Loader>;
   }
 
   // const head = advertised?.property_heading.slice(50)
   // const detail = advertised?.details.slice(150)
-  const head = products.slice(-3)
+  const head = products.slice(-3);
   console.log(products);
 
   return (
     <div className="mt-28 mb-16 max-w-[1440px] w-[95%] mx-auto ">
-      <h2 className="text-4xl text-center font-semibold mb-10">Advertised</h2>
-      <div className="flex flex-wrap items-center gap-5 justify-center">
+      <h2 className="mb-10 text-4xl font-semibold text-center">Advertised</h2>
+      <div className="flex flex-wrap items-center justify-center gap-5">
         {/* card 1 */}
-        {
-          head?.map(advertised =>
-            <Link href={`/singleproperty/${advertised?._id}`}><div key={advertised?._id}>
+        {head?.map((advertised) => (
+          <Link href={`/singleproperty/${advertised?._id}`}>
+            <div key={advertised?._id}>
               <div
                 style={{
                   backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,.1), rgba(0,0,0.8)), url(${advertised?.property_picture})`,
@@ -52,7 +48,11 @@ const Advertise = () => {
               <div className="bg-gray-50 w-[330px] mx-auto px-5 pt-5 pb-7 transfrom -translate-y-11">
                 <div className="flex items-center gap-5 text-gray-600">
                   <div className="flex items-center gap-1">
-                    <img src={advertised?.user_image} className=' w-8 h-8 rounded-full' alt="" />
+                    <img
+                      src={advertised?.user_image}
+                      className=" w-8 h-8 rounded-full"
+                      alt=""
+                    />
                     <span>{advertised?.user_name}</span>
                   </div>
                   <div className="flex items-center gap-1">
@@ -63,19 +63,12 @@ const Advertise = () => {
                 <h4 className="text-2xl my-3 font-semibold hover:text-secondary transition duration-200">
                   { }
                 </h4>
-                <p>
-                  { }
-                </p>
+                <p>{ }</p>
                 <BsArrowRight className="text-2xl font-semibold absolute left-1/2 transform -translate-x-1/2 -bottom-3 bg-secondary/90 transtion duration-300 cursor-pointer hover:bg-secondary w-8 h-8 rounded-full p-1 text-white" />
               </div>
-            </div></Link>
-          )
-        }
-
-
-
-
-
+            </div>
+          </Link>
+        ))}
       </div>
     </div>
   );
