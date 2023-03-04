@@ -67,7 +67,7 @@ const Advertise = () => {
               </div>
             </div>
           </Link>
-        ))}
+        )}
       </div>
     </div>
   );
