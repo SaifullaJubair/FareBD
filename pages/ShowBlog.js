@@ -58,7 +58,7 @@ const ShowBlog = () => {
                     <Table.HeadCell>
                         Blog name
                     </Table.HeadCell>
-                   
+
                     <Table.HeadCell>
                         Delete
                     </Table.HeadCell>
@@ -73,9 +73,9 @@ const ShowBlog = () => {
                             <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
                                 {blog?.title}
                             </Table.Cell>
-                           
+
                             <Table.Cell>
-                                <div className=" mt-8"> <button className="ml-2 text-white bg-red-500 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium text-sm px-5 py-2.5 mr-3 md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" onClick={()=> deleteBlog(blog._id)}>Delete</button></div>
+                                <div className=" mt-8"> <button className="ml-2 text-white bg-red-500 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium text-sm px-5 py-2.5 mr-3 md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" onClick={() => deleteBlog(blog._id)}>Delete</button></div>
                             </Table.Cell>
 
                         </Table.Row>)

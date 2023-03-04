@@ -1,4 +1,5 @@
 import { AuthContext } from "@/Contexts/AuthProvider/AuthProvider";
+import SellerRoute from "@/Routes/SellerRoute";
 import { useRouter } from "next/router";
 import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
@@ -145,7 +146,8 @@ function AddProperty() {
         completation_status: status,
         property_picture: propertyImgBbData.data.url,
         post_date: new Date().toISOString(),
-        post_date: createdAt
+        post_date: createdAt,
+        advertised: false,
       };
 
       const config = {
@@ -178,12 +180,13 @@ function AddProperty() {
   };
 
   return (
-    <div className='flex'>
+    <div className="flex">
       <DashboardSideBar></DashboardSideBar>
 
-
       <div className="  max-w-[768px] w-[95%] mx-auto">
-        <h2 className='title uppercase p-8 text-center mb-8 bg-secondary text-white text-2xl font-semibold'>Register Your Property </h2>
+        <h2 className="title uppercase p-8 text-center mb-8 bg-secondary text-white text-2xl font-semibold">
+          Register Your Property{" "}
+        </h2>
 
         <form
           onSubmit={handleSubmit(handleAddProperty)}
@@ -260,7 +263,9 @@ function AddProperty() {
               Property Heading
             </label>
             {errors.propertyHeading && (
-              <span className="text-xs text-red-500">This field is required</span>
+              <span className="text-xs text-red-500">
+                This field is required
+              </span>
             )}
           </div>
 
@@ -728,7 +733,9 @@ function AddProperty() {
               {...register("description", { required: true })}
             ></textarea>
             {errors.description && (
-              <span className="text-xs text-red-500">This field is required</span>
+              <span className="text-xs text-red-500">
+                This field is required
+              </span>
             )}
           </div>
 

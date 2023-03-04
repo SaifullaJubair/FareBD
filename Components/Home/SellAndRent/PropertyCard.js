@@ -1,9 +1,46 @@
+import { AuthContext } from "@/Contexts/AuthProvider/AuthProvider";
 import Link from "next/link";
+import { useContext, useEffect } from "react";
 import { AiOutlineHeart } from "react-icons/ai";
 import { CiLocationOn } from "react-icons/ci";
-
 const PropertyCard = ({propertyData}) => {
-    console.log(propertyData);
+  const { user } = useContext(AuthContext);
+    // console.log(propertyData);
+
+
+    const wishItemInfo = {
+      // UserInfo
+      userId: user?.uid,
+      userName: user?.displayName,
+      userEmail: user?.email,
+      userPhoto: user?.photoURL,
+      // PropertyInfo
+      propertyId: propertyData?._id,
+      propertyName: propertyData?.property_name,
+      propertyPicture: propertyData?.property_picture,
+      propertyPrice: propertyData?.price,
+      propertyCondition: propertyData?.property_condition,
+      // SellerInfo
+      sellerName: propertyData?.user_name,
+      sellerEmail: propertyData?.user_email,
+      sellerPhoto: propertyData?.user_image,
+
+    }
+    // console.log(wishItemInfo);
+
+  const addWishlist = (wishItem) => {
+      fetch('http://localhost:5000/add-wishlist',{
+        method: 'POST',
+        headers: {
+          'content-type':'application/json'
+        },
+        body: JSON.stringify(wishItem)
+      })
+      .then(res => res.json())
+      .then(data => console.log(data))
+      .catch(err => console.log(err))
+  }
+
   return (
     <>
       <div propertyData={propertyData} className="w-full">
@@ -34,11 +71,11 @@ const PropertyCard = ({propertyData}) => {
                     {propertyData?.location}
                   </p>
                 </div>
-                <a className="fav-btn float-right" href="#">
+                <div onClick={() => addWishlist(wishItemInfo)} className="fav-btn float-right cursor-pointer">
                   <span className="text-3xl hover:text-secondary ease-in duration-300">
                     <AiOutlineHeart> </AiOutlineHeart>
                   </span>{" "}
-                </a>
+                </div>
               </div>
             </div>
           </div>

@@ -8,7 +8,7 @@ const SingleBlog = () => {
     const { user } = useContext(AuthContext);
     const [loading, setLoading] = useState(false);
     const data = new Date().toJSON().slice(0, 10);
-    
+
     const handel = (e) => {
         e.preventDefault()
         setLoading(true)
@@ -30,7 +30,7 @@ const SingleBlog = () => {
                         image: image.data.display_url,
                         title,
                         message,
-                        email:user?.email,
+                        email: user?.email,
                         data,
                     }
                     fetch(`http://localhost:5000/postBlog`, {
@@ -52,7 +52,7 @@ const SingleBlog = () => {
 
     }
 
-    if(loading){
+    if (loading) {
         return <Loader></Loader>
     }
 
@@ -105,25 +105,25 @@ const SingleBlog = () => {
                     </div>
                     {
                         user?.email ? <div className="grid grid-cols-1 gap-6 mt-12">
-                        <form className="max-w-[752px] w-full mx-auto " onSubmit={handel}>
-                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                                <div>
-                                    <input type="text" required name="title" className="form-input w-full" placeholder="Enter Blog Title" />
+                            <form className="max-w-[752px] w-full mx-auto " onSubmit={handel}>
+                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                                    <div>
+                                        <input type="text" required name="title" className="form-input w-full" placeholder="Enter Blog Title" />
+                                    </div>
+                                    <div>
+                                        <input type="file" required name="image" className="form-input w-full" placeholder="Enter your email" />
+                                    </div>
+                                    <div className="sm:col-span-2">
+                                        <textarea type="text" required name="message" rows="4" className=" w-full" Value="Write your message"> </textarea>
+                                    </div>
+                                    <div className="sm:col-span-2">
+                                        <input type="submit" className=" bg-green-500 hover:bg-primary text-white py-4 w-full" defaultValue="Submit comment" />
+                                    </div>
                                 </div>
-                                <div>
-                                    <input type="file" required name="image" className="form-input w-full" placeholder="Enter your email" />
-                                </div>
-                                <div className="sm:col-span-2">
-                                    <textarea type="text" required name="message" rows="4" className=" w-full" Value="Write your message"> </textarea>
-                                </div>
-                                <div className="sm:col-span-2">
-                                    <input type="submit" className=" bg-green-500 hover:bg-primary text-white py-4 w-full" defaultValue="Submit comment" />
-                                </div>
-                            </div>
-                        </form>
-                    </div> : <div className="text-center mt-8"> <Link className="ml-2 text-white bg-red-500 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium text-sm px-5 py-2.5 text-center mr-3 md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" href={'/login'}>Login</Link></div>
+                            </form>
+                        </div> : <div className="text-center mt-8"> <Link className="ml-2 text-white bg-red-500 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium text-sm px-5 py-2.5 text-center mr-3 md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" href={'/login'}>Login</Link></div>
                     }
-                    
+
                 </div>
             </section>
         </div>

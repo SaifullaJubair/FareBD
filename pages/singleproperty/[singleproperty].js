@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
 
 // if(){
-    
+
 // }
 
 const singleproperty = () => {
@@ -11,21 +11,21 @@ const singleproperty = () => {
     const [isLoading, setIsLoading] = useState(true)
     const router = useRouter();
     const PropertyId = (router.query.singleproperty);
-    
-        useEffect(() => {
-            fetch(`http://localhost:5000/singleproperty/${PropertyId ? PropertyId: ''}`)
-               .then(res => res.json())
-               .then(data => {
-                  setPropertyDetails(data)
-               })
-         }, [PropertyId]);
-    
+
+    useEffect(() => {
+        fetch(`http://localhost:5000/singleproperty/${PropertyId ? PropertyId : ''}`)
+            .then(res => res.json())
+            .then(data => {
+                setPropertyDetails(data)
+            })
+    }, [PropertyId]);
+
 
     return (
         <div>
-            {propertyDetails?<SinglePropertyPage
-            propertyDetails={propertyDetails}
-            ></SinglePropertyPage>:''}
+            {propertyDetails ? <SinglePropertyPage
+                propertyDetails={propertyDetails}
+            ></SinglePropertyPage> : ''}
         </div>
     );
 };
