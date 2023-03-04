@@ -174,6 +174,62 @@ const SinglePropertyPage = ({ propertyDetails }) => {
               </div>
             </div>
           </div>
+          <div className="review-section">
+            {/* User Comment Box*/}
+            <form>
+              <div class="w-full mb-4 border border-gray-200 rounded-lg bg-gray-50 dark:bg-gray-700 dark:border-gray-600">
+                <div class="px-4 py-2 bg-white rounded-t-lg dark:bg-gray-800">
+                  <label for="comment" class="sr-only">
+                    Your comment
+                  </label>
+                  <textarea
+                    id="comment"
+                    rows="4"
+                    class="w-full px-0 text-sm text-gray-900 bg-white border-0 dark:bg-gray-800 focus:ring-0 dark:text-white dark:placeholder-gray-400"
+                    placeholder="Write a comment..."
+                    required
+                  ></textarea>
+                </div>
+                <div class="flex items-center justify-between px-3 py-2 border-t dark:border-gray-600">
+                  <button
+                    type="submit"
+                    class="text-white bg-secondary hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-md text-md w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-900 dark:hover:bg-blue-900 dark:focus:ring-blue-900"
+                  >
+                    Post comment
+                  </button>
+                  
+                </div>
+              </div>
+            </form>
+
+            {/* Comments */}
+
+            <figure class="max-w-screen-md">
+            <figcaption class="flex items-center mb-6 space-x-3">
+                <img
+                  class="w-6 h-6 rounded-full"
+                  src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/bonnie-green.png"
+                  alt="profile picture"
+                />
+                <div class="flex items-center divide-x-2 divide-gray-300 dark:divide-gray-700">
+                  <cite class="pr-3 font-medium text-gray-900 dark:text-white">
+                    Bonnie Green
+                  </cite>
+                  <cite class="pl-3 text-sm font-light text-gray-500 dark:text-gray-400">
+                    CTO at Flowbite
+                  </cite>
+                </div>
+              </figcaption>
+              <blockquote>
+                <p class="text-xl font-semibold text-gray-900 dark:text-white">
+                  "Flowbite is just awesome. It contains tons of predesigned
+                  components and pages starting from login screen to complex
+                  dashboard. Perfect choice for your next SaaS application."
+                </p>
+              </blockquote>
+              
+            </figure>
+          </div>
         </div>
         <div className="col-span-1 mx-auto lg:col-span-2 md:col-span-1">
           <h3 className="mb-6 text-xl font-semibold text-primary">
@@ -291,100 +347,9 @@ const SinglePropertyPage = ({ propertyDetails }) => {
               </div>
             </Link>
           ))}
-          {/* <a href="#" class="flex my-4 flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
-                            <img class="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-44 md:rounded-none md:rounded-l-lg" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSNlyoezM-XEc6zY5hM38kW1wBVbghCszsrTQ&usqp=CAU" alt="" />
-                            <div class="flex flex-col justify-between p-4 leading-normal">
-                                <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">1,95,00,000/-৳</h5>
-                                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400"> Bashundhara, Dhaka </p>
-                                <div className="flex text-lg flat-features">
-                                    <div className="flex justify-start align-middle">
-                                        <FaBed className="my-1" />
-                                        <span className="mx-5 ml-2">{data.flat_feature[0].room}</span>
-                                    </div>
-                                    <div className="flex justify-start align-middle">
-                                        <FaBath className="my-1" />
-                                        <span className="mx-5 ml-2">{data.flat_feature[0].bathroom}</span>
-                                    </div>
-                                </div>
-
-                                <div className="flex justify-start my-2 align-middle">
-                                    <FaBorderAll className="my-1" />
-                                    <span className="mx-5 ml-2">{data.size}</span>
-                                </div>
-                            </div>
-                        </a>
-                        <a href="#" class="flex my-4 flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
-                            <img class="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-44 md:rounded-none md:rounded-l-lg" src="https://de51gn.com/wp-content/uploads/2020/04/TOUCH_House_Enfold_003.jpg" alt="" />
-                            <div class="flex flex-col justify-between p-4 leading-normal">
-                                <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">1,95,00,000/-৳</h5>
-                                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400"> Bashundhara, Dhaka </p>
-                                <div className="flex text-lg flat-features">
-                                    <div className="flex justify-start align-middle">
-                                        <FaBed className="my-1" />
-                                        <span className="mx-5 ml-2">{data.flat_feature[0].room}</span>
-                                    </div>
-                                    <div className="flex justify-start align-middle">
-                                        <FaBath className="my-1" />
-                                        <span className="mx-5 ml-2">{data.flat_feature[0].bathroom}</span>
-                                    </div>
-                                </div>
-
-                                <div className="flex justify-start my-2 align-middle">
-                                    <FaBorderAll className="my-1" />
-                                    <span className="mx-5 ml-2">{data.size}</span>
-                                </div>
-                            </div>
-                        </a>
-                        <a href="#" class="flex my-4 flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
-                            <img class="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-44 md:rounded-none md:rounded-l-lg" src="https://de51gn.com/wp-content/uploads/2020/04/TOUCH_House_Enfold_003.jpg" alt="" />
-                            <div class="flex flex-col justify-between p-4 leading-normal">
-                                <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">1,95,00,000/-৳</h5>
-                                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400"> Bashundhara, Dhaka </p>
-                                <div className="flex text-lg flat-features">
-                                    <div className="flex justify-start align-middle">
-                                        <FaBed className="my-1" />
-                                        <span className="mx-5 ml-2">{data.flat_feature[0].room}</span>
-                                    </div>
-                                    <div className="flex justify-start align-middle">
-                                        <FaBath className="my-1" />
-                                        <span className="mx-5 ml-2">{data.flat_feature[0].bathroom}</span>
-                                    </div>
-                                </div>
-
-                                <div className="flex justify-start my-2 align-middle">
-                                    <FaBorderAll className="my-1" />
-                                    <span className="mx-5 ml-2">{data.size}</span>
-                                </div>
-                            </div>
-                        </a>
-                        <a href="#" class="flex my-4 flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
-                            <img class="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-44 md:rounded-none md:rounded-l-lg" src="https://static.dezeen.com/uploads/2018/05/square-house-suzuki-architecture-residential-japan-shops_dezeen_sq-1.jpg" alt="" />
-                            <div class="flex flex-col justify-between p-4 leading-normal">
-                                <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">1,95,00,000/-৳</h5>
-                                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400"> Bashundhara, Dhaka </p>
-                                <div className="flex text-lg flat-features">
-                                    <div className="flex justify-start align-middle">
-                                        <FaBed className="my-1" />
-                                        <span className="mx-5 ml-2">{data.flat_feature[0].room}</span>
-                                    </div>
-                                    <div className="flex justify-start align-middle">
-                                        <FaBath className="my-1" />
-                                        <span className="mx-5 ml-2">{data.flat_feature[0].bathroom}</span>
-                                    </div>
-                                </div>
-
-                                <div className="flex justify-start my-2 align-middle">
-                                    <FaBorderAll className="my-1" />
-                                    <span className="mx-5 ml-2">{data.size}</span>
-                                </div>
-                            </div>
-                        </a> */}
         </div>
       </div>
     </div>
-    // <div>
-    //     hello
-    // </div>
   );
 };
 

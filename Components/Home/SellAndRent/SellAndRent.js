@@ -26,15 +26,18 @@ const SellAndRent = () => {
             setToSell(data)
          })
    }, []);
-   const forSell = toSell.slice(-3)
-
+   const forSell = toSell.slice(-6)
+   
    useEffect(() => {
       fetch('http://localhost:5000/forRent')
-         .then(res => res.json())
-         .then(data => {
-            setToRent(data)
-         })
+      .then(res => res.json())
+      .then(data => {
+         setToRent(data)
+      })
    }, []);
+   const forRent = toRent.slice(-6)
+
+
    return (
       <div className="max-w-[1440px] w-[95%] mx-auto mt-24">
          <div className="proparte-title text-center mb-16">
@@ -56,7 +59,7 @@ const SellAndRent = () => {
             >
                <div className="gap-8  grid md:grid-cols-2 lg:grid-cols-3 sm:grid-cols-1">
                   {
-                     toRent?.map(propertyData =>
+                     forRent?.map(propertyData =>
                         <PropertyCard
                            key={propertyData._id}
                            propertyData={propertyData}
@@ -74,7 +77,7 @@ const SellAndRent = () => {
             <Tabs.Item title="Sell">
                <div className="gap-8  grid md:grid-cols-2 lg:grid-cols-3 sm:grid-cols-1">
                   {
-                     toSell?.map(propertyData =>
+                     forSell?.map(propertyData =>
                         <PropertyCard
                            key={propertyData._id}
                            propertyData={propertyData}
