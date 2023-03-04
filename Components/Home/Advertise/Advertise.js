@@ -9,7 +9,9 @@ const Advertise = () => {
     queryKey: ["user"],
     queryFn: async () => {
       try {
-        const res = await fetch("http://localhost:5000/property", {});
+        const res = await fetch('http://localhost:5000/advertise', {
+
+        })
         const data = await res.json();
         return data;
       } catch (error) {
@@ -23,19 +25,16 @@ const Advertise = () => {
     return <Loader></Loader>;
   }
 
-  // const head = advertised?.property_heading.slice(50)
-  // const detail = advertised?.details.slice(150)
-  const head = products.slice(-3);
-  console.log(products);
+ 
 
   return (
     <div className="mt-28 mb-16 max-w-[1440px] w-[95%] mx-auto ">
       <h2 className="mb-10 text-4xl font-semibold text-center">Advertised</h2>
       <div className="flex flex-wrap items-center justify-center gap-5">
         {/* card 1 */}
-        {head?.map((advertised) => (
-          <Link href={`/singleproperty/${advertised?._id}`}>
-            <div key={advertised?._id}>
+        {
+          products?.map(advertised =>
+            <Link href={`/singleproperty/${advertised?._id}`}><div key={advertised?._id}>
               <div
                 style={{
                   backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,.1), rgba(0,0,0.8)), url(${advertised?.property_picture})`,
@@ -68,7 +67,7 @@ const Advertise = () => {
               </div>
             </div>
           </Link>
-        ))}
+        )}
       </div>
     </div>
   );
