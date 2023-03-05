@@ -1,4 +1,4 @@
-import Login from '../components/Login/Login.js';
+import Login from '@/Components/Login/Login';
 import '@/styles/LoginPage.module.css';
 
 const LoginPage = () => {
