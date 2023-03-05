@@ -76,7 +76,7 @@ const AllProperties = () => {
   useEffect(() => {
     getMyPosts();
   }, [user, refetch])
-  console.log(myPosts);
+  // console.log(myPosts);
 
   if (loading || !user) {
     return <Loader />
@@ -84,7 +84,7 @@ const AllProperties = () => {
   return (
     <div className='flex'>
       <DashboardSideBar></DashboardSideBar>
-      <div className='mx-auto flex-grow'>
+      <div className='mx-auto flex-grow overflow-x-auto'>
         <h2 className='title uppercase p-10 text-center mb-10 bg-secondary text-white text-2xl font-semibold'>All Properties </h2>
 
         <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
@@ -102,6 +102,9 @@ const AllProperties = () => {
                 </th>
                 <th scope="col" className="px-6 py-3">
                   Condition
+                </th>
+                <th scope="col" className="px-6 py-3">
+                  Status
                 </th>
                 <th scope="col" className="px-6 py-3">
                   Property Type
@@ -132,6 +135,13 @@ const AllProperties = () => {
                     {post.property_condition === 'toRent' ? 'To Rent' : 'For Sell'}
                   </td>
                   <td className="px-6 py-4 font-semibold text-gray-900 dark:text-white">
+                    {post.paid && post.transactionId ?
+                      <span className="border p-1 rounded-md text-red-500">{post.property_condition === 'toRent' ? 'Engaged' : 'Sold'}</span>
+                      :
+                      <span className="border p-1 rounded-md text-secondary">Available</span>
+                    }
+                  </td>
+                  <td className="px-6 py-4 font-semibold text-gray-900 dark:text-white">
                     {post.property_type}
                   </td>
                   <td className="px-6 py-4 font-semibold text-gray-900 dark:text-white">
@@ -139,7 +149,7 @@ const AllProperties = () => {
                   </td>
                   <td className="px-6 py-4 font-semibold text-gray-900 dark:text-white flex gap-2 justify-center items-center">
                     <Tooltip content="Advertise Post">
-                      <span onClick={() => setSelectedPostForAd(post)} className="cursor-pointer w-full"><FaAdversal className="hover:bg-gray-300 border p-1 rounded-md text-secondary" size={24} /></span>
+                      <span onClick={() => setSelectedPostForAd(post)} className={`cursor-pointer w-full`}><FaAdversal className="hover:bg-gray-300 border p-1 rounded-md text-secondary" size={24} /></span>
                     </Tooltip>
                     <Tooltip content="Delete Post">
                       <span onClick={() => setSelectedPost(post._id)} className="cursor-pointer w-full"><FaTrashAlt className="hover:bg-gray-300 border p-1 rounded-md text-red-600" size={24} /></span>
