@@ -54,6 +54,9 @@ const AllWishList = () => {
               Seller Email
             </Table.HeadCell>
             <Table.HeadCell>
+              Status
+            </Table.HeadCell>
+            <Table.HeadCell>
               Price
             </Table.HeadCell>
             <Table.HeadCell>
@@ -78,6 +81,13 @@ const AllWishList = () => {
                   </Table.Cell>
                   <Table.Cell>
                     {post.sellerEmail}
+                  </Table.Cell>
+                  <Table.Cell>
+                    {post.paid && post.transactionId ?
+                      <span className="border p-1 rounded-md text-red-500">Sold</span>
+                      :
+                      <span className="border p-1 rounded-md text-secondary">Available</span>
+                    }
                   </Table.Cell>
                   <Table.Cell>
                     ${post.propertyPrice}
