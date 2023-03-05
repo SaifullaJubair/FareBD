@@ -3,39 +3,39 @@ import Link from "next/link";
 import { useContext, useEffect } from "react";
 import { AiOutlineHeart } from "react-icons/ai";
 import { CiLocationOn } from "react-icons/ci";
-const PropertyCard = ({propertyData}) => {
+const PropertyCard = ({ propertyData }) => {
   const { user } = useContext(AuthContext);
-    // console.log(propertyData);
+  // console.log(propertyData);
 
 
-    const wishItemInfo = {
-      // UserInfo
-      userId: user?.uid,
-      userName: user?.displayName,
-      userEmail: user?.email,
-      userPhoto: user?.photoURL,
-      // PropertyInfo
-      propertyId: propertyData?._id,
-      propertyName: propertyData?.property_name,
-      propertyPicture: propertyData?.property_picture,
-      propertyPrice: propertyData?.price,
-      propertyCondition: propertyData?.property_condition,
-      // SellerInfo
-      sellerName: propertyData?.user_name,
-      sellerEmail: propertyData?.user_email,
-      sellerPhoto: propertyData?.user_image,
+  const wishItemInfo = {
+    // UserInfo
+    userId: user?.uid,
+    userName: user?.displayName,
+    userEmail: user?.email,
+    userPhoto: user?.photoURL,
+    // PropertyInfo
+    propertyId: propertyData?._id,
+    propertyName: propertyData?.property_name,
+    propertyPicture: propertyData?.property_picture,
+    propertyPrice: propertyData?.price,
+    propertyCondition: propertyData?.property_condition,
+    // SellerInfo
+    sellerName: propertyData?.user_name,
+    sellerEmail: propertyData?.user_email,
+    sellerPhoto: propertyData?.user_image,
 
-    }
-    // console.log(wishItemInfo);
+  }
+  // console.log(wishItemInfo);
 
   const addWishlist = (wishItem) => {
-      fetch('http://localhost:5000/add-wishlist',{
-        method: 'POST',
-        headers: {
-          'content-type':'application/json'
-        },
-        body: JSON.stringify(wishItem)
-      })
+    fetch('http://localhost:5000/add-wishlist', {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json'
+      },
+      body: JSON.stringify(wishItem)
+    })
       .then(res => res.json())
       .then(data => console.log(data))
       .catch(err => console.log(err))
@@ -92,7 +92,7 @@ const PropertyCard = ({propertyData}) => {
                 </li>
                 <li className="bg-secondary text-sm text-white px-2">
                   {
-                     propertyData?.property_condition==="toRent" ? "To Rent" : "For Sell"
+                    propertyData?.property_condition === "toRent" ? "To Rent" : "For Sell"
                   }
                 </li>
               </ul>
@@ -101,11 +101,11 @@ const PropertyCard = ({propertyData}) => {
             <div className="product-meta-bottom font-medium text-primary bg-gray-300 py-5 px-9">
               <span className="price">$ {propertyData?.price}</span>
               <span className="mx-4">
-                  {
-                     propertyData?.property_condition==="toRent" ? "To Rent" : "For Sell"
-                  }
+                {
+                  propertyData?.property_condition === "toRent" ? "To Rent" : "For Sell"
+                }
               </span>
-              <span>{propertyData?.post_date}</span>
+              <span>{propertyData?.post_date?.slice(0, 10)}</span>
             </div>
           </Link>
         </div>

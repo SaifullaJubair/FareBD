@@ -1,15 +1,15 @@
 import Link from "next/link";
 import { useContext, useEffect, useState } from "react";
-import {
-  FaBed,
-  FaBath,
-  FaBorderAll,
-  FaMapMarkerAlt,
-  FaRegHeart,
-} from "react-icons/fa";
+import { FaBed, FaBath, FaBorderAll, FaMapMarkerAlt, FaRegHeart, FaComment, FaLock, FaAngleDown, FaHome } from "react-icons/fa";
 import { TbCurrencyTaka } from "react-icons/tb";
-import { BiPurchaseTagAlt } from "react-icons/bi";
+import { BiPurchaseTagAlt, BiSend } from "react-icons/bi";
 import { AuthContext } from "@/Contexts/AuthProvider/AuthProvider";
+import { useQuery } from "@tanstack/react-query";
+import { toast } from 'react-toastify';
+import Comment from "./Comment";
+import { Avatar, Button, TextInput } from "flowbite-react";
+import Loader from "../Shared/Loader/Loader";
+
 
 function numberWithCommas(x) {
   x = x.toString();
@@ -23,6 +23,9 @@ function numberWithCommas(x) {
 const SinglePropertyPage = ({ propertyDetails }) => {
   const data = propertyDetails;
   const [recommendations, setRecommendations] = useState(null);
+  const [singleProperty, setSingleProperty] = useState({})
+  const [loading, setLoading] = useState(false)
+
   const { user } = useContext(AuthContext);
 
   useEffect(() => {
@@ -33,8 +36,66 @@ const SinglePropertyPage = ({ propertyDetails }) => {
       });
   }, [data]);
 
-  console.log(data._id);
+  // console.log(data._id);
   const priceWithCommas = numberWithCommas(data.price);
+
+
+  const { property_picture, property_type,
+    area_type, division, authorName, _id
+    , location, property_name,
+    owner_name, price, property_condition
+
+    , } = data
+  console.log(data);
+
+
+  const { data: comments = [], refetch } = useQuery({
+    queryKey: ['comment'],
+
+    queryFn: async () => {
+      const res = await fetch(`http://localhost:5000/comment/${_id}`);
+      const data = await res.json();
+      console.log(data)
+      return data;
+    }
+  })
+
+
+
+  const handleComment = (event) => {
+    event.preventDefault()
+    const form = event.target
+    const comment = form.comment.value;
+    // console.log(comment,  createdAt, user?.email, user?.displayName,
+    // )
+    setLoading(true)
+    const AddComment = {
+      propertyId: _id, property_name, property_picture, property_type, owner_name, price, area_type, division, location, property_condition, username: user?.displayName, email: user?.email, img: user?.photoURL, comment, createdAt: new Date().toISOString()
+
+
+    }
+    fetch(`http://localhost:5000/addcomment`, {
+      method: 'POST',
+      headers: {
+        "content-type": "application/json"
+      },
+      body: JSON.stringify(AddComment)
+    })
+      .then(res => res.json())
+      .then(data => {
+        console.log(data)
+
+        toast("Comment  added", {
+          position: toast.POSITION.TOP_CENTER
+        })
+        refetch()
+        setLoading(false)
+        form.reset('')
+      })
+    console.log(AddComment)
+
+  }
+
 
   return (
     <div className="my-16 mb-16 max-w-[1440px] w-[95%] mx-auto">
@@ -174,9 +235,11 @@ const SinglePropertyPage = ({ propertyDetails }) => {
               </div>
             </div>
           </div>
+
+
+          {/* User Comment Box*/}
           <div className="review-section">
-            {/* User Comment Box*/}
-            <form>
+            {/* <form className="py-3 my-3 text-2xl font-semibold border-t-2 border-secondary">
               <div class="w-full mb-4 border border-gray-200 rounded-lg bg-gray-50 dark:bg-gray-700 dark:border-gray-600">
                 <div class="px-4 py-2 bg-white rounded-t-lg dark:bg-gray-800">
                   <label for="comment" class="sr-only">
@@ -197,15 +260,15 @@ const SinglePropertyPage = ({ propertyDetails }) => {
                   >
                     Post comment
                   </button>
-                  
+
                 </div>
               </div>
-            </form>
+            </form> */}
 
             {/* Comments */}
 
-            <figure class="max-w-screen-md">
-            <figcaption class="flex items-center mb-6 space-x-3">
+            {/* <figure class="max-w-screen-md">
+              <figcaption class="flex items-center mb-6 space-x-3">
                 <img
                   class="w-6 h-6 rounded-full"
                   src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/bonnie-green.png"
@@ -227,10 +290,87 @@ const SinglePropertyPage = ({ propertyDetails }) => {
                   dashboard. Perfect choice for your next SaaS application."
                 </p>
               </blockquote>
-              
-            </figure>
+
+            </figure> */}
+
+
+
+
+            <div className='mt-8 '><hr /></div>
+            <div className='my-8'>
+              <h1 className='text-lg text-gray-500 pb-4 flex gap-2 items-center'><span> <FaComment></FaComment></span> Post a comment</h1>
+              <form
+                onSubmit={handleComment}
+              >
+                {
+                  user?.uid ? (
+                    !loading ?
+                      <div className='flex gap-2 items-center'>
+                        <Avatar rounded={true} />
+                        <TextInput
+                          id="md"
+                          type="text"
+                          sizing="md"
+                          name='comment'
+                          className='w-full lg:w-7/12'
+                        /><Button size="sm" color="gray"
+                          type='submit'
+                        >
+
+                          <BiSend className='mr-1'></BiSend> <span className='font-semibold'>Post</span>
+                        </Button>
+                      </div>
+                      :
+                      <Loader></Loader>
+                  )
+                    :
+                    <div>
+                    </div>
+                }
+
+
+              </form>
+              {
+                user?.uid ? <p></p> :
+                  <div>
+                    <p className='mt-4 flex items-center gap-2 '>Please
+                      <Link className='text-blue-500 font-semibold text-lg' href='/login'>
+                        <span className='flex items-center gap-1'><FaLock className='text-gray-800'></FaLock> Login</span>
+                      </Link>  first to comment.</p>
+                  </div>
+              }
+
+            </div>
+            <div className='mb-6'><hr /></div>
+            {/* right side  */}
+
+            <Comment
+              id={_id}
+              comments={comments}
+              commentRefetch={refetch}
+            ></Comment>
+            <div className=' flex justify-start gap-2 my-8'>
+              <Button outline={true}>
+                <span className="flex items-center"><FaAngleDown className='mr-1'></FaAngleDown> <span>Load More</span></span>
+              </Button>
+              <Link href='/' className='text-gray-600 '>
+
+                <Button outline={true}
+                  gradientDuoTone="purpleToBlue"
+                ><span className="flex items-center"><FaHome className='mr-2'></FaHome> <span>Home</span></span></Button>
+
+              </Link>
+            </div>
+
+
+
+
           </div>
         </div>
+
+        {/* comments section ends here  */}
+
+        {/*--------- right sidebar -------- */}
         <div className="col-span-1 mx-auto lg:col-span-2 md:col-span-1">
           <h3 className="mb-6 text-xl font-semibold text-primary">
             Contact us for more information

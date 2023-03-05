@@ -364,11 +364,12 @@ function AddProperty() {
               <select
                 id="areaType"
                 className="block py-2.5 shadow-md shadow-primary/10 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-secondary focus:outline-none focus:ring-0 focus:border-secondary peer"
-                {...register("areaType")}
+                {...register("areaType", { required: true })}
                 onChange={(e) => setDefineOption(e.target.value)}
               >
+                <option selected value="" >Select Area Type</option>
                 <option value="residential">Residential</option>
-                <option selected value="commercial">
+                <option value="commercial">
                   Commercial
                 </option>
               </select>
@@ -403,11 +404,11 @@ function AddProperty() {
               <select
                 id="category"
                 className="block py-2.5 shadow-md shadow-primary/10 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-secondary focus:outline-none focus:ring-0 focus:border-secondary peer"
-                {...register("category")}
+                {...register("category", { required: true })}
               >
                 {defineOption === "commercial" ? (
-                  <>
-                    <option selected value="office">
+                  <> <option selected value="" >Select Category</option>
+                    <option value="office">
                       Office
                     </option>
                     <option value="floor">Floor</option>
@@ -422,14 +423,15 @@ function AddProperty() {
                   </>
                 ) : (
                   <>
-                    <option selected value="appartment">
+                    <option selected value="" >Select Category</option>
+                    <option value="appartment">
                       Appartment
                     </option>
                     <option value="penthouse">Penthouse</option>
                     <option value="plaza">Plaza</option>
                     <option value="plot">Plot</option>
                     <option value="room">Room</option>
-                    <option selected value="duplex">
+                    <option value="duplex">
                       Duplex
                     </option>
                     <option value="building">Building</option>
@@ -702,10 +704,10 @@ function AddProperty() {
               <select
                 id="division"
                 className="block shadow-md shadow-primary/10 py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-secondary focus:outline-none focus:ring-0  peer focus:border-secondary"
-                {...register("division")}
-              >
+                {...register("division", { required: true })}
+              ><option value selected="">Select Division</option>
                 <option value="Dhaka">Dhaka</option>
-                <option selected value="Chattogram">
+                <option value="Chattogram">
                   Chattogram
                 </option>
                 <option value="Rajsahi">Rajshahi</option>
