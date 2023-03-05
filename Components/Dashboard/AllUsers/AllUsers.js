@@ -67,7 +67,7 @@ const AllUsers = () => {
   return (
     <div className="flex">
       <DashboardSideBar></DashboardSideBar>
-      <div className="mx-auto flex-grow">
+      <div className="mx-auto flex-grow overflow-x-auto">
         <h2 className="title uppercase p-10 text-center mb-10 bg-secondary text-white text-2xl font-semibold">
           All Users{" "}
         </h2>
@@ -89,7 +89,7 @@ const AllUsers = () => {
                 <Table.Cell>
                   <img
                     src={user.img}
-                    className="h-12 w-12 rounded-full ring-4 ring-blue"
+                    className="w-12 object-cover object-center rounded-full ring-4 ring-secondary/40"
                     alt=""
                   />
                 </Table.Cell>
