@@ -6,9 +6,6 @@ import { useContext } from "react";
 
 const DashboardPage = () => {
   const { user, loading } = useContext(AuthContext);
-  //   if (loading) {
-  //     return <Loader></Loader>;
-  //   }
   if (!user?.email) {
     return <PleaseLogin></PleaseLogin>;
   }
