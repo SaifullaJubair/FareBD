@@ -106,6 +106,15 @@ const DashboardSideBar = () => {
                     </span>
                   </Link>
                 </li>
+                <li>
+                  <BiCommentDetail className="inline-block ml-4 mr-6 h-7"></BiCommentDetail>
+                  <Link href={`/dashboard/mycomments`}>
+                    <span className={hide ? "hidden" : "inline"}>
+                      My Comments
+                    </span>
+                  </Link>
+                </li>
+
               </>
             )}
 
