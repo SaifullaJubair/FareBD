@@ -27,6 +27,7 @@
     "react-icons": "^4.7.1",
     "react-marquee-slider": "^1.1.5",
     "react-multi-carousel": "^2.8.2",
+    "react-paginate": "^8.1.4",
     "react-parallax": "^3.5.1",
     "react-scroll-up": "^1.4.0",
     "react-toastify": "^9.1.1",

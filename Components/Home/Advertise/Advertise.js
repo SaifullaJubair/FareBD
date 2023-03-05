@@ -1,10 +1,12 @@
-import { useQuery } from "@tanstack/react-query";
-import home4 from "./../../../assets/images/home-4.jpg";
+import { useQuery } from "@tanstack/react-query"; 
 import { BsPersonFill, BsArrowRight } from "react-icons/bs";
 import { BiCalendar } from "react-icons/bi";
 import Loader from "@/Components/Shared/Loader/Loader";
-import Link from "next/link";
+import Link from "next/link"; 
 const Advertise = () => {
+
+
+
   const { data: products, isLoading } = useQuery({
     queryKey: ["user"],
     queryFn: async () => {
@@ -25,7 +27,7 @@ const Advertise = () => {
     return <Loader></Loader>;
   }
 
- 
+
 
   return (
     <div className="mt-28 mb-16 max-w-[1440px] w-[95%] mx-auto ">
@@ -66,9 +68,10 @@ const Advertise = () => {
                 <BsArrowRight className="text-2xl font-semibold absolute left-1/2 transform -translate-x-1/2 -bottom-3 bg-secondary/90 transtion duration-300 cursor-pointer hover:bg-secondary w-8 h-8 rounded-full p-1 text-white" />
               </div>
             </div>
-          </Link>
-        )}
+            </Link>
+          )}
       </div>
+      
     </div>
   );
 };

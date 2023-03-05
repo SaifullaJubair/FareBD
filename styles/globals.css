@@ -147,3 +147,36 @@ img.mx-auto.rounded-full.team {
 .swiper-pagination-bullet {
   background-color: #5ba600 !important;
 }
+
+
+/* pagination button */
+.pagination {
+  text-align: center;
+  margin-top: 28px;
+}
+
+.pagination a {
+  font-size: 17px;
+  margin: 0 10px;
+  width: 21px;
+  display: inline-block;
+  padding: 6px;
+}
+
+ul.pagination-menu li {
+  display: inline-block;
+  background: #e0e0e0;
+  margin: 0 10px;
+  cursor: pointer;
+}
+
+ul.pagination-menu li.selected {
+  background: #5BA600;
+  color: #ffffff;
+}
+ul.pagination-menu li.next.disabled {
+  visibility: hidden;
+}
+ul.pagination-menu li.previous.disabled {
+  visibility: hidden;
+}
