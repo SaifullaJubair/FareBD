@@ -22,7 +22,8 @@ const DashboardSideBar = () => {
   const [hide, setHide] = useState(true);
   const [isBuyer] = useBuyer(user?.email);
   const [isSeller] = useSeller(user?.email);
-  const [isAdmin] = useAdmin(user?.email);
+  const [isAdmin, isAdminLoading] = useAdmin(user?.email);
+  console.log(isAdmin, isAdminLoading);
 
   const handleToggle = () => {
     setHide(!hide);
@@ -42,7 +43,7 @@ const DashboardSideBar = () => {
 
   const handleLogOut = () => {
     logout()
-      .then(() => { })
+      .then(() => {})
       .catch((error) => console.log(error));
   };
 
@@ -114,7 +115,6 @@ const DashboardSideBar = () => {
                     </span>
                   </Link>
                 </li>
-
               </>
             )}
 

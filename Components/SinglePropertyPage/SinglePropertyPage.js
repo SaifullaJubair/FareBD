@@ -1,15 +1,25 @@
 import Link from "next/link";
 import { useContext, useEffect, useState } from "react";
-import { FaBed, FaBath, FaBorderAll, FaMapMarkerAlt, FaRegHeart, FaComment, FaLock, FaAngleDown, FaHome } from "react-icons/fa";
+import {
+  FaBed,
+  FaBath,
+  FaBorderAll,
+  FaMapMarkerAlt,
+  FaRegHeart,
+  FaComment,
+  FaLock,
+  FaAngleDown,
+  FaHome,
+  FaHeart,
+} from "react-icons/fa";
 import { TbCurrencyTaka } from "react-icons/tb";
 import { BiPurchaseTagAlt, BiSend } from "react-icons/bi";
 import { AuthContext } from "@/Contexts/AuthProvider/AuthProvider";
 import { useQuery } from "@tanstack/react-query";
-import { toast } from 'react-toastify';
+import { toast } from "react-toastify";
 import Comment from "./Comment";
 import { Avatar, Button, TextInput } from "flowbite-react";
 import Loader from "../Shared/Loader/Loader";
-
 
 function numberWithCommas(x) {
   x = x.toString();
@@ -23,11 +33,11 @@ function numberWithCommas(x) {
 const SinglePropertyPage = ({ propertyDetails }) => {
   const data = propertyDetails;
   const [recommendations, setRecommendations] = useState(null);
-  const [singleProperty, setSingleProperty] = useState({})
-  const [loading, setLoading] = useState(false)
+  const [singleProperty, setSingleProperty] = useState({});
+  const [loading, setLoading] = useState(false);
+  const [wishList, setWishList] = useState(false);
 
   const { user } = useContext(AuthContext);
-
   useEffect(() => {
     fetch(`http://localhost:5000/searchByDivision/${data?.division}`)
       .then((res) => res.json())
@@ -36,66 +46,138 @@ const SinglePropertyPage = ({ propertyDetails }) => {
       });
   }, [data]);
 
-  // console.log(data._id);
+  // checking if the wishlist exist or not
+  useEffect(() => {
+    if (!user?.email) return;
+    fetch(`http://localhost:5000/wishlist/${data?._id}?email=${user?.email}`)
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.userEmail === user.email) {
+          setWishList(true);
+        } else setWishList(false);
+      });
+  }, [data?._id, user?.email]);
+
   const priceWithCommas = numberWithCommas(data.price);
-
-
-  const { property_picture, property_type,
-    area_type, division, authorName, _id
-    , location, property_name,
-    owner_name, price, property_condition
-
-    , } = data
-  console.log(data);
-
+  const {
+    property_picture,
+    property_type,
+    area_type,
+    division,
+    authorName,
+    _id,
+    location,
+    property_name,
+    owner_name,
+    price,
+    property_condition,
+  } = data;
 
   const { data: comments = [], refetch } = useQuery({
-    queryKey: ['comment'],
+    queryKey: ["comment"],
 
     queryFn: async () => {
       const res = await fetch(`http://localhost:5000/comment/${_id}`);
       const data = await res.json();
-      console.log(data)
       return data;
-    }
-  })
-
-
+    },
+  });
 
   const handleComment = (event) => {
-    event.preventDefault()
-    const form = event.target
+    event.preventDefault();
+    const form = event.target;
     const comment = form.comment.value;
     // console.log(comment,  createdAt, user?.email, user?.displayName,
     // )
-    setLoading(true)
+    setLoading(true);
     const AddComment = {
-      propertyId: _id, property_name, property_picture, property_type, owner_name, price, area_type, division, location, property_condition, username: user?.displayName, email: user?.email, img: user?.photoURL, comment, createdAt: new Date().toISOString()
-
-
-    }
+      propertyId: _id,
+      property_name,
+      property_picture,
+      property_type,
+      owner_name,
+      price,
+      area_type,
+      division,
+      location,
+      property_condition,
+      username: user?.displayName,
+      email: user?.email,
+      img: user?.photoURL,
+      comment,
+      createdAt: new Date().toISOString(),
+    };
     fetch(`http://localhost:5000/addcomment`, {
-      method: 'POST',
+      method: "POST",
       headers: {
-        "content-type": "application/json"
+        "content-type": "application/json",
       },
-      body: JSON.stringify(AddComment)
+      body: JSON.stringify(AddComment),
     })
-      .then(res => res.json())
-      .then(data => {
-        console.log(data)
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
 
         toast("Comment  added", {
-          position: toast.POSITION.TOP_CENTER
+          position: toast.POSITION.TOP_CENTER,
+        });
+        refetch();
+        setLoading(false);
+        form.reset("");
+      });
+    console.log(AddComment);
+  };
+
+  const handleWishList = (propertyData) => {
+    setWishList((prevState) => !prevState);
+
+    const wishItemInfo = {
+      // UserInfo
+      userId: user?.uid,
+      userName: user?.displayName,
+      userEmail: user?.email,
+      userPhoto: user?.photoURL,
+      // PropertyInfo
+      propertyId: propertyData?._id,
+      propertyName: propertyData?.property_name,
+      propertyPicture: propertyData?.property_picture,
+      propertyPrice: propertyData?.price,
+      propertyCondition: propertyData?.property_condition,
+      // SellerInfo
+      sellerName: propertyData?.user_name,
+      sellerEmail: propertyData?.user_email,
+      sellerPhoto: propertyData?.user_image,
+    };
+    // console.log(wishItemInfo);
+
+    if (wishList) {
+      return fetch(
+        `http://localhost:5000/wishlist/${data?._id}?email=${user?.email}`,
+        {
+          method: "DELETE",
+          headers: {
+            "content-type": "application/json",
+          },
+        }
+      )
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.deletedCount > 0) setWishList(false);
         })
-        refetch()
-        setLoading(false)
-        form.reset('')
+        .catch((err) => console.log(err));
+    } else {
+      return fetch("http://localhost:5000/add-wishlist", {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(wishItemInfo),
       })
-    console.log(AddComment)
-
-  }
-
+        .then((res) => res.json())
+        .then((data) => console.log(data))
+        .catch((err) => console.log(err));
+    }
+  };
 
   return (
     <div className="my-16 mb-16 max-w-[1440px] w-[95%] mx-auto">
@@ -116,17 +198,29 @@ const SinglePropertyPage = ({ propertyDetails }) => {
                 </h2>
                 <div className="flex items-center gap-2">
                   <button
+                    onClick={() => handleWishList(data)}
                     type="button"
-                    className="py-2.5 px-5 mr-2 mb-2 text-md font-medium text-primary focus:outline-none bg-teal-50 rounded-md hover:bg-pink-50 hover:text-pink-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
+                    className="py-2.5 px-5 mr-2 mb-2 text-md font-medium text-primary focus:outline-none bg-primary/5
+                     rounded-md transition duration-300 hover:bg-primary/10 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700 w-[108px]"
                   >
-                    <FaRegHeart className="inline mr-2 font-bold" />
-                    Save
+                    {wishList ? (
+                      <>
+                        <FaHeart className="inline mr-2 font-bold text-secondary" />
+                        Saved
+                      </>
+                    ) : (
+                      <>
+                        <FaRegHeart className="inline mr-2 font-bold" />
+                        Save
+                      </>
+                    )}
                   </button>
                   {user?.email && (
                     <Link
                       href={`/purchase/${data?._id}`}
                       type="button"
-                      className="py-2.5 px-5 mr-2 mb-2 text-md font-medium text-primary focus:outline-none bg-teal-50 rounded-md hover:bg-pink-50 hover:text-pink-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
+                      className="py-2.5 px-5 mr-2 mb-2 text-md font-medium text-primary focus:outline-none bg-primary/5
+                     rounded-md transition duration-300 hover:bg-primary/10 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
                     >
                       <BiPurchaseTagAlt className="inline mr-2 font-bold" />
                       {data.property_condition === "toRent"
@@ -236,7 +330,6 @@ const SinglePropertyPage = ({ propertyDetails }) => {
             </div>
           </div>
 
-
           {/* User Comment Box*/}
           <div className="review-section">
             {/* <form className="py-3 my-3 text-2xl font-semibold border-t-2 border-secondary">
@@ -293,55 +386,63 @@ const SinglePropertyPage = ({ propertyDetails }) => {
 
             </figure> */}
 
-
-
-
-            <div className='mt-8 '><hr /></div>
-            <div className='my-8'>
-              <h1 className='text-lg text-gray-500 pb-4 flex gap-2 items-center'><span> <FaComment></FaComment></span> Post a comment</h1>
-              <form
-                onSubmit={handleComment}
-              >
-                {
-                  user?.uid ? (
-                    !loading ?
-                      <div className='flex gap-2 items-center'>
-                        <Avatar rounded={true} />
-                        <TextInput
-                          id="md"
-                          type="text"
-                          sizing="md"
-                          name='comment'
-                          className='w-full lg:w-7/12'
-                        /><Button size="sm" color="gray"
-                          type='submit'
-                        >
-
-                          <BiSend className='mr-1'></BiSend> <span className='font-semibold'>Post</span>
-                        </Button>
-                      </div>
-                      :
-                      <Loader></Loader>
-                  )
-                    :
-                    <div>
-                    </div>
-                }
-
-
-              </form>
-              {
-                user?.uid ? <p></p> :
-                  <div>
-                    <p className='mt-4 flex items-center gap-2 '>Please
-                      <Link className='text-blue-500 font-semibold text-lg' href='/login'>
-                        <span className='flex items-center gap-1'><FaLock className='text-gray-800'></FaLock> Login</span>
-                      </Link>  first to comment.</p>
-                  </div>
-              }
-
+            <div className="mt-8 ">
+              <hr />
             </div>
-            <div className='mb-6'><hr /></div>
+            <div className="my-8">
+              <h1 className="text-lg text-gray-500 pb-4 flex gap-2 items-center">
+                <span>
+                  {" "}
+                  <FaComment></FaComment>
+                </span>{" "}
+                Post a comment
+              </h1>
+              <form onSubmit={handleComment}>
+                {user?.uid ? (
+                  !loading ? (
+                    <div className="flex gap-2 items-center">
+                      <Avatar rounded={true} />
+                      <TextInput
+                        id="md"
+                        type="text"
+                        sizing="md"
+                        name="comment"
+                        className="w-full lg:w-7/12"
+                      />
+                      <Button size="sm" color="gray" type="submit">
+                        <BiSend className="mr-1"></BiSend>{" "}
+                        <span className="font-semibold">Post</span>
+                      </Button>
+                    </div>
+                  ) : (
+                    <Loader></Loader>
+                  )
+                ) : (
+                  <div></div>
+                )}
+              </form>
+              {user?.uid ? (
+                <p></p>
+              ) : (
+                <div>
+                  <p className="mt-4 flex items-center gap-2 ">
+                    Please
+                    <Link
+                      className="text-blue-500 font-semibold text-lg"
+                      href="/login"
+                    >
+                      <span className="flex items-center gap-1">
+                        <FaLock className="text-gray-800"></FaLock> Login
+                      </span>
+                    </Link>{" "}
+                    first to comment.
+                  </p>
+                </div>
+              )}
+            </div>
+            <div className="mb-6">
+              <hr />
+            </div>
             {/* right side  */}
 
             <Comment
@@ -349,22 +450,21 @@ const SinglePropertyPage = ({ propertyDetails }) => {
               comments={comments}
               commentRefetch={refetch}
             ></Comment>
-            <div className=' flex justify-start gap-2 my-8'>
+            <div className=" flex justify-start gap-2 my-8">
               <Button outline={true}>
-                <span className="flex items-center"><FaAngleDown className='mr-1'></FaAngleDown> <span>Load More</span></span>
+                <span className="flex items-center">
+                  <FaAngleDown className="mr-1"></FaAngleDown>{" "}
+                  <span>Load More</span>
+                </span>
               </Button>
-              <Link href='/' className='text-gray-600 '>
-
-                <Button outline={true}
-                  gradientDuoTone="purpleToBlue"
-                ><span className="flex items-center"><FaHome className='mr-2'></FaHome> <span>Home</span></span></Button>
-
+              <Link href="/" className="text-gray-600 ">
+                <Button outline={true} gradientDuoTone="purpleToBlue">
+                  <span className="flex items-center">
+                    <FaHome className="mr-2"></FaHome> <span>Home</span>
+                  </span>
+                </Button>
               </Link>
             </div>
-
-
-
-
           </div>
         </div>
 

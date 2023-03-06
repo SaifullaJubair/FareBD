@@ -1,3 +1,5 @@
+import Link from "next/link";
+import { useRouter } from "next/router";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 // Anik Datta
@@ -7,6 +9,7 @@ const Searchfield = () => {
   const [propertyPurpose, setPropertyPurpose] = useState("toRent");
   const [defineOption, setDefineOption] = useState("commercial");
 
+  const router = useRouter();
   const {
     register,
     handleSubmit,
@@ -14,23 +17,27 @@ const Searchfield = () => {
   } = useForm();
 
   const onSubmit = (data) => {
-    console.log(data);
-    fetch('http://localhost:5000/search', {
-      method: 'POST',
+    // console.log(data);
+    fetch("http://localhost:5000/search", {
+      method: "POST",
       headers: {
-        "content-type": "application/json"
+        "content-type": "application/json",
       },
-      body: JSON.stringify(data)
-
+      body: JSON.stringify(data),
     })
-      .then(res => res.json())
-      .then(allData => {
-        console.log(allData)
-
-      })
-
-  }
-  console.log(errors);
+      .then((res) => res.json())
+      .then((allData) => {
+        router.push(
+          {
+            pathname: "/searchResult",
+            query: {
+              data: JSON.stringify(allData),
+            },
+          },
+          "/searchResult"
+        );
+      });
+  };
 
   return (
     <div className="max-w-4xl -mt-36 mb-16 mx-auto shadow-lg border rounded-2xl p-10 text-white bg-gray-400 bg-opacity-25">
@@ -51,10 +58,10 @@ const Searchfield = () => {
             {...register("purpose")}
             onChange={(e) => setPropertyPurpose(e.target.value)}
           >
-            <option selected value="" >Select Purpose</option>
-            <option value="toSale">
-              To Sale
+            <option selected value="">
+              Select Purpose
             </option>
+            <option value="toSale">To Sale</option>
             <option value="toRent">To Rent</option>
           </select>
         </div>
@@ -66,11 +73,11 @@ const Searchfield = () => {
             className="focus:outline-none rounded-md py-2.5 text-primary"
             {...register("division")}
           >
-            <option selected value="" >Select Division</option>
-            <option value="Dhaka">Dhaka</option>
-            <option value="Chattogram">
-              Chattogram
+            <option selected value="">
+              Select Division
             </option>
+            <option value="Dhaka">Dhaka</option>
+            <option value="Chattogram">Chattogram</option>
             <option value="Rajsahi">Rajshahi</option>
             <option value="Khulna">Khulna</option>
             <option value="Rangpur">Rangpur</option>
@@ -92,11 +99,11 @@ const Searchfield = () => {
             {...register("areaType")}
             onChange={(e) => setDefineOption(e.target.value)}
           >
-            <option selected value="" >Select Area Type</option>
-            <option value="residential">Residential</option>
-            <option value="commercial">
-              Commercial
+            <option selected value="">
+              Select Area Type
             </option>
+            <option value="residential">Residential</option>
+            <option value="commercial">Commercial</option>
           </select>
         </div>
         <div className="relative w-full mb-6 group">
@@ -113,10 +120,10 @@ const Searchfield = () => {
           >
             {defineOption === "commercial" ? (
               <>
-                <option selected value="" >Select Category</option>
-                <option value="office">
-                  Office
+                <option selected value="">
+                  Select Category
                 </option>
+                <option value="office">Office</option>
                 <option value="floor">Floor</option>
                 <option value="duplex">Duplex</option>
                 <option value="building">Building</option>
@@ -129,17 +136,15 @@ const Searchfield = () => {
               </>
             ) : (
               <>
-                <option selected value="" >Select Division</option>
-                <option value="appartment">
-                  Appartment
+                <option selected value="">
+                  Select Division
                 </option>
+                <option value="appartment">Appartment</option>
                 <option value="penthouse">Penthouse</option>
                 <option value="plaza">Plaza</option>
                 <option value="plot">Plot</option>
                 <option value="room">Room</option>
-                <option value="duplex">
-                  Duplex
-                </option>
+                <option value="duplex">Duplex</option>
                 <option value="building">Building</option>
               </>
             )}
@@ -147,13 +152,40 @@ const Searchfield = () => {
         </div>
 
         <div className="text-base text-black flex flex-col">
-          <label htmlFor="Min Size" className="text-white font-semibold" >Min Size</label>
+          <label htmlFor="Min Size" className="text-white font-semibold">
+            Min Size
+          </label>
           <input type="number" {...register("minSize")}></input>
         </div>
         <div className="text-base text-black flex flex-col">
-          <label htmlFor="Max Size" className="text-white font-semibold"> Max Size</label>
-          <input type="number"  {...register("maxSize")}></input>
+          <label htmlFor="Max Size" className="text-white font-semibold">
+            {" "}
+            Max Size
+          </label>
+          <input type="number" {...register("maxSize")}></input>
         </div>
+
+        {/* <Link
+          href={{
+            pathname: "/searchResult",
+            query: searchData,
+          }}
+          type="submit"
+          className="focus:outline-none
+               text-white
+               bg-secondary
+               hover:opacity-90
+               rounded-md
+               focus:ring-4
+               focus:ring-green-300
+               font-medium
+               text-lg px-5 py-2.5
+               dark:bg-green-600
+               dark:hover:bg-green-700
+               dark:focus:ring-green-800"
+        >
+          Find
+        </Link> */}
 
         <button
           type="submit"
