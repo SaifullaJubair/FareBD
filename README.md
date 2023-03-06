@@ -56,3 +56,9 @@ npm install firebase,
 npm install react-marquee-slider, 
 npm install react-multi-carousel, 
 npm install react-parallax.
+
+### Deploy
+
+- Firebase
+- Netlify
+- Vercel
