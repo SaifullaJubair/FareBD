@@ -40,7 +40,7 @@
 
 ### Npm
 
-This project was created using CRA and the packages was installed by using
+This project was created using create-next-app and the packages was installed by using
 npm i react-router-dom, 
 npm i react-helmet-async, 
 npm install react-icons --save, 
