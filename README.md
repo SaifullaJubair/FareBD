@@ -41,18 +41,18 @@
 ### Npm
 
 This project was created using CRA and the packages was installed by using
-npm i react-router-dom
-npm i react-helmet-async
-npm install react-icons --save
-npm install react-hot-toast
-npm install -D tailwindcss postcss autoprefixer
-npx tailwindcss init -p
-npm i react-scroll-to-top
-npm i @tanstack/react-query
-npm i tailwind-datepicker-react
-npm i react-toastify
-npm i flowbite
-npm install firebase
-npm install react-marquee-slider
-npm install react-multi-carousel
-npm install react-parallax
+npm i react-router-dom, 
+npm i react-helmet-async, 
+npm install react-icons --save, 
+npm install react-hot-toast, 
+npm install -D tailwindcss postcss autoprefixer, 
+npx tailwindcss init -p, 
+npm i react-scroll-to-top, 
+npm i @tanstack/react-query, 
+npm i tailwind-datepicker-react, 
+npm i react-toastify, 
+npm i flowbite, 
+npm install firebase, 
+npm install react-marquee-slider, 
+npm install react-multi-carousel, 
+npm install react-parallax.
