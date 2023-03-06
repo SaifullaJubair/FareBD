@@ -2,13 +2,15 @@ import Link from "next/link";
 import { useContext, useEffect, useState } from "react";
 import { FaBed, FaBath, FaBorderAll, FaMapMarkerAlt, FaRegHeart, FaComment, FaLock, FaAngleDown, FaHome } from "react-icons/fa";
 import { TbCurrencyTaka } from "react-icons/tb";
-import { BiPurchaseTagAlt, BiSend } from "react-icons/bi";
+import { BiInfoCircle, BiPurchaseTagAlt, BiSend } from "react-icons/bi";
 import { AuthContext } from "@/Contexts/AuthProvider/AuthProvider";
 import { useQuery } from "@tanstack/react-query";
 import { toast } from 'react-toastify';
 import Comment from "./Comment";
 import { Avatar, Button, TextInput } from "flowbite-react";
 import Loader from "../Shared/Loader/Loader";
+import { IoCall } from "react-icons/io5";
+import ConfirmationModal from "../Shared/ConfirmationModal/ConfirmationModal";
 
 
 function numberWithCommas(x) {
@@ -25,6 +27,7 @@ const SinglePropertyPage = ({ propertyDetails }) => {
   const [recommendations, setRecommendations] = useState(null);
   const [singleProperty, setSingleProperty] = useState({})
   const [loading, setLoading] = useState(false)
+  const [showCallNowModal, setShowCallNowModal] = useState(false)
 
   const { user } = useContext(AuthContext);
 
@@ -98,7 +101,7 @@ const SinglePropertyPage = ({ propertyDetails }) => {
 
 
   return (
-    <div className="my-16 mb-16 max-w-[1440px] w-[95%] mx-auto">
+    <div className="my-16 mb-16 max-w-[1440px] w-[95%] mx-auto overflow-x-auto">
       <div className="grid gap-8 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-6">
         <div className="col-span-1 lg:col-span-4 md:col-span-2">
           <img
@@ -439,13 +442,40 @@ const SinglePropertyPage = ({ propertyDetails }) => {
                 placeholder="Leave a comment..."
               ></textarea>
             </div>
-            <button
-              type="submit"
-              class="text-white bg-secondary hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-md text-md w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-900 dark:hover:bg-blue-900 dark:focus:ring-blue-900"
-            >
-              Submit
-            </button>
+            <div className="flex gap-2">
+              <button
+                type="submit"
+                class="text-white bg-secondary hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-md text-md w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-900 dark:hover:bg-blue-900 dark:focus:ring-blue-900"
+              >
+                Submit
+              </button>
+              <span onClick={() => setShowCallNowModal(!showCallNowModal)} className="text-white bg-secondary hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-md text-md w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-900 dark:hover:bg-blue-900 dark:focus:ring-blue-900 flex items-center gap-1 cursor-pointer"><IoCall /> Call Now</span>
+            </div>
           </form>
+          {
+            // Call Now Modal
+            showCallNowModal && <div id="popup-modal" tabIndex="-1" className="fixed flex items-center justify-center top-0 left-0 right-0 z-50  p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-modal md:h-full">
+              <div className="relative w-full h-full max-w-md md:h-auto rounded-lg">
+                <div className="relative bg-gray-200 rounded-lg shadow dark:bg-gray-700">
+                  <button onClick={() => setShowCallNowModal(!showCallNowModal)} type="button" className="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white" data-modal-hide="popup-modal">
+                    <svg aria-hidden="true" className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd"></path></svg>
+                    <span className="sr-only">Close modal</span>
+                  </button>
+                  <div className="p-6 text-center">
+                    <p className="my-1 text-lg font-normal text-gray-500 dark:text-gray-400">Call Us Now</p>
+                    <p className="my-1 text-lg font-normal text-gray-500 dark:text-gray-400"></p>
+                    <p className="my-1 text-lg font-normal text-primary dark:text-gray-400 flex items-center justify-center gap-2"><IoCall size={24} className="text-center" />+8801923-868397</p>
+                    <p className="my-1 text-lg font-normal text-gray-500 dark:text-gray-400">Please tell us the Property ID</p>
+                    <p className="my-1 text-lg font-normal text-primary dark:text-gray-400">ID-{propertyDetails._id.slice(-10).toUpperCase()}</p>
+                    <button onClick={() => setShowCallNowModal(!showCallNowModal)} data-modal-hide="popup-modal" type="button" className={`text-white bg-secondary hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2`}>
+                      Okay!
+                    </button>
+                    {/* <button onClick={() => setData(null)} data-modal-hide="popup-modal" type="button" className="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">{cancelActionName}</button> */}
+                  </div>
+                </div>
+              </div>
+            </div>
+          }
           {/* RECENT CARDS */}
           {recommendations?.map((recommendation) => (
             <Link

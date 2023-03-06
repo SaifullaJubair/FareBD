@@ -12,7 +12,7 @@ import { toast } from "react-toastify";
 import DashboardSideBar from "../DashboardSideBar/DashboardSideBar";
 
 
-const MyBlog = () => {
+const AllBlogs = () => {
     const { user } = useContext(AuthContext);
     const [showDeleteModal, setShowDeleteModal] = useState(null);
 
@@ -59,7 +59,7 @@ const MyBlog = () => {
         <div className='flex'>
             <DashboardSideBar></DashboardSideBar>
             <div className='mx-auto flex-grow overflow-x-auto'>
-                <h2 className='title uppercase p-10 text-center mb-10 bg-secondary text-white text-2xl font-semibold'>My Blogs </h2>
+                <h2 className='title uppercase p-10 text-center mb-10 bg-secondary text-white text-2xl font-semibold'>All Blogs </h2>
                 <Table>
                     <Table.Head>
                         <Table.HeadCell
@@ -82,22 +82,20 @@ const MyBlog = () => {
                     </Table.Head>
                     <Table.Body className="divide-y">
                         {
-                            userBlog.map(blog => <Table.Row key={blog._id} className="bg-white dark:border-gray-700 dark:bg-gray-800">
+                            blogs?.data?.map(blog => <Table.Row key={blog._id} className="bg-white dark:border-gray-700 dark:bg-gray-800">
                                 <Table.Cell align="center">
                                     <Image width={80} height={80} className=" " src={blog?.image} alt="" />
                                 </Table.Cell>
                                 <Table.Cell align="center" className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
-                                    {blog?.title}
+                                    {blog?.title.length > 45 ? blog?.title.slice(0, 50) + '...' : blog?.title}
                                 </Table.Cell>
                                 <Table.Cell align="center" className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
                                     {blog?.message.slice(0, 60) + '...'}
                                 </Table.Cell>
 
                                 <Table.Cell align="center" className="flex gap-2">
-
-                                    <Link href={`/singleblog/${blog._id}`} ><div className=""> <button className="text-white bg-secondary hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium text-sm px-4 py-2.5 mr-3 md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 flex items-center gap-2"><MdOutlinePageview size={20} className="text-white" />View</button></div></Link>
+                                    <Link href={`/singleblog/${blog._id}`} ><div className=""> <button className="text-white bg-secondary hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium text-sm px-5 py-2.5 mr-3 md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 flex items-center gap-2"><MdOutlinePageview size={20} className="text-white" />View</button></div></Link>
                                     <div className=""> <button className="text-white bg-red-500 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium text-sm px-5 py-2.5 mr-3 md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" onClick={() => setShowDeleteModal(blog)}>Delete</button></div>
-
                                 </Table.Cell>
 
                             </Table.Row>)
@@ -123,4 +121,4 @@ const MyBlog = () => {
     );
 };
 
-export default MyBlog;
+export default AllBlogs;

@@ -114,7 +114,12 @@ const DashboardSideBar = () => {
                     </span>
                   </Link>
                 </li>
-
+                <li>
+                  <BsGraphUp className="inline-block ml-4 mr-6 h-7"></BsGraphUp>
+                  <Link href={`/dashboard/myblog`}>
+                    <span className={hide ? "hidden" : "inline"}>My Blog</span>
+                  </Link>
+                </li>
               </>
             )}
 
@@ -135,6 +140,12 @@ const DashboardSideBar = () => {
                     <span className={hide ? "hidden" : "inline"}>
                       My Properties
                     </span>
+                  </Link>
+                </li>
+                <li>
+                  <BsGraphUp className="inline-block ml-4 mr-6 h-7"></BsGraphUp>
+                  <Link href={`/dashboard/myblog`}>
+                    <span className={hide ? "hidden" : "inline"}>My Blog</span>
                   </Link>
                 </li>
               </>
@@ -177,6 +188,18 @@ const DashboardSideBar = () => {
                     </span>
                   </Link>
                 </li>
+                <li>
+                  <BsGraphUp className="inline-block ml-4 mr-6 h-7"></BsGraphUp>
+                  <Link href={`/dashboard/myblog`}>
+                    <span className={hide ? "hidden" : "inline"}>My Blog</span>
+                  </Link>
+                </li>
+                <li>
+                  <BsGraphUp className="inline-block ml-4 mr-6 h-7"></BsGraphUp>
+                  <Link href={`/dashboard/allblogs`}>
+                    <span className={hide ? "hidden" : "inline"}>All Blogs</span>
+                  </Link>
+                </li>
               </>
             )}
 
@@ -186,12 +209,7 @@ const DashboardSideBar = () => {
                 <span className={hide ? "hidden" : "inline"}>Statistics</span>
               </Link>
             </li>
-            <li>
-              <BsGraphUp className="inline-block ml-4 mr-6 h-7"></BsGraphUp>
-              <Link href={`/dashboard/myblog`}>
-                <span className={hide ? "hidden" : "inline"}>My Blog</span>
-              </Link>
-            </li>
+
           </ul>
           <hr className="bg-white border-0" />
 
