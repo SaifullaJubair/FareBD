@@ -1,39 +1,58 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+### FareBD
 
-## Getting Started
+- Home sale and rental website
+  Where the house owner can sell the house and pay the rent, Tenant can buy house can take rent. Functionality can be used in a variety of ways.
 
-First, run the development server:
+### LiveSite: https://farebd-9.web.app/
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+### GitHub Client: https://github.com/SaifullaJubair/FareBD
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### GitHub Server: https://github.com/SaifullaJubair/Server-FareBD
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+### Team: Saifulla Jubair, Mostafizur Rahman, Zahid Hasan, Rezaul Karim, Amit Kumar Paul, Anik Datta
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+### Features
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+- Ui is excellent and clean.
+- Fire base Authentication
+- DashBoard
+- Environment variable
+- Wishlist implementation
+- Stripe for payment method
+- Totaly dynamic section
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+### For Client side we used:
 
-## Learn More
+- [NextJS]
+- [TailwindCSS]
+- [SwiperJS]
+- [Flowbite]
+- [ReactToastify]
+- [ReactIcon]
 
-To learn more about Next.js, take a look at the following resources:
+### For Server side I used:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Express JS (Node)
+- MongoDB
+- Vercel
+- CORS
+- Dotenv
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+### Npm
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
-# FareBD
+This project was created using CRA and the packages was installed by using
+npm i react-router-dom
+npm i react-helmet-async
+npm install react-icons --save
+npm install react-hot-toast
+npm install -D tailwindcss postcss autoprefixer
+npx tailwindcss init -p
+npm i react-scroll-to-top
+npm i @tanstack/react-query
+npm i tailwind-datepicker-react
+npm i react-toastify
+npm i flowbite
+npm install firebase
+npm install react-marquee-slider
+npm install react-multi-carousel
+npm install react-parallax
