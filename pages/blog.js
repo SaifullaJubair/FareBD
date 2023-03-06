@@ -1,4 +1,4 @@
-import Blogs from "@/Components/Blog/Blogs";
+import Blogs from "@/Components/Blog/Blogs/Blogs";
 import Loader from "@/Components/Shared/Loader/Loader";
 import { useQuery } from "@tanstack/react-query";
 import Link from "next/link";

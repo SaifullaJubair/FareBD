@@ -65,7 +65,7 @@ const UserProfile = () => {
                         onClick={handleLogOut}
 
                      >
-                        <div className='flex items-center'><FaUser></FaUser> <span className='ml-2'>LogIn</span></div>
+                        <div className='flex items-center'><FaUser></FaUser> <span className='ml-2'>Log Out</span></div>
                      </Button>
                   </Link>
                </div>
