@@ -22,7 +22,8 @@ const DashboardSideBar = () => {
   const [hide, setHide] = useState(true);
   const [isBuyer] = useBuyer(user?.email);
   const [isSeller] = useSeller(user?.email);
-  const [isAdmin] = useAdmin(user?.email);
+  const [isAdmin, isAdminLoading] = useAdmin(user?.email);
+  console.log(isAdmin, isAdminLoading);
 
   const handleToggle = () => {
     setHide(!hide);
@@ -42,7 +43,7 @@ const DashboardSideBar = () => {
 
   const handleLogOut = () => {
     logout()
-      .then(() => { })
+      .then(() => {})
       .catch((error) => console.log(error));
   };
 
@@ -114,12 +115,15 @@ const DashboardSideBar = () => {
                     </span>
                   </Link>
                 </li>
+<<<<<<< HEAD
+=======
                 <li>
                   <BsGraphUp className="inline-block ml-4 mr-6 h-7"></BsGraphUp>
                   <Link href={`/dashboard/myblog`}>
                     <span className={hide ? "hidden" : "inline"}>My Blog</span>
                   </Link>
                 </li>
+>>>>>>> c83e4629a6a03989c59aaa8248ef5b1b97a5c326
               </>
             )}
 

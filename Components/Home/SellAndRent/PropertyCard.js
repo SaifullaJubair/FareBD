@@ -62,7 +62,10 @@ const PropertyCard = ({ propertyData }) => {
     <>
       <div propertyData={propertyData} className="w-full shadow-md ">
         <div className="single-product-wrap style-bottom ">
-          <Link href={`/singleproperty/${propertyData?._id}`} className="thumb relative">
+          <Link
+            href={`/singleproperty/${propertyData?._id}`}
+            className="thumb relative"
+          >
             <span className="-mx-5 -mt-3 shadow-md rounded-br-3xl px-5 w-fit translate-x-4 bg-secondary py-2 translate-y-2 absolute top-0 left-0 text-white">
               {propertyData?.property_condition === "toRent"
                 ? "To Rent"
@@ -93,10 +96,7 @@ const PropertyCard = ({ propertyData }) => {
                     </p>
                   </div>
                 </div>
-                <div
-                  
-                  className="fav-btn float-right cursor-pointer"
-                >
+                <div className="fav-btn float-right cursor-pointer">
                   <span className="text-3xl hover:text-secondary ease-in duration-300">
                     <AiOutlineFullscreen> </AiOutlineFullscreen>
                   </span>
@@ -111,8 +111,12 @@ const PropertyCard = ({ propertyData }) => {
                   <div className="ml-5 bg-gray-100 pl-4 pr-0 py-2 mb-4">
                     <div className="flex items-center justify-between ">
                       <div className="font-medium mb-2 text-primary">
-                        <p className="text-lg md:text-xl lg:text-2xl">{propertyData?.property_name}</p>
-                        <p className="mt-1 text-sm capitalize">owner: {propertyData?.owner_name}</p>
+                        <p className="text-lg md:text-xl lg:text-2xl">
+                          {propertyData?.property_name}
+                        </p>
+                        <p className="mt-1 text-sm capitalize">
+                          owner: {propertyData?.owner_name}
+                        </p>
                       </div>
                       <div className="mr-3 text-sm">
                         <h2 className="text-xl flex flex-row items-center font-semibold text-orange-600">
@@ -124,13 +128,11 @@ const PropertyCard = ({ propertyData }) => {
                   </div>
                 </div>
                 <div style={{ height: "70px" }}>
-                  <p className="px-5 inline-block">{
-                  propertyData?.property_heading.length>90
-                  ?
-                  propertyData?.property_heading.slice(0, 90)+"..."
-                  :
-                  propertyData?.property_heading
-                  }</p>
+                  <p className="px-5 inline-block">
+                    {propertyData?.property_heading.length > 90
+                      ? propertyData?.property_heading.slice(0, 90) + "..."
+                      : propertyData?.property_heading}
+                  </p>
                 </div>
               </div>
               <Link href={`/singleproperty/${propertyData?._id}`}>
