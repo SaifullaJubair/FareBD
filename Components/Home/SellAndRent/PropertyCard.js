@@ -1,113 +1,155 @@
 import { AuthContext } from "@/Contexts/AuthProvider/AuthProvider";
 import Link from "next/link";
-import { useContext, useEffect } from "react";
-import { AiOutlineHeart } from "react-icons/ai";
+import { useContext, useEffect, useState } from "react";
+import toast, { Toaster } from "react-hot-toast";
+import { AiOutlineFullscreen } from "react-icons/ai";
 import { CiLocationOn } from "react-icons/ci";
-const PropertyCard = ({propertyData}) => {
+import { TbCurrencyTaka } from "react-icons/tb";
+const PropertyCard = ({ propertyData }) => {
   const { user } = useContext(AuthContext);
-    // console.log(propertyData);
-
-
-    const wishItemInfo = {
-      // UserInfo
-      userId: user?.uid,
-      userName: user?.displayName,
-      userEmail: user?.email,
-      userPhoto: user?.photoURL,
-      // PropertyInfo
-      propertyId: propertyData?._id,
-      propertyName: propertyData?.property_name,
-      propertyPicture: propertyData?.property_picture,
-      propertyPrice: propertyData?.price,
-      propertyCondition: propertyData?.property_condition,
-      // SellerInfo
-      sellerName: propertyData?.user_name,
-      sellerEmail: propertyData?.user_email,
-      sellerPhoto: propertyData?.user_image,
-
-    }
-    // console.log(wishItemInfo);
-
-  const addWishlist = (wishItem) => {
-      fetch('http://localhost:5000/add-wishlist',{
-        method: 'POST',
-        headers: {
-          'content-type':'application/json'
-        },
-        body: JSON.stringify(wishItem)
-      })
-      .then(res => res.json())
-      .then(data => console.log(data))
-      .catch(err => console.log(err))
+  // console.log(propertyData);
+  function numberWithCommas(x) {
+    x = x.toString();
+    var pattern = /(-?\d+)(\d{3})/;
+    while (pattern.test(x)) x = x.replace(pattern, "$1,$2");
+    return x;
   }
+  const priceWithCommas = numberWithCommas(propertyData?.price);
+
+  // const wishItemInfo = {
+  //   // UserInfo
+  //   userId: user?.uid,
+  //   userName: user?.displayName,
+  //   userEmail: user?.email,
+  //   userPhoto: user?.photoURL,
+  //   // PropertyInfo
+  //   propertyId: propertyData?._id,
+  //   propertyName: propertyData?.property_name,
+  //   propertyPicture: propertyData?.property_picture,
+  //   propertyPrice: propertyData?.price,
+  //   propertyCondition: propertyData?.property_condition,
+  //   // SellerInfo
+  //   sellerName: propertyData?.user_name,
+  //   sellerEmail: propertyData?.user_email,
+  //   sellerPhoto: propertyData?.user_image,
+  // };
+
+  // const addWishlist = (wishItem) => {
+  //   if (user?.uid) {
+  //     fetch("http://localhost:5000/add-wishlist", {
+  //       method: "POST",
+  //       headers: {
+  //         "content-type": "application/json",
+  //       },
+  //       body: JSON.stringify(wishItem),
+  //     })
+  //       .then((res) => res.json())
+  //       .then((data) => {
+  //         if (data.acknowledged === true) {
+  //           // console.log("Done Done Done");
+  //           // notify
+  //         alert("Saved successfully!")
+  //         }
+  //       })
+  //       .catch((err) => console.log(err));
+  //   }
+  //   else{
+  //     alert("User not found!")
+  //   }
+  // };
 
   return (
     <>
-      <div propertyData={propertyData} className="w-full">
+      <div propertyData={propertyData} className="w-full shadow-md ">
         <div className="single-product-wrap style-bottom ">
-          <div className="thumb relative">
+          <Link href={`/singleproperty/${propertyData?._id}`} className="thumb relative">
+            <span className="-mx-5 -mt-3 shadow-md rounded-br-3xl px-5 w-fit translate-x-4 bg-secondary py-2 translate-y-2 absolute top-0 left-0 text-white">
+              {propertyData?.property_condition === "toRent"
+                ? "To Rent"
+                : "For Sell"}
+            </span>
             <img
               className="w-full h-64"
               src={propertyData?.property_picture}
               alt="img"
             />
-            <div className="product-wrap-details absolute bottom-0 left-0 w-full px-9 text-white">
+            <div className="pt-12 bg-gradient-to-t from-black product-wrap-details absolute bottom-0 left-0 w-full px-5 text-white">
               <div className="media flex items-center mb-4 justify-between">
-                <div className="author">
+                <div className="author flex items-center justify-between">
                   <img
-                    className=" mr-4 h-10 w-10 rounded-full"
+                    className="bg-primary mr-4 h-12 w-12 rounded-full border-secondary border-2"
                     src={propertyData?.user_image}
                     alt="img"
                   />
+                  <div className="media-body text-xs font-medium">
+                    <h6 className="mb-1">
+                      <a href="#">{propertyData?.user_name}</a>
+                    </h6>
+                    <p className="flex">
+                      <span className="text-xl">
+                        <CiLocationOn></CiLocationOn>
+                      </span>
+                      {propertyData?.location}
+                    </p>
+                  </div>
                 </div>
-                <div className="media-body text-xs font-medium">
-                  <h6 className="">
-                    <a href="#">{propertyData?.owner_name}</a>
-                  </h6>
-                  <p className="flex">
-                    <span className="text-xl">
-                      <CiLocationOn></CiLocationOn>
-                    </span>
-                    {propertyData?.location}
-                  </p>
-                </div>
-                <div onClick={() => addWishlist(wishItemInfo)} className="fav-btn float-right cursor-pointer">
+                <div
+                  
+                  className="fav-btn float-right cursor-pointer"
+                >
                   <span className="text-3xl hover:text-secondary ease-in duration-300">
-                    <AiOutlineHeart> </AiOutlineHeart>
-                  </span>{" "}
+                    <AiOutlineFullscreen> </AiOutlineFullscreen>
+                  </span>
                 </div>
               </div>
             </div>
-          </div>
-          <Link href={`/singleproperty/${propertyData?._id}`}>
-            <div className="product-details-inner bg-gray-200 py-5 px-9 ">
-              <h4 className="font-medium mb-3 text-primary text-2xl hover:text-secondary ease-in duration-300">
-                <a href="property-details.html">{propertyData?.property_name}</a>
-              </h4>
-              <ul className="meta-inner flex mb-3 justify-items-start">
-                <li className="flex mr-3 text-sm">
-                  <span className="text-xl mr-2"></span>
-                  <CiLocationOn></CiLocationOn>
-                  {propertyData?.location}
-                </li>
-                <li className="bg-secondary text-sm text-white px-2">
-                  {
-                     propertyData?.property_condition==="toRent" ? "To Rent" : "For Sell"
-                  }
-                </li>
-              </ul>
-              <p>{propertyData?.property_heading}</p>
-            </div>
-            <div className="product-meta-bottom font-medium text-primary bg-gray-300 py-5 px-9">
-              <span className="price">$ {propertyData?.price}</span>
-              <span className="mx-4">
-                  {
-                     propertyData?.property_condition==="toRent" ? "To Rent" : "For Sell"
-                  }
-              </span>
-              <span>{propertyData?.post_date}</span>
-            </div>
           </Link>
+          <>
+            <div className="">
+              <div className="product-details-inner bg-gray-50 shadow-md py-5 ">
+                <div className="bg-secondary w-full">
+                  <div className="ml-5 bg-gray-100 pl-4 pr-0 py-2 mb-4">
+                    <div className="flex items-center justify-between ">
+                      <div className="font-medium mb-2 text-primary">
+                        <p className="text-lg md:text-xl lg:text-2xl">{propertyData?.property_name}</p>
+                        <p className="mt-1 text-sm capitalize">owner: {propertyData?.owner_name}</p>
+                      </div>
+                      <div className="mr-3 text-sm">
+                        <h2 className="text-xl flex flex-row items-center font-semibold text-orange-600">
+                          <TbCurrencyTaka className="inline text-2xl md:text-xl lg:text-2xl" />
+                          {priceWithCommas}/-
+                        </h2>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div style={{ height: "70px" }}>
+                  <p className="px-5 inline-block">{
+                  propertyData?.property_heading.length>90
+                  ?
+                  propertyData?.property_heading.slice(0, 90)+"..."
+                  :
+                  propertyData?.property_heading
+                  }</p>
+                </div>
+              </div>
+              <Link href={`/singleproperty/${propertyData?._id}`}>
+                <div className="flex items-center justify-between product-meta-bottom font-medium text-primary bg-gray-100 py-2 pl-5">
+                  <span>
+                    <span className="text-gray-600 font-normal">
+                      {propertyData?.post_date}
+                    </span>
+                  </span>
+                  <button
+                    type="submit"
+                    class="text-white bg-secondary px-8 py-2 rounded-l-3xl "
+                  >
+                    More Details
+                  </button>
+                </div>
+              </Link>
+            </div>
+          </>
         </div>
       </div>
     </>
