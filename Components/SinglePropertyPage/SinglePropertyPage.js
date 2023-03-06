@@ -13,13 +13,15 @@ import {
   FaHeart,
 } from "react-icons/fa";
 import { TbCurrencyTaka } from "react-icons/tb";
-import { BiPurchaseTagAlt, BiSend } from "react-icons/bi";
+import { BiInfoCircle, BiPurchaseTagAlt, BiSend } from "react-icons/bi";
 import { AuthContext } from "@/Contexts/AuthProvider/AuthProvider";
 import { useQuery } from "@tanstack/react-query";
 import { toast } from "react-toastify";
 import Comment from "./Comment";
 import { Avatar, Button, TextInput } from "flowbite-react";
 import Loader from "../Shared/Loader/Loader";
+import { IoCall } from "react-icons/io5";
+import ConfirmationModal from "../Shared/ConfirmationModal/ConfirmationModal";
 
 function numberWithCommas(x) {
   x = x.toString();
@@ -35,9 +37,11 @@ const SinglePropertyPage = ({ propertyDetails }) => {
   const [recommendations, setRecommendations] = useState(null);
   const [singleProperty, setSingleProperty] = useState({});
   const [loading, setLoading] = useState(false);
+  const [showCallNowModal, setShowCallNowModal] = useState(false);
   const [wishList, setWishList] = useState(false);
 
   const { user } = useContext(AuthContext);
+
   useEffect(() => {
     fetch(`http://localhost:5000/searchByDivision/${data?.division}`)
       .then((res) => res.json())
@@ -58,7 +62,9 @@ const SinglePropertyPage = ({ propertyDetails }) => {
       });
   }, [data?._id, user?.email]);
 
+  // console.log(data._id);
   const priceWithCommas = numberWithCommas(data.price);
+
   const {
     property_picture,
     property_type,
@@ -72,6 +78,7 @@ const SinglePropertyPage = ({ propertyDetails }) => {
     price,
     property_condition,
   } = data;
+  console.log(data);
 
   const { data: comments = [], refetch } = useQuery({
     queryKey: ["comment"],
@@ -79,6 +86,7 @@ const SinglePropertyPage = ({ propertyDetails }) => {
     queryFn: async () => {
       const res = await fetch(`http://localhost:5000/comment/${_id}`);
       const data = await res.json();
+      console.log(data);
       return data;
     },
   });
@@ -180,7 +188,7 @@ const SinglePropertyPage = ({ propertyDetails }) => {
   };
 
   return (
-    <div className="my-16 mb-16 max-w-[1440px] w-[95%] mx-auto">
+    <div className="my-16 mb-16 max-w-[1440px] w-[95%] mx-auto overflow-x-auto">
       <div className="grid gap-8 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-6">
         <div className="col-span-1 lg:col-span-4 md:col-span-2">
           <img
@@ -219,8 +227,7 @@ const SinglePropertyPage = ({ propertyDetails }) => {
                     <Link
                       href={`/purchase/${data?._id}`}
                       type="button"
-                      className="py-2.5 px-5 mr-2 mb-2 text-md font-medium text-primary focus:outline-none bg-primary/5
-                     rounded-md transition duration-300 hover:bg-primary/10 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
+                      className="py-2.5 px-5 mr-2 mb-2 text-md font-medium text-primary focus:outline-none bg-teal-50 rounded-md hover:bg-pink-50 hover:text-pink-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
                     >
                       <BiPurchaseTagAlt className="inline mr-2 font-bold" />
                       {data.property_condition === "toRent"
@@ -332,60 +339,6 @@ const SinglePropertyPage = ({ propertyDetails }) => {
 
           {/* User Comment Box*/}
           <div className="review-section">
-            {/* <form className="py-3 my-3 text-2xl font-semibold border-t-2 border-secondary">
-              <div class="w-full mb-4 border border-gray-200 rounded-lg bg-gray-50 dark:bg-gray-700 dark:border-gray-600">
-                <div class="px-4 py-2 bg-white rounded-t-lg dark:bg-gray-800">
-                  <label for="comment" class="sr-only">
-                    Your comment
-                  </label>
-                  <textarea
-                    id="comment"
-                    rows="4"
-                    class="w-full px-0 text-sm text-gray-900 bg-white border-0 dark:bg-gray-800 focus:ring-0 dark:text-white dark:placeholder-gray-400"
-                    placeholder="Write a comment..."
-                    required
-                  ></textarea>
-                </div>
-                <div class="flex items-center justify-between px-3 py-2 border-t dark:border-gray-600">
-                  <button
-                    type="submit"
-                    class="text-white bg-secondary hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-md text-md w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-900 dark:hover:bg-blue-900 dark:focus:ring-blue-900"
-                  >
-                    Post comment
-                  </button>
-
-                </div>
-              </div>
-            </form> */}
-
-            {/* Comments */}
-
-            {/* <figure class="max-w-screen-md">
-              <figcaption class="flex items-center mb-6 space-x-3">
-                <img
-                  class="w-6 h-6 rounded-full"
-                  src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/bonnie-green.png"
-                  alt="profile picture"
-                />
-                <div class="flex items-center divide-x-2 divide-gray-300 dark:divide-gray-700">
-                  <cite class="pr-3 font-medium text-gray-900 dark:text-white">
-                    Bonnie Green
-                  </cite>
-                  <cite class="pl-3 text-sm font-light text-gray-500 dark:text-gray-400">
-                    CTO at Flowbite
-                  </cite>
-                </div>
-              </figcaption>
-              <blockquote>
-                <p class="text-xl font-semibold text-gray-900 dark:text-white">
-                  "Flowbite is just awesome. It contains tons of predesigned
-                  components and pages starting from login screen to complex
-                  dashboard. Perfect choice for your next SaaS application."
-                </p>
-              </blockquote>
-
-            </figure> */}
-
             <div className="mt-8 ">
               <hr />
             </div>
@@ -539,13 +492,82 @@ const SinglePropertyPage = ({ propertyDetails }) => {
                 placeholder="Leave a comment..."
               ></textarea>
             </div>
-            <button
-              type="submit"
-              class="text-white bg-secondary hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-md text-md w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-900 dark:hover:bg-blue-900 dark:focus:ring-blue-900"
-            >
-              Submit
-            </button>
+            <div className="flex gap-2">
+              <button
+                type="submit"
+                class="text-white bg-secondary hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-md text-md w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-900 dark:hover:bg-blue-900 dark:focus:ring-blue-900"
+              >
+                Submit
+              </button>
+              <span
+                onClick={() => setShowCallNowModal(!showCallNowModal)}
+                className="text-white bg-secondary hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-md text-md w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-900 dark:hover:bg-blue-900 dark:focus:ring-blue-900 flex items-center gap-1 cursor-pointer"
+              >
+                <IoCall /> Call Now
+              </span>
+            </div>
           </form>
+          {
+            // Call Now Modal
+            showCallNowModal && (
+              <div
+                id="popup-modal"
+                tabIndex="-1"
+                className="fixed flex items-center justify-center top-0 left-0 right-0 z-50  p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-modal md:h-full"
+              >
+                <div className="relative w-full h-full max-w-md md:h-auto rounded-lg">
+                  <div className="relative bg-gray-200 rounded-lg shadow dark:bg-gray-700">
+                    <button
+                      onClick={() => setShowCallNowModal(!showCallNowModal)}
+                      type="button"
+                      className="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white"
+                      data-modal-hide="popup-modal"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        className="w-5 h-5"
+                        fill="currentColor"
+                        viewBox="0 0 20 20"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          fillRule="evenodd"
+                          d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                          clipRule="evenodd"
+                        ></path>
+                      </svg>
+                      <span className="sr-only">Close modal</span>
+                    </button>
+                    <div className="p-6 text-center">
+                      <p className="my-1 text-lg font-normal text-gray-500 dark:text-gray-400">
+                        Call Us Now
+                      </p>
+                      <p className="my-1 text-lg font-normal text-gray-500 dark:text-gray-400"></p>
+                      <p className="my-1 text-lg font-normal text-primary dark:text-gray-400 flex items-center justify-center gap-2">
+                        <IoCall size={24} className="text-center" />
+                        +8801923-868397
+                      </p>
+                      <p className="my-1 text-lg font-normal text-gray-500 dark:text-gray-400">
+                        Please tell us the Property ID
+                      </p>
+                      <p className="my-1 text-lg font-normal text-primary dark:text-gray-400">
+                        ID-{propertyDetails._id.slice(-10).toUpperCase()}
+                      </p>
+                      <button
+                        onClick={() => setShowCallNowModal(!showCallNowModal)}
+                        data-modal-hide="popup-modal"
+                        type="button"
+                        className={`text-white bg-secondary hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2`}
+                      >
+                        Okay!
+                      </button>
+                      {/* <button onClick={() => setData(null)} data-modal-hide="popup-modal" type="button" className="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">{cancelActionName}</button> */}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )
+          }
           {/* RECENT CARDS */}
           {recommendations?.map((recommendation) => (
             <Link

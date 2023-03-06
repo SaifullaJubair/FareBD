@@ -1,31 +1,21 @@
-import { useQuery } from "@tanstack/react-query"; 
+import { useQuery } from "@tanstack/react-query";
 import { BsPersonFill, BsArrowRight } from "react-icons/bs";
 import { BiCalendar } from "react-icons/bi";
 import Loader from "@/Components/Shared/Loader/Loader";
-import Link from "next/link"; 
+import Link from "next/link";
+import { useContext, useEffect, useState } from "react";
+import { AuthContext } from "@/Contexts/AuthProvider/AuthProvider";
 const Advertise = () => {
 
+  const { user } = useContext(AuthContext);
+  const [advertises, setAdvertises] = useState([])
 
 
-  const { data: products, isLoading } = useQuery({
-    queryKey: ["user"],
-    queryFn: async () => {
-      try {
-        const res = await fetch('http://localhost:5000/advertise', {
-
-        })
-        const data = await res.json();
-        return data;
-      } catch (error) {
-        console.log(error);
-      }
-    },
-  });
-
-  // loading
-  if (isLoading) {
-    return <Loader></Loader>;
-  }
+  useEffect(() => {
+    fetch(`http://localhost:5000/advertise`)
+      .then(res => res.json())
+      .then(data => setAdvertises(data))
+  }, [user])
 
 
 
@@ -35,7 +25,7 @@ const Advertise = () => {
       <div className="flex flex-wrap items-center justify-center gap-5">
         {/* card 1 */}
         {
-          products?.map(advertised =>
+          advertises?.map(advertised =>
             <Link href={`/singleproperty/${advertised?._id}`}><div key={advertised?._id}>
               <div
                 style={{
@@ -71,7 +61,7 @@ const Advertise = () => {
             </Link>
           )}
       </div>
-      
+
     </div>
   );
 };
