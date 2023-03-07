@@ -6,14 +6,13 @@ import Link from "next/link";
 import React, { useContext, useEffect, useState } from "react";
 import { AiOutlineLogout } from "react-icons/ai";
 import {
-  BiCategory,
   BiCommentDetail,
-  BiDislike,
   BiGroup,
-  BiLike,
 } from "react-icons/bi";
 import { BsGraphUp, BsNewspaper } from "react-icons/bs";
+import { RiEditBoxLine } from "react-icons/ri";
 import { CgAddR } from "react-icons/cg";
+import { FaHeart, FaLaptopHouse, FaHouseDamage } from "react-icons/fa";
 import { HiOutlineMenu } from "react-icons/hi";
 import { MdOutlineAccountCircle } from "react-icons/md";
 
@@ -43,7 +42,7 @@ const DashboardSideBar = () => {
 
   const handleLogOut = () => {
     logout()
-      .then(() => {})
+      .then(() => { })
       .catch((error) => console.log(error));
   };
 
@@ -92,21 +91,21 @@ const DashboardSideBar = () => {
             {isBuyer && (
               <>
                 <li>
-                  <BiLike className="inline-block ml-4 mr-6 h-7"></BiLike>
+                  <FaHeart className="inline-block ml-4 mr-6 h-7" />
                   <Link href={`/dashboard/mywishlist`}>
                     <span className={hide ? "hidden" : "inline"}>
                       My Wishlist
                     </span>
                   </Link>
                 </li>
-                <li>
+                {/* <li>
                   <BiDislike className="inline-block ml-4 mr-6 h-7"></BiDislike>
                   <Link href={`/dashboard/myfeedback`}>
                     <span className={hide ? "hidden" : "inline"}>
                       My Feedback
                     </span>
                   </Link>
-                </li>
+                </li> */}
                 <li>
                   <BiCommentDetail className="inline-block ml-4 mr-6 h-7"></BiCommentDetail>
                   <Link href={`/dashboard/mycomments`}>
@@ -115,15 +114,6 @@ const DashboardSideBar = () => {
                     </span>
                   </Link>
                 </li>
-<<<<<<< HEAD
-=======
-                <li>
-                  <BsGraphUp className="inline-block ml-4 mr-6 h-7"></BsGraphUp>
-                  <Link href={`/dashboard/myblog`}>
-                    <span className={hide ? "hidden" : "inline"}>My Blog</span>
-                  </Link>
-                </li>
->>>>>>> c83e4629a6a03989c59aaa8248ef5b1b97a5c326
               </>
             )}
 
@@ -139,7 +129,7 @@ const DashboardSideBar = () => {
                   </Link>
                 </li>
                 <li>
-                  <BsNewspaper className="inline-block ml-4 mr-6 h-7"></BsNewspaper>
+                  <FaHouseDamage className="inline-block ml-4 mr-6 h-7"></FaHouseDamage>
                   <Link href={`/dashboard/myproperties`}>
                     <span className={hide ? "hidden" : "inline"}>
                       My Properties
@@ -147,9 +137,11 @@ const DashboardSideBar = () => {
                   </Link>
                 </li>
                 <li>
-                  <BsGraphUp className="inline-block ml-4 mr-6 h-7"></BsGraphUp>
-                  <Link href={`/dashboard/myblog`}>
-                    <span className={hide ? "hidden" : "inline"}>My Blog</span>
+                  <BiCommentDetail className="inline-block ml-4 mr-6 h-7"></BiCommentDetail>
+                  <Link href={`/dashboard/mycomments`}>
+                    <span className={hide ? "hidden" : "inline"}>
+                      My Comments
+                    </span>
                   </Link>
                 </li>
               </>
@@ -158,7 +150,7 @@ const DashboardSideBar = () => {
             {isAdmin && (
               <>
                 <li>
-                  <BiLike className="inline-block ml-4 mr-6 h-7"></BiLike>
+                  <FaHeart className="inline-block ml-4 mr-6 h-7" />
                   <Link href={`/dashboard/allwishlist`}>
                     <span className={hide ? "hidden" : "inline"}>
                       All Wishlist
@@ -166,17 +158,17 @@ const DashboardSideBar = () => {
                   </Link>
                 </li>
 
-                <li>
+                {/* <li>
                   <BiCommentDetail className="inline-block ml-4 mr-6 h-7"></BiCommentDetail>
                   <Link href={`/dashboard/allfeedback`}>
                     <span className={hide ? "hidden" : "inline"}>
                       All Feedback
                     </span>
                   </Link>
-                </li>
+                </li> */}
 
                 <li>
-                  <BsNewspaper className="inline-block ml-4 mr-6 h-7"></BsNewspaper>
+                  <FaLaptopHouse className="inline-block ml-4 mr-6 h-7"></FaLaptopHouse>
                   <Link href={`/dashboard/allproperties`}>
                     <span className={hide ? "hidden" : "inline"}>
                       All Properties
@@ -193,19 +185,28 @@ const DashboardSideBar = () => {
                   </Link>
                 </li>
                 <li>
-                  <BsGraphUp className="inline-block ml-4 mr-6 h-7"></BsGraphUp>
-                  <Link href={`/dashboard/myblog`}>
-                    <span className={hide ? "hidden" : "inline"}>My Blog</span>
+                  <BiCommentDetail className="inline-block ml-4 mr-6 h-7"></BiCommentDetail>
+                  <Link href={`/dashboard/mycomments`}>
+                    <span className={hide ? "hidden" : "inline"}>
+                      My Comments
+                    </span>
                   </Link>
                 </li>
+
                 <li>
-                  <BsGraphUp className="inline-block ml-4 mr-6 h-7"></BsGraphUp>
+                  <RiEditBoxLine className="inline-block ml-4 mr-6 h-7"></RiEditBoxLine>
                   <Link href={`/dashboard/allblogs`}>
                     <span className={hide ? "hidden" : "inline"}>All Blogs</span>
                   </Link>
                 </li>
               </>
             )}
+            <li>
+              <RiEditBoxLine className="inline-block ml-4 mr-6 h-7"></RiEditBoxLine>
+              <Link href={`/dashboard/myblog`}>
+                <span className={hide ? "hidden" : "inline"}>My Blog</span>
+              </Link>
+            </li>
 
             <li>
               <BsGraphUp className="inline-block ml-4 mr-6 h-7"></BsGraphUp>
