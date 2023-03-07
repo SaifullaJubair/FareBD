@@ -32,7 +32,7 @@ const AdvertiseCard = ({ adData }) => {
             <div class="flex justify-center relative rounded-lg overflow-hidden h-52">
               <div class="transition-transform duration-500 transform ease-in-out hover:scale-110 w-full">
                 <div class="absolute inset-0">
-                  <img src={adData.property_picture} alt="" srcset="" />
+                  <img className="w-full" src={adData.property_picture} alt="" srcset="" />
                 </div>
               </div>
 

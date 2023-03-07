@@ -3,37 +3,62 @@ import { AuthContext } from "@/Contexts/AuthProvider/AuthProvider";
 import { Button, Table } from "flowbite-react";
 import Link from "next/link";
 import { useContext, useEffect, useState } from "react";
+import { BiArrowToRight } from "react-icons/bi";
 import { FaEdit, FaTrash } from "react-icons/fa";
-import DashboardSideBar from "../DashboardSideBar/DashboardSideBar";
+import { toast } from "react-toastify";
+import DashboardSideBar from '../DashboardSideBar/DashboardSideBar';
 
-const MyWishList = () => {
+const MyWishlist = () => {
   const [refetch, setRefetch] = useState(false);
   const [wishlistPosts, setWishlistPosts] = useState([]);
   const { user } = useContext(AuthContext);
   const [deleteData, setDeleteData] = useState(null);
 
   useEffect(() => {
-    if (user) {
-      fetch(`http://localhost:5000/wishlist/${user?.email}`)
+    if (user?.email) {
+      fetch(`http://localhost:5000/mywishlist/${user?.email}`)
         .then(res => res.json())
         .then(data => {
-          // console.log(data);
           setWishlistPosts(data);
         })
     }
-  }, [user, refetch])
+  }, [user?.email, refetch])
 
   const handleDeletePost = post => {
     // console.log(post);
+    fetch(`http://localhost:5000/mywishlist/${post?.propertyId}?email=${user?.email}`,
+      {
+        method: "DELETE",
+        headers: {
+          "content-type": "application/json",
+        },
+      }
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data, post);
+        if (data.deletedCount > 0) {
+          setDeleteData(false)
+          toast.success("Property deleted successfully from wishlist!")
+          setRefetch(!refetch)
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+        setDeleteData(null);
+        toast.error("Something went wrong!")
+      });
   }
 
   const onClose = () => {
     setDeleteData(null)
   }
+
+  // console.log(wishlistPosts);
   return (
-    <div className="flex">
+    <div className='flex'>
       <DashboardSideBar></DashboardSideBar>
-      <div className='mx-auto flex-grow'>
+      <div className="mx-auto flex-grow overflow-x-auto">
         <h2 className='title uppercase p-10 text-center mb-10 bg-secondary text-white text-2xl font-semibold'>My Wishlist </h2>
 
         <Table striped={true}>
@@ -52,6 +77,9 @@ const MyWishList = () => {
             </Table.HeadCell>
             <Table.HeadCell>
               Seller Email
+            </Table.HeadCell>
+            <Table.HeadCell>
+              Status
             </Table.HeadCell>
             <Table.HeadCell>
               Price
@@ -80,12 +108,19 @@ const MyWishList = () => {
                     {post.sellerEmail}
                   </Table.Cell>
                   <Table.Cell>
+                    {post.paid && post.transactionId ?
+                      <span className="border p-1 rounded-md text-red-500">Sold</span>
+                      :
+                      <span className="border p-1 rounded-md text-secondary">Available</span>
+                    }
+                  </Table.Cell>
+                  <Table.Cell>
                     ${post.propertyPrice}
                   </Table.Cell>
                   <Table.Cell className='flex gap-3' >
 
                     <Link href={`/singleproperty/${post.propertyId}`} ><Button size="xs">
-                      <FaEdit className='mr-2'></FaEdit> {post.propertyCondition === "toRent" ? "Rent Now" : "Buy Now"}
+                      <BiArrowToRight className='mr-2' size={16}></BiArrowToRight> {post.propertyCondition === "toRent" ? "Rent Now" : "Buy Now"}
                     </Button></Link>
 
                     <Button size="xs" color="failure" onClick={() => setDeleteData(post)}>
@@ -115,4 +150,4 @@ const MyWishList = () => {
   );
 };
 
-export default MyWishList;
+export default MyWishlist;
