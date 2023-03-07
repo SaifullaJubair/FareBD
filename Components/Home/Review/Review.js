@@ -67,7 +67,13 @@ const Review = () => {
   return (
     <div className="pt-36 pb-20">
       <div className="sm:max-w-[960px] mx-auto relative px-3 ">
-        <h2 className="text-3xl text-center font-bold mb-16">Reviews</h2>
+          <div class="container flex justify-center mx-auto pb-4">
+            <div>
+              <h1 class="xl:text-4xl text-3xl text-center text-gray-800 font-extrabold pb-6 sm:w-4/6 w-5/6 mx-auto">
+                What people are saying.
+              </h1>
+            </div>
+          </div>
         <Swiper
           modules={[Pagination, Autoplay]}
           pagination={{ clickable: true }}
