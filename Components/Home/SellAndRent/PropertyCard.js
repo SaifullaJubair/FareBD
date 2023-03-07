@@ -16,48 +16,6 @@ const PropertyCard = ({ propertyData }) => {
   }
   const priceWithCommas = numberWithCommas(propertyData?.price);
 
-  // const wishItemInfo = {
-  //   // UserInfo
-  //   userId: user?.uid,
-  //   userName: user?.displayName,
-  //   userEmail: user?.email,
-  //   userPhoto: user?.photoURL,
-  //   // PropertyInfo
-  //   propertyId: propertyData?._id,
-  //   propertyName: propertyData?.property_name,
-  //   propertyPicture: propertyData?.property_picture,
-  //   propertyPrice: propertyData?.price,
-  //   propertyCondition: propertyData?.property_condition,
-  //   // SellerInfo
-  //   sellerName: propertyData?.user_name,
-  //   sellerEmail: propertyData?.user_email,
-  //   sellerPhoto: propertyData?.user_image,
-  // };
-
-  // const addWishlist = (wishItem) => {
-  //   if (user?.uid) {
-  //     fetch("http://localhost:5000/add-wishlist", {
-  //       method: "POST",
-  //       headers: {
-  //         "content-type": "application/json",
-  //       },
-  //       body: JSON.stringify(wishItem),
-  //     })
-  //       .then((res) => res.json())
-  //       .then((data) => {
-  //         if (data.acknowledged === true) {
-  //           // console.log("Done Done Done");
-  //           // notify
-  //         alert("Saved successfully!")
-  //         }
-  //       })
-  //       .catch((err) => console.log(err));
-  //   }
-  //   else{
-  //     alert("User not found!")
-  //   }
-  // };
-
   return (
     <>
       <div propertyData={propertyData} className="w-full shadow-md ">
