@@ -8,13 +8,15 @@ import { BiPurchaseTagAlt } from "react-icons/bi";
 import { BsPerson } from "react-icons/bs";
 import { MdOutlineEmail } from "react-icons/md";
 import Loader from "@/Components/Shared/Loader/Loader";
-import CheckoutForm from "./checkoutForm";
+import CheckoutForm from "../../Components/Payment/CheckoutForm";
 import { AuthContext } from "@/Contexts/AuthProvider/AuthProvider";
 const stripePromise = loadStripe(
   "pk_test_51M5tTOKnej6sIH3rVMIsxguAqm18XGZR02SC20g8iK1BNNbFfESn0w8VEPo1zEZAXcQFMfUfZylKD2jJaMeqauWf00b9CPAVTd"
 );
 
-function purchase() {
+
+
+const purchaseId = () => {
   const router = useRouter();
   const id = router.query?.purchaseId;
 
@@ -69,12 +71,10 @@ function purchase() {
           <Elements stripe={stripePromise}>
             <CheckoutForm property={property} />
           </Elements>
-          {/* {!isLoading && !isError && (
-          )} */}
         </div>
       </div>
     </div>
   );
-}
+};
 
-export default purchase;
+export default purchaseId;
