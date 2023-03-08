@@ -7,7 +7,6 @@ import { loadStripe } from "@stripe/stripe-js";
 import { BiPurchaseTagAlt } from "react-icons/bi";
 import { BsPerson } from "react-icons/bs";
 import { MdOutlineEmail } from "react-icons/md";
-import { useQuery } from "@tanstack/react-query";
 import Loader from "@/Components/Shared/Loader/Loader";
 import CheckoutForm from "./checkoutForm";
 import { AuthContext } from "@/Contexts/AuthProvider/AuthProvider";
@@ -17,31 +16,37 @@ const stripePromise = loadStripe(
 
 function purchase() {
   const router = useRouter();
-  const id = router.query.purchaseId;
+  const id = router.query?.purchaseId;
+
   const { user } = useContext(AuthContext);
-  const {
-    data: property = {},
-    isLoading,
-    isError,
-  } = useQuery({
-    queryKey: ["property"],
-    queryFn: async function () {
+  const [property, setProperty] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
+
+  useEffect(() => {
+    const fetchData = async () => {
+      if (!router.isReady) return;
       try {
         const res = await fetch(`http://localhost:5000/singleproperty/${id}`);
         const data = await res.json();
-        return data;
+        setLoading(false);
+        setError("");
+        return setProperty(data);
       } catch (err) {
-        console.error(err);
+        setLoading(false);
+        setError(err);
+        console.log(err);
       }
-    },
-  });
+    };
+    fetchData();
+  }, [router.isReady]);
 
   return (
     <div className="my-16 mb-16 max-w-[1440px] w-[95%] mx-auto">
-      {isLoading && <Loader />}
+      {loading && <Loader />}
       <div className="w-3/4 mx-auto">
         <div className="space-y-5">
-          {isError && "An unknown error has occured ): Try to reload the page."}
+          {error && "An unknown error has occured ): Try to reload the page."}
           <div className="flex items-center gap-1">
             <BiPurchaseTagAlt className="text-2xl text-secondary/60 sm:text-xl" />
             <h1 className="text-lg font-semibold">
@@ -64,6 +69,8 @@ function purchase() {
           <Elements stripe={stripePromise}>
             <CheckoutForm property={property} />
           </Elements>
+          {/* {!isLoading && !isError && (
+          )} */}
         </div>
       </div>
     </div>

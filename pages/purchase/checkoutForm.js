@@ -111,16 +111,15 @@ export default function CheckoutForm({ property }) {
           <button
             onClick={handleSubmit}
             type="submit"
-            className="py-2.5 px-5 mr-2 mb-2 text-md font-medium text-primary focus:outline-none bg-teal-50 rounded-md hover:bg-pink-50 hover:text-pink-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
+            className="py-2.5 px-5 mr-2 mb-2 text-md font-medium text-primary focus:outline-none bg-primary/5
+                     rounded-md transition duration-300 hover:bg-primary/10 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
             disabled={!stripe || !clientSecret || processing}
           >
             Pay
           </button>
         </div>
       </form>
-      {cardError && (
-        <p className="text-base text-red-500 sm:text-lg">{cardError}</p>
-      )}
+      {cardError && <p className="text-base text-red-500">{cardError}</p>}
 
       {success && (
         <div>

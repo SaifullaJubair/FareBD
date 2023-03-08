@@ -223,11 +223,12 @@ const SinglePropertyPage = ({ propertyDetails }) => {
                       </>
                     )}
                   </button>
-                  {user?.email && (
+                  {user?.email && !data?.paid && (
                     <Link
                       href={`/purchase/${data?._id}`}
                       type="button"
-                      className="py-2.5 px-5 mr-2 mb-2 text-md font-medium text-primary focus:outline-none bg-teal-50 rounded-md hover:bg-pink-50 hover:text-pink-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
+                      className="py-2.5 px-5 mr-2 mb-2 text-md font-medium text-primary focus:outline-none bg-primary/5
+                     rounded-md transition duration-300 hover:bg-primary/10 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
                     >
                       <BiPurchaseTagAlt className="inline mr-2 font-bold" />
                       {data.property_condition === "toRent"
@@ -343,7 +344,7 @@ const SinglePropertyPage = ({ propertyDetails }) => {
               <hr />
             </div>
             <div className="my-8">
-              <h1 className="text-lg text-gray-500 pb-4 flex gap-2 items-center">
+              <h1 className="flex items-center gap-2 pb-4 text-lg text-gray-500">
                 <span>
                   {" "}
                   <FaComment></FaComment>
@@ -353,7 +354,7 @@ const SinglePropertyPage = ({ propertyDetails }) => {
               <form onSubmit={handleComment}>
                 {user?.uid ? (
                   !loading ? (
-                    <div className="flex gap-2 items-center">
+                    <div className="flex items-center gap-2">
                       <Avatar rounded={true} />
                       <TextInput
                         id="md"
@@ -378,10 +379,10 @@ const SinglePropertyPage = ({ propertyDetails }) => {
                 <p></p>
               ) : (
                 <div>
-                  <p className="mt-4 flex items-center gap-2 ">
+                  <p className="flex items-center gap-2 mt-4 ">
                     Please
                     <Link
-                      className="text-blue-500 font-semibold text-lg"
+                      className="text-lg font-semibold text-blue-500"
                       href="/login"
                     >
                       <span className="flex items-center gap-1">
@@ -403,7 +404,7 @@ const SinglePropertyPage = ({ propertyDetails }) => {
               comments={comments}
               commentRefetch={refetch}
             ></Comment>
-            <div className=" flex justify-start gap-2 my-8">
+            <div className="flex justify-start gap-2 my-8 ">
               <Button outline={true}>
                 <span className="flex items-center">
                   <FaAngleDown className="mr-1"></FaAngleDown>{" "}
@@ -513,9 +514,9 @@ const SinglePropertyPage = ({ propertyDetails }) => {
               <div
                 id="popup-modal"
                 tabIndex="-1"
-                className="fixed flex items-center justify-center top-0 left-0 right-0 z-50  p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-modal md:h-full"
+                className="fixed top-0 left-0 right-0 z-50 flex items-center justify-center p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-modal md:h-full"
               >
-                <div className="relative w-full h-full max-w-md md:h-auto rounded-lg">
+                <div className="relative w-full h-full max-w-md rounded-lg md:h-auto">
                   <div className="relative bg-gray-200 rounded-lg shadow dark:bg-gray-700">
                     <button
                       onClick={() => setShowCallNowModal(!showCallNowModal)}
@@ -543,7 +544,7 @@ const SinglePropertyPage = ({ propertyDetails }) => {
                         Call Us Now
                       </p>
                       <p className="my-1 text-lg font-normal text-gray-500 dark:text-gray-400"></p>
-                      <p className="my-1 text-lg font-normal text-primary dark:text-gray-400 flex items-center justify-center gap-2">
+                      <p className="flex items-center justify-center gap-2 my-1 text-lg font-normal text-primary dark:text-gray-400">
                         <IoCall size={24} className="text-center" />
                         +8801923-868397
                       </p>
