@@ -1,7 +1,8 @@
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import { useEffect, useState } from "react";
 
-export default function CheckoutForm({ property }) {
+
+const CheckoutForm = ({ property }) => {
   const { price, owner_name, user_email, _id } = property;
   const [clientSecret, setClientSecret] = useState("");
   const [success, setSuceess] = useState("");
@@ -112,7 +113,7 @@ export default function CheckoutForm({ property }) {
             onClick={handleSubmit}
             type="submit"
             className="py-2.5 px-5 mr-2 mb-2 text-md font-medium text-primary focus:outline-none bg-primary/5
-                     rounded-md transition duration-300 hover:bg-primary/10 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
+          rounded-md transition duration-300 hover:bg-primary/10 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
             disabled={!stripe || !clientSecret || processing}
           >
             Pay
@@ -132,4 +133,6 @@ export default function CheckoutForm({ property }) {
       )}
     </div>
   );
-}
+};
+
+export default CheckoutForm;
