@@ -59,7 +59,7 @@ const Navbar = () => {
     },
     {
       item: "Properties",
-      link: "/properties",
+      link: "/proprities",
     },
     {
       item: "About Us",

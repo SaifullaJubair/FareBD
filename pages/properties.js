@@ -9,7 +9,7 @@ import { TbCurrencyTaka } from 'react-icons/tb';
 import { TfiLocationPin } from 'react-icons/tfi';
 import ReactPaginate from 'react-paginate';
 
-const proprities = () => {
+const properties = () => {
     const router = useRouter();
     const divisionId = router.query.divisionId;
     const [divisions, setDivision] = useState([]);
@@ -141,4 +141,4 @@ const proprities = () => {
     );
 };
 
-export default proprities;
+export default properties;
