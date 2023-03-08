@@ -194,6 +194,14 @@ const DashboardSideBar = () => {
                 </li>
 
                 <li>
+                  <BiCommentDetail className="inline-block ml-4 mr-6 h-7"></BiCommentDetail>
+                  <Link href={`/dashboard/allcomments`}>
+                    <span className={hide ? "hidden" : "inline"}>
+                      All Comments
+                    </span>
+                  </Link>
+                </li>
+                <li>
                   <RiEditBoxLine className="inline-block ml-4 mr-6 h-7"></RiEditBoxLine>
                   <Link href={`/dashboard/allblogs`}>
                     <span className={hide ? "hidden" : "inline"}>All Blogs</span>

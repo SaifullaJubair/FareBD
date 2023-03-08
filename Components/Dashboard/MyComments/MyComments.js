@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { Button, Modal, Select, Table, Textarea, TextInput } from 'flowbite-react';
+import { Button, Modal, Select, Table, Textarea, TextInput, Tooltip } from 'flowbite-react';
 import { toast } from 'react-toastify';
 import { useQuery } from '@tanstack/react-query';
 import Link from 'next/link';
@@ -98,7 +98,7 @@ const MyComments = () => {
    return (
       <div className='flex'>
          <DashboardSideBar></DashboardSideBar>
-         <div className='mx-auto flex-grow'>
+         <div className='mx-auto flex-grow overflow-x-auto'>
             {
                comments ? <h2 className='title uppercase p-10 text-center mb-10 bg-secondary text-white text-2xl font-semibold'>My Comment </h2> :
                   <Loader></Loader>
@@ -149,7 +149,13 @@ const MyComments = () => {
                               <img src={comment?.property_picture} className="h-16 w-16 rounded ring-1 ring-blue" alt="" />
                            </Table.Cell>
                            <Table.Cell>
-                              {comment?.comment}
+                              <Tooltip
+                                 content={comment?.comment}
+                                 placement="right"
+                                 animation="duration-1000"
+                                 className={comment?.comment.length < 45 && "hidden"}>
+                                 {comment?.comment.length > 45 ? comment?.comment.slice(0, 45) + '...' : comment?.comment}
+                              </Tooltip>
                            </Table.Cell>
                            <Table.Cell>
                               {comment?.createdAt?.slice(0, 10)}
