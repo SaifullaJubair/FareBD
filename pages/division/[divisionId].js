@@ -9,12 +9,14 @@ import { TbCurrencyTaka } from 'react-icons/tb';
 import { TfiLocationPin } from 'react-icons/tfi';
 import Review from "@/Components/Home/Review/Review";
 import DivisionSidebar from '@/Components/Home/Division/DivisionSidebar';
+import ReactPaginate from 'react-paginate';
 
 
 const Division = () => {
     const router = useRouter();
     const divisionId = router.query.divisionId;
     const [divisions, setDivision] = useState([]);
+    const [itemOffset, setItemOffset] = useState(0);
 
     useEffect(() => {
         fetch(`http://localhost:5000/searchByDivision/${divisionId}`)
@@ -26,6 +28,21 @@ const Division = () => {
             });
     }, []);
 
+    const itemsPerPage = 4
+
+    const endOffset = itemOffset + itemsPerPage;
+
+    const currentItems = divisions.slice(itemOffset, endOffset);
+    const pageCount = Math.ceil(divisions.length / itemsPerPage);
+
+    const handlePageClick = (event) => {
+        const newOffset = (event.selected * itemsPerPage) % divisions.length;
+        console.log(
+            `User requested page number ${event.selected}, which is offset ${newOffset}`
+        );
+        setItemOffset(newOffset);
+    };
+
     return (
         <div className='max-w-[1440px] w-[95%] mx-auto text-center'>
             <h1 className=' my-12 text-3xl font-bold'>Properties of {divisionId} Division</h1>
@@ -36,7 +53,7 @@ const Division = () => {
                 <div className='lg:col-span-3 md:col-span-2 col-span-1 mx-auto'>
 
                     {
-                        divisions?.map(division =>
+                        currentItems?.map(division =>
                             <Link href={`/singleproperty/${division?._id}`} className="flex flex-col items-center bg-white border border-gray-200 shadow-lg md:flex-row hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 h-72 my-4 mb-8">
 
                                 <img className="h-full w-96" src={division?.property_picture} alt="img" />
@@ -68,6 +85,21 @@ const Division = () => {
                             </Link>
                         )
                     }
+
+                    <div className="pagination mt-6">
+
+
+                        <ReactPaginate
+                            breakLabel="..."
+                            nextLabel=">"
+                            onPageChange={handlePageClick}
+                            pageRangeDisplayed={5}
+                            pageCount={pageCount}
+                            previousLabel="<"
+                            renderOnZeroPageCount={null}
+                            containerClassName='pagination-menu'
+                        />
+                    </div>
                 </div>
 
                 <div>
