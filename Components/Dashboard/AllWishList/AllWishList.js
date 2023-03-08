@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useContext, useEffect, useState } from "react";
 import { BiArrowToRight } from "react-icons/bi";
 import { FaEdit, FaTrash } from "react-icons/fa";
+import { toast } from "react-toastify";
 import DashboardSideBar from '../DashboardSideBar/DashboardSideBar';
 
 const AllWishList = () => {
@@ -22,7 +23,28 @@ const AllWishList = () => {
   }, [refetch])
 
   const handleDeletePost = post => {
-    // console.log(post);
+    fetch(`http://localhost:5000/mywishlist/${post?.propertyId}?email=${user?.email}`,
+      {
+        method: "DELETE",
+        headers: {
+          "content-type": "application/json",
+        },
+      }
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        // console.log(data, post);
+        if (data.deletedCount > 0) {
+          setDeleteData(false)
+          toast.success("Property deleted successfully from wishlist!")
+          setRefetch(!refetch)
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+        setDeleteData(null);
+        toast.error("Something went wrong!")
+      });
   }
 
   const onClose = () => {
@@ -31,9 +53,9 @@ const AllWishList = () => {
 
   // console.log(wishlistPosts);
   return (
-    <div className='flex gap-6 '>
+    <div className='flex'>
       <DashboardSideBar></DashboardSideBar>
-      <div className="mx-auto flex-grow">
+      <div className="mx-auto flex-grow overflow-x-auto">
         <h2 className='title uppercase p-10 text-center mb-10 bg-secondary text-white text-2xl font-semibold'>All Wishlist </h2>
 
         <Table striped={true}>

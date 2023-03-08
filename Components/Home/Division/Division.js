@@ -19,7 +19,14 @@ const Division = () => {
       <div className="max-w-[1440px] w-[95%] mx-auto ">
 
          <div className="my-24">
-            <h1 className="font-bold mb-8 mt-2 text-center text-primary lg:text-5xl md:text-4xl text-3xl">Choose From Divisions</h1>
+        <div>
+          <p class="text-gray-500 text-lg text-center font-normal pb-3">
+          Choose From
+          </p>
+          <h1 class="xl:text-4xl text-3xl text-center text-gray-800 font-extrabold pb-6 sm:w-4/6 w-5/6 mx-auto">
+          Divisions
+          </h1>
+        </div>
             <div className="grid grid-cols-1 w-full  md:grid-cols-2 lg:grid-cols-4 gap-4">
                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 md:col-span-4 gap-4  ">
                   {/* 1 */}
