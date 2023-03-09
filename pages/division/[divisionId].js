@@ -19,10 +19,10 @@ const Division = () => {
     const [itemOffset, setItemOffset] = useState(0);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/searchByDivision/${divisionId}`)
+        fetch(`https://server-fare-bd.vercel.app/searchByDivision/${divisionId}`)
             .then((res) => res.json())
             .then((data) => {
-                console.log(data);
+                // console.log(data);
                 setDivision(data);
 
             });
@@ -37,9 +37,9 @@ const Division = () => {
 
     const handlePageClick = (event) => {
         const newOffset = (event.selected * itemsPerPage) % divisions.length;
-        console.log(
-            `User requested page number ${event.selected}, which is offset ${newOffset}`
-        );
+        // console.log(
+        //     `User requested page number ${event.selected}, which is offset ${newOffset}`
+        // );
         setItemOffset(newOffset);
     };
 

@@ -38,7 +38,7 @@ const DivisionSidebar = () => {
                     </div>
                 </Carousel>
             </div>
-            <ul class="list-none my-8 border font-bold text-blue-600">
+            <ul className="list-none my-8 border font-bold text-blue-600">
 
                 <Link href={`/division/Dhaka`}><li className='border py-2'>Dhaka</li></Link>
                 <Link href={`/division/Rajshahi`}><li className='border py-2'>Rajshahi</li></Link>

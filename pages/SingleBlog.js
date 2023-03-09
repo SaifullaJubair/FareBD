@@ -33,7 +33,7 @@ const SingleBlog = () => {
                         email: user?.email,
                         data,
                     }
-                    fetch(`http://localhost:5000/postBlog`, {
+                    fetch(`https://server-fare-bd.vercel.app/postBlog`, {
                         method: 'POST',
                         headers: {
 
@@ -45,7 +45,7 @@ const SingleBlog = () => {
                         .then(data => {
                             setLoading(false)
                             toast.success('Success')
-                            console.log('Success log');
+                            // console.log('Success log');
                         })
                 }
             })

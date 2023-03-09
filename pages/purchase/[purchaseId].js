@@ -29,7 +29,7 @@ const purchaseId = () => {
     const fetchData = async () => {
       if (!router.isReady) return;
       try {
-        const res = await fetch(`http://localhost:5000/singleproperty/${id}`);
+        const res = await fetch(`https://server-fare-bd.vercel.app/singleproperty/${id}`);
         const data = await res.json();
         setLoading(false);
         setError("");
@@ -37,7 +37,7 @@ const purchaseId = () => {
       } catch (err) {
         setLoading(false);
         setError(err);
-        console.log(err);
+        // console.log(err);
       }
     };
     fetchData();

@@ -43,7 +43,7 @@ const SinglePropertyPage = ({ propertyDetails }) => {
   const { user } = useContext(AuthContext);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/searchByDivision/${data?.division}`)
+    fetch(`https://server-fare-bd.vercel.app/searchByDivision/${data?.division}`)
       .then((res) => res.json())
       .then((data) => {
         setRecommendations(data);
@@ -53,7 +53,7 @@ const SinglePropertyPage = ({ propertyDetails }) => {
   // checking if the wishlist exist or not
   useEffect(() => {
     if (!user?.email) return;
-    fetch(`http://localhost:5000/wishlist/${data?._id}?email=${user?.email}`)
+    fetch(`https://server-fare-bd.vercel.app/wishlist/${data?._id}?email=${user?.email}`)
       .then((res) => res.json())
       .then((data) => {
         if (data.userEmail === user.email) {
@@ -78,15 +78,15 @@ const SinglePropertyPage = ({ propertyDetails }) => {
     price,
     property_condition,
   } = data;
-  console.log(data);
+  // console.log(data);
 
   const { data: comments = [], refetch } = useQuery({
     queryKey: ["comment"],
 
     queryFn: async () => {
-      const res = await fetch(`http://localhost:5000/comment/${_id}`);
+      const res = await fetch(`https://server-fare-bd.vercel.app/comment/${_id}`);
       const data = await res.json();
-      console.log(data);
+      // console.log(data);
       return data;
     },
   });
@@ -115,7 +115,7 @@ const SinglePropertyPage = ({ propertyDetails }) => {
       comment,
       createdAt: new Date().toISOString(),
     };
-    fetch(`http://localhost:5000/addcomment`, {
+    fetch(`https://server-fare-bd.vercel.app/addcomment`, {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -124,7 +124,7 @@ const SinglePropertyPage = ({ propertyDetails }) => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        // console.log(data);
 
         toast("Comment  added", {
           position: toast.POSITION.TOP_CENTER,
@@ -133,7 +133,7 @@ const SinglePropertyPage = ({ propertyDetails }) => {
         setLoading(false);
         form.reset("");
       });
-    console.log(AddComment);
+    // console.log(AddComment);
   };
 
   const handleWishList = (propertyData) => {
@@ -160,7 +160,7 @@ const SinglePropertyPage = ({ propertyDetails }) => {
 
     if (wishList) {
       return fetch(
-        `http://localhost:5000/wishlist/${data?._id}?email=${user?.email}`,
+        `https://server-fare-bd.vercel.app/wishlist/${data?._id}?email=${user?.email}`,
         {
           method: "DELETE",
           headers: {
@@ -174,7 +174,7 @@ const SinglePropertyPage = ({ propertyDetails }) => {
         })
         .catch((err) => console.log(err));
     } else {
-      return fetch("http://localhost:5000/add-wishlist", {
+      return fetch("https://server-fare-bd.vercel.app/add-wishlist", {
         method: "POST",
         headers: {
           "content-type": "application/json",
@@ -192,7 +192,7 @@ const SinglePropertyPage = ({ propertyDetails }) => {
       <div className="grid gap-8 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-6">
         <div className="col-span-1 lg:col-span-4 md:col-span-2">
           <img
-            class="h-auto w-full"
+            className="h-auto w-full"
             src={data.property_picture}
             alt="property_picture"
           />
@@ -274,63 +274,63 @@ const SinglePropertyPage = ({ propertyDetails }) => {
                 PROPERTY INFORMATION
               </h2>
 
-              <div class="relative overflow-x-auto">
-                <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+              <div className="relative overflow-x-auto">
+                <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                   <tbody>
-                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                    <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                       <th
                         scope="row"
-                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                        className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
                       >
                         Type
                       </th>
-                      <td class="px-6 py-4">{data.property_type}</td>
+                      <td className="px-6 py-4">{data.property_type}</td>
                     </tr>
-                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                    <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                       <th
                         scope="row"
-                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                        className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
                       >
                         Purpose
                       </th>
-                      <td class="px-6 py-4">{data.property_condition}</td>
+                      <td className="px-6 py-4">{data.property_condition}</td>
                     </tr>
-                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                    <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                       <th
                         scope="row"
-                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                        className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
                       >
                         Division Status
                       </th>
-                      <td class="px-6 py-4">{data.division}</td>
+                      <td className="px-6 py-4">{data.division}</td>
                     </tr>
-                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                    <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                       <th
                         scope="row"
-                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                        className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
                       >
                         Completation Status
                       </th>
-                      <td class="px-6 py-4">{data.completation_status}</td>
+                      <td className="px-6 py-4">{data.completation_status}</td>
                     </tr>
-                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                    <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                       <th
                         scope="row"
-                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                        className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
                       >
                         Registered
                       </th>
-                      <td class="px-6 py-4">{data.registered}</td>
+                      <td className="px-6 py-4">{data.registered}</td>
                     </tr>
 
-                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                    <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                       <th
                         scope="row"
-                        class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                        className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
                       >
                         Reference no.
                       </th>
-                      <td class="px-6 py-4">FBD-{data._id}</td>
+                      <td className="px-6 py-4">FBD-{data._id}</td>
                     </tr>
                   </tbody>
                 </table>
@@ -430,51 +430,51 @@ const SinglePropertyPage = ({ propertyDetails }) => {
             Contact us for more information
           </h3>
           <form className="mb-14">
-            <div class="relative z-0 w-full mb-6 group">
+            <div className="relative z-0 w-full mb-6 group">
               <input
                 type="text"
                 name="floating_name"
                 id="floating_name"
-                class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-900 focus:outline-none focus:ring-0 focus:border-blue-900 peer"
+                className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-900 focus:outline-none focus:ring-0 focus:border-blue-900 peer"
                 placeholder=" "
                 required
               />
               <label
                 for="floating_name"
-                class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-900 peer-focus:dark:text-blue-900 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-900 peer-focus:dark:text-blue-900 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
               >
                 Full Name
               </label>
             </div>
-            <div class="relative z-0 w-full mb-6 group">
+            <div className="relative z-0 w-full mb-6 group">
               <input
                 type="email"
                 name="floating_email"
                 id="floating_email"
-                class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-900 focus:outline-none focus:ring-0 focus:border-blue-900 peer"
+                className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-900 focus:outline-none focus:ring-0 focus:border-blue-900 peer"
                 placeholder=" "
                 required
               />
               <label
                 for="floating_email"
-                class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-900 peer-focus:dark:text-blue-900 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-900 peer-focus:dark:text-blue-900 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
               >
                 Email address
               </label>
             </div>
 
-            <div class="relative z-0 w-full mb-6 group">
+            <div className="relative z-0 w-full mb-6 group">
               <input
                 type="number"
                 name="floating_phone"
                 id="floating_phone"
-                class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-900 focus:outline-none focus:ring-0 focus:border-blue-900 peer"
+                className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-900 focus:outline-none focus:ring-0 focus:border-blue-900 peer"
                 placeholder=" "
                 required
               />
               <label
                 for="floating_phone"
-                class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-900 peer-focus:dark:text-blue-900 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-900 peer-focus:dark:text-blue-900 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
               >
                 Phone
               </label>
@@ -482,21 +482,21 @@ const SinglePropertyPage = ({ propertyDetails }) => {
             <div className="mb-6">
               <label
                 for="message"
-                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
               >
                 Your message
               </label>
               <textarea
                 id="message"
                 rows="4"
-                class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-md border border-gray-300 focus:ring-primary focus:border-blue-900 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-900 dark:focus:border-blue-500"
+                className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-md border border-gray-300 focus:ring-primary focus:border-blue-900 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-900 dark:focus:border-blue-500"
                 placeholder="Leave a comment..."
               ></textarea>
             </div>
             <div className="flex gap-2">
               <button
                 type="submit"
-                class="text-white bg-secondary hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-md text-md w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-900 dark:hover:bg-blue-900 dark:focus:ring-blue-900"
+                className="text-white bg-secondary hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-md text-md w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-900 dark:hover:bg-blue-900 dark:focus:ring-blue-900"
               >
                 Submit
               </button>
@@ -573,18 +573,18 @@ const SinglePropertyPage = ({ propertyDetails }) => {
           {recommendations?.map((recommendation) => (
             <Link
               href={`/singleproperty/${recommendation?._id}`}
-              class="flex my-4 flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700"
+              className="flex my-4 flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700"
             >
               <img
-                class="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-44 md:rounded-none md:rounded-l-lg"
+                className="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-44 md:rounded-none md:rounded-l-lg"
                 src={recommendation.property_picture}
                 alt=""
               />
-              <div class="flex flex-col justify-between p-4 leading-normal">
-                <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">
+              <div className="flex flex-col justify-between p-4 leading-normal">
+                <h5 className="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">
                   {recommendation.price}/-৳
                 </h5>
-                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+                <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
                   {" "}
                   {recommendation.location}{" "}
                 </p>

@@ -9,14 +9,14 @@ const MyFeedBack = () => {
       queryKey: ['user'],
       queryFn: async () => {
          try {
-            const res = await fetch('http://localhost:5000/feedback', {
+            const res = await fetch('https://server-fare-bd.vercel.app/feedback', {
 
 
             })
             const data = await res.json();
             return data;
          } catch (error) {
-            console.log(error);
+            // console.log(error);
          }
       }
    })
@@ -28,7 +28,7 @@ const MyFeedBack = () => {
 
    const userFeed = products?.data?.filter(userReview => userReview?.author_email === user?.email)
 
- 
+
    return (
       <div>
          <div>

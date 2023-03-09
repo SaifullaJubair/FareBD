@@ -24,7 +24,7 @@ export default function App({ Component, pageProps }) {
             <BsArrowUpCircleFill className="animate-bounce"></BsArrowUpCircleFill>
           </span>
         </ScrollToTop>
-        {/* <Footer></Footer> */}
+        <Footer></Footer>
       </AuthProvider>
     </QueryClientProvider>
   );

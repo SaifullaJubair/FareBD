@@ -32,8 +32,8 @@ export default function Home() {
         <SellAndRent></SellAndRent>
         <RecentPost></RecentPost>
         <Division></Division>
-        <Header></Header>
         <Advertise></Advertise>
+        <Header></Header>
         <Welcome></Welcome>
         <About></About>
         <Review></Review>

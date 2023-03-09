@@ -10,11 +10,11 @@ const About = () => {
     <section className="bg-[#F5F8FA] md:py-16 px-4 my-12 mx-auto">
       <div className="max-w-7xl w-full mx-auto text-primary">
         <div>
-          <p class="text-gray-500 text-lg text-center font-normal pb-3">
-          WHY CHOOSE US
+          <p className="text-gray-500 text-lg text-center font-normal pb-3">
+            WHY CHOOSE US
           </p>
-          <h1 class="xl:text-4xl text-3xl text-center text-gray-800 font-extrabold pb-6 sm:w-4/6 w-5/6 mx-auto">
-          6 Reasons to Choose FareBD
+          <h1 className="xl:text-4xl text-3xl text-center text-gray-800 font-extrabold pb-6 sm:w-4/6 w-5/6 mx-auto">
+            6 Reasons to Choose FareBD
           </h1>
           <p className="text-center">
             Annually, thousands of clients choose FareBD as their real estate

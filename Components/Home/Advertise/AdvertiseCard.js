@@ -12,7 +12,7 @@ import {
 } from "react-icons/fa";
 
 const AdvertiseCard = ({ adData }) => {
-  
+
   function numberWithCommas(x) {
     x = x.toString();
     var pattern = /(-?\d+)(\d{3})/;
@@ -23,24 +23,24 @@ const AdvertiseCard = ({ adData }) => {
 
   return (
     <>
-      <div class="relative mx-auto w-full">
+      <div className="relative mx-auto w-full">
         <Link
           href={`/singleproperty/${adData?._id}`}
-          class="relative inline-block transition-transform transform w-full"
+          className="relative inline-block transition-transform transform w-full"
         >
-          <div class="shadow p-4 rounded-lg bg-white">
-            <div class="flex justify-center relative rounded-lg overflow-hidden h-52">
-              <div class="transition-transform duration-500 transform ease-in-out hover:scale-110 w-full">
-                <div class="absolute inset-0">
+          <div className="shadow p-4 rounded-lg bg-white">
+            <div className="flex justify-center relative rounded-lg overflow-hidden h-52">
+              <div className="transition-transform duration-500 transform ease-in-out hover:scale-110 w-full">
+                <div className="absolute inset-0">
                   <img className="w-full" src={adData.property_picture} alt="" srcset="" />
                 </div>
               </div>
 
-              <div class="absolute flex justify-center bottom-0 mb-3">
-                <div class="flex bg-white px-4 py-1 pb-5 -mb-4 space-x-5 rounded-t-lg overflow-hidden">
-                  <p class="flex items-center font-medium text-gray-800">
+              <div className="absolute flex justify-center bottom-0 mb-3">
+                <div className="flex bg-white px-4 py-1 pb-5 -mb-4 space-x-5 rounded-t-lg overflow-hidden">
+                  <p className="flex items-center font-medium text-gray-800">
                     <svg
-                      class="w-5 h-5 fill-current mr-2"
+                      className="w-5 h-5 fill-current mr-2"
                       xmlns="http://www.w3.org/2000/svg"
                       viewBox="0 0 512 512"
                     >
@@ -49,9 +49,9 @@ const AdvertiseCard = ({ adData }) => {
                     {adData.flat_feature[0].room}
                   </p>
 
-                  <p class="flex items-center font-medium text-gray-800">
+                  <p className="flex items-center font-medium text-gray-800">
                     <svg
-                      class="inline-block w-5 h-5 xl:w-4 xl:h-4 mr-3 fill-current text-gray-800"
+                      className="inline-block w-5 h-5 xl:w-4 xl:h-4 mr-3 fill-current text-gray-800"
                       xmlns="http://www.w3.org/2000/svg"
                       viewBox="0 0 512 512"
                     >
@@ -60,9 +60,9 @@ const AdvertiseCard = ({ adData }) => {
                     {adData.flat_feature[0].floor}
                   </p>
 
-                  <p class="flex items-center font-medium text-gray-800">
+                  <p className="flex items-center font-medium text-gray-800">
                     <svg
-                      class="w-5 h-5 fill-current mr-2"
+                      className="w-5 h-5 fill-current mr-2"
                       xmlns="http://www.w3.org/2000/svg"
                       viewBox="0 0 512 512"
                     >
@@ -73,43 +73,43 @@ const AdvertiseCard = ({ adData }) => {
                 </div>
               </div>
 
-              <span class="absolute top-0 left-0 inline-flex  px-3 py-2 rounded-br-3xl z-10 bg-secondary text-sm font-medium text-white select-none">
+              <span className="absolute top-0 left-0 inline-flex  px-3 py-2 rounded-br-3xl z-10 bg-secondary text-sm font-medium text-white select-none">
                 Featured
               </span>
             </div>
 
-            <div class="mt-4">
+            <div className="mt-4">
               <h2
-                class="font-medium text-base md:text-lg text-gray-800 line-clamp-1"
+                className="font-medium text-base md:text-lg text-gray-800 line-clamp-1"
                 title="New York"
               >
                 {adData.property_name}
               </h2>
               <p
-                class="mt-2 text-sm text-gray-800 line-clamp-1"
+                className="mt-2 text-sm text-gray-800 line-clamp-1"
                 title="New York, NY 10004, United States"
               >
                 {adData.location}, {adData.division}
               </p>
             </div>
 
-            <div class="grid grid-cols-2 mt-8">
-              <div class="flex items-center">
-                <div class="relative">
+            <div className="grid grid-cols-2 mt-8">
+              <div className="flex items-center">
+                <div className="relative">
                   <div className="">
-                    <img class="border-2 border-secondary rounded-full w-8 h-8 md:w-10 md:h-10 bg-gray-200" src={adData.user_image} alt="" srcset="" />
+                    <img className="border-2 border-secondary rounded-full w-8 h-8 md:w-10 md:h-10 bg-gray-200" src={adData.user_image} alt="" srcset="" />
                   </div>
-                  <span class="absolute top-0 right-0 inline-block w-3 h-3 bg-primary-red rounded-full">
+                  <span className="absolute top-0 right-0 inline-block w-3 h-3 bg-primary-red rounded-full">
                   </span>
                 </div>
 
-                <p class="ml-2 text-gray-800 line-clamp-1">John Doe</p>
+                <p className="ml-2 text-gray-800 line-clamp-1">John Doe</p>
               </div>
 
-              <div class="flex justify-end">
-                <p class="inline-block font-semibold text-primary whitespace-nowrap leading-tight rounded-xl">
-                  <span class="text-3xl font-bold uppercase">৳</span>
-                  <span class="text-lg">{priceWithCommas}</span>
+              <div className="flex justify-end">
+                <p className="inline-block font-semibold text-primary whitespace-nowrap leading-tight rounded-xl">
+                  <span className="text-3xl font-bold uppercase">৳</span>
+                  <span className="text-lg">{priceWithCommas}</span>
                 </p>
               </div>
             </div>

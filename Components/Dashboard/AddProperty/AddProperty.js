@@ -1,8 +1,8 @@
 import { AuthContext } from "@/Contexts/AuthProvider/AuthProvider";
-import SellerRoute from "@/Routes/SellerRoute";
 import { useRouter } from "next/router";
 import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
+import { toast } from "react-hot-toast";
 import DatePicker from "tailwind-datepicker-react";
 import DashboardSideBar from "../DashboardSideBar/DashboardSideBar";
 
@@ -116,7 +116,6 @@ function AddProperty() {
       const featureImgBbData = await featureImgBbRes.json();
 
       if (!propertyImgBbData.success && !featureImgBbData.success) return;
-      const createdAt = new Date().toISOString();
       const property = {
         area_type: areaType,
         property_type: category,
@@ -146,7 +145,6 @@ function AddProperty() {
         completation_status: status,
         property_picture: propertyImgBbData.data.url,
         post_date: new Date().toISOString(),
-        post_date: createdAt,
         advertised: false,
       };
 
@@ -159,20 +157,21 @@ function AddProperty() {
         body: JSON.stringify(property),
       };
 
-      const res = await fetch("http://localhost:5000/property", config);
+      const res = await fetch("https://server-fare-bd.vercel.app/property", config);
       const data = await res.json();
 
       if (data.acknowledged) {
         setLoading(false);
         router.push("/");
-        // toast.success(
-        //   `Hey ${currentuser?.displayName}! your product registered successfully`,
-        //   { duration: 2500 }
-        // );
+
+        toast.success(`Hey ${user?.displayName}! your product registered successfully`, {
+          position: toast.POSITION.TOP_CENTER,
+        })
+
       }
     } catch (err) {
       setLoading(false);
-      console.error(err);
+      // console.error(err);
     }
   };
   const handleClose = (state) => {

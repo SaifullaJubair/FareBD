@@ -8,12 +8,12 @@ const Advertise = () => {
   const [advertises, setAdvertises] = useState([])
 
   useEffect(() => {
-    fetch(`http://localhost:5000/advertise`)
+    fetch(`https://server-fare-bd.vercel.app/advertise`)
       .then(res => res.json())
       .then(data => setAdvertises(data))
   }, [user])
 
- console.log(advertises);
+  // console.log(advertises);
 
   // loading
   if (loading) {
@@ -23,7 +23,7 @@ const Advertise = () => {
   return (
     <div className="mt-28 mb-16 max-w-[1440px] w-[95%] mx-auto ">
       <div>
-        <h1 class="xl:text-4xl text-3xl text-center text-gray-800 font-extrabold pb-6 sm:w-4/6 w-5/6 mx-auto">
+        <h1 className="xl:text-4xl text-3xl text-center text-gray-800 font-extrabold pb-6 sm:w-4/6 w-5/6 mx-auto">
           Advertised
         </h1>
       </div>

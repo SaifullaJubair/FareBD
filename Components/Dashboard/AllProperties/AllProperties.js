@@ -20,12 +20,12 @@ const AllProperties = () => {
 
   const handleDeletePost = (id) => {
     setLoading(true);
-    fetch(`http://localhost:5000/singleproperty/${id}`, {
+    fetch(`https://server-fare-bd.vercel.app/singleproperty/${id}`, {
       method: 'DELETE'
     })
       .then(res => res.json())
       .then(data => {
-        console.log(data)
+        // console.log(data)
         if (data.deletedCount > 0) {
           setRefetch(!refetch)
           toast.success(`Post deleted successfully`, {
@@ -39,7 +39,7 @@ const AllProperties = () => {
   }
   const handleAdvertisePost = async (post) => {
     setLoading(true);
-    const res = await fetch(`http://localhost:5000/advertise`, {
+    const res = await fetch(`https://server-fare-bd.vercel.app/advertise`, {
       method: "POST",
       headers: {
         'content-type': 'application/json'
@@ -57,7 +57,7 @@ const AllProperties = () => {
       setRefetch(!refetch);
       setSelectedPostForAd(null);
     } else {
-      console.log(data);
+      // console.log(data);
       toast.error(data.message, {
         position: toast.POSITION.TOP_CENTER
 
@@ -68,7 +68,7 @@ const AllProperties = () => {
   }
 
   const getMyPosts = async () => {
-    const res = await fetch(`http://localhost:5000/all-properties`);
+    const res = await fetch(`https://server-fare-bd.vercel.app/all-properties`);
     const data = await res.json();
     setMyPosts(data);
   };

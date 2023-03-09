@@ -7,7 +7,7 @@ const Division = () => {
    // const [otherDivisions, setOtherDivisions] = useState([]);
 
    // useEffect(() => {
-   //    fetch("http://localhost:5000/property")
+   //    fetch("https://server-fare-bd.vercel.app/property")
    //       .then((res) => res.json())
    //       .then((data) => {
    //          setdivision(data.slice(0, 4));
@@ -19,14 +19,14 @@ const Division = () => {
       <div className="max-w-[1440px] w-[95%] mx-auto ">
 
          <div className="my-24">
-        <div>
-          <p class="text-gray-500 text-lg text-center font-normal pb-3">
-          Choose From
-          </p>
-          <h1 class="xl:text-4xl text-3xl text-center text-gray-800 font-extrabold pb-6 sm:w-4/6 w-5/6 mx-auto">
-          Divisions
-          </h1>
-        </div>
+            <div>
+               <p className="text-gray-500 text-lg text-center font-normal pb-3">
+                  Choose From
+               </p>
+               <h1 className="xl:text-4xl text-3xl text-center text-gray-800 font-extrabold pb-6 sm:w-4/6 w-5/6 mx-auto">
+                  Divisions
+               </h1>
+            </div>
             <div className="grid grid-cols-1 w-full  md:grid-cols-2 lg:grid-cols-4 gap-4">
                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 md:col-span-4 gap-4  ">
                   {/* 1 */}

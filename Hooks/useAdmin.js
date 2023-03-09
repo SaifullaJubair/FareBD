@@ -10,14 +10,14 @@ export default function useAdmin(email) {
       const checkAdmin = async function () {
         try {
           const res = await fetch(
-            `http://localhost:5000/users/checkAdmin?email=${email}`
+            `https://server-fare-bd.vercel.app/users/checkAdmin?email=${email}`
           );
 
           const data = await res.json();
 
           if (data) {
             setIsAdmin(data.isAdmin);
-            console.log(data);
+            // console.log(data);
             setIsAdminLoading(false);
           } else if (!data) {
             setIsAdminLoading(false);

@@ -22,7 +22,7 @@ const DashboardSideBar = () => {
   const [isBuyer] = useBuyer(user?.email);
   const [isSeller] = useSeller(user?.email);
   const [isAdmin, isAdminLoading] = useAdmin(user?.email);
-  console.log(isAdmin, isAdminLoading);
+  // console.log(isAdmin, isAdminLoading);
 
   const handleToggle = () => {
     setHide(!hide);
@@ -31,10 +31,10 @@ const DashboardSideBar = () => {
   const [userData, setUserData] = useState(null);
   useEffect(() => {
     if (user?.email) {
-      fetch(`http://localhost:5000/singleuser/${user?.email}`)
+      fetch(`https://server-fare-bd.vercel.app/singleuser/${user?.email}`)
         .then((res) => res.json())
         .then((data) => {
-          console.log(data);
+          // console.log(data);
           setUserData(data);
         });
     }

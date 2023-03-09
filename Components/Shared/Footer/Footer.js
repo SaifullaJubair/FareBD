@@ -17,7 +17,7 @@ const Footer = () => {
 
    // Fetch Recent Posts
    const pullJson = () => {
-      fetch(`http://localhost:5000/recent-post`)
+      fetch(`https://server-fare-bd.vercel.app/recent-post`)
          .then(res => res.json())
          .then(data => {
             setRecentPosts(data);

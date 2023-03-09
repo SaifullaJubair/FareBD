@@ -16,7 +16,7 @@ const RecentPost = () => {
 
   // Fetch Recent Posts
   const pullJson = () => {
-    fetch(`http://localhost:5000/recent-properties`)
+    fetch(`https://server-fare-bd.vercel.app/recent-properties`)
       .then((res) => res.json())
       .then((data) => {
         setLastProperty(data.shift());
@@ -33,10 +33,10 @@ const RecentPost = () => {
       <div className="my-24">
         <div>
           <p class="text-gray-500 text-lg text-center font-normal pb-3">
-          We are offering the best real estate
+            We are offering the best real estate
           </p>
           <h1 class="xl:text-4xl text-3xl text-center text-gray-800 font-extrabold pb-6 sm:w-4/6 w-5/6 mx-auto">
-          Recent Properties
+            Recent Properties
           </h1>
         </div>
         <div className="grid w-full grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
@@ -135,11 +135,11 @@ const RecentPost = () => {
                           <span className="text-xs">
                             {property?.post_date
                               ? formatDate(
-                                  property?.post_date.split(" ").join("")
-                                )
+                                property?.post_date.split(" ").join("")
+                              )
                               : formatDate(
-                                  property?.registered.split(" ").join("")
-                                )}
+                                property?.registered.split(" ").join("")
+                              )}
                           </span>
                         </div>
                       </div>

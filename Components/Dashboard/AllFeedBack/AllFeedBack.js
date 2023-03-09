@@ -8,14 +8,14 @@ const AllFeedBack = () => {
       queryKey: ['user'],
       queryFn: async () => {
          try {
-            const res = await fetch('http://localhost:5000/feedback', {
+            const res = await fetch('https://server-fare-bd.vercel.app/feedback', {
 
 
             })
             const data = await res.json();
             return data;
          } catch (error) {
-            console.log(error);
+            // console.log(error);
          }
       }
    })
@@ -25,7 +25,7 @@ const AllFeedBack = () => {
       return <Loader></Loader>
    }
 
-   console.log(products);
+   // console.log(products);
 
    return (
       <div>
@@ -61,9 +61,9 @@ const AllFeedBack = () => {
                                  {post?.author_name}
                               </td>
                               <td className="px-6 py-4">
-                                 
-                                    {post?.property_name}
-                                 
+
+                                 {post?.property_name}
+
                               </td>
                               <td className="px-6 py-4 font-semibold text-gray-900 dark:text-white">
                                  {post?.rating}

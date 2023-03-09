@@ -16,7 +16,7 @@ const MyWishlist = () => {
 
   useEffect(() => {
     if (user?.email) {
-      fetch(`http://localhost:5000/mywishlist/${user?.email}`)
+      fetch(`https://server-fare-bd.vercel.app/mywishlist/${user?.email}`)
         .then(res => res.json())
         .then(data => {
           setWishlistPosts(data);
@@ -26,7 +26,7 @@ const MyWishlist = () => {
 
   const handleDeletePost = post => {
     // console.log(post);
-    fetch(`http://localhost:5000/mywishlist/${post?.propertyId}?email=${user?.email}`,
+    fetch(`https://server-fare-bd.vercel.app/mywishlist/${post?.propertyId}?email=${user?.email}`,
       {
         method: "DELETE",
         headers: {
@@ -36,7 +36,7 @@ const MyWishlist = () => {
     )
       .then((res) => res.json())
       .then((data) => {
-        console.log(data, post);
+        // console.log(data, post);
         if (data.deletedCount > 0) {
           setDeleteData(false)
           toast.success("Property deleted successfully from wishlist!")
@@ -44,7 +44,7 @@ const MyWishlist = () => {
         }
       })
       .catch((err) => {
-        console.log(err);
+        // console.log(err);
         setDeleteData(null);
         toast.error("Something went wrong!")
       });
