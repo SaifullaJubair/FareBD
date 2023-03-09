@@ -7,11 +7,6 @@ import DatePicker from "tailwind-datepicker-react";
 import DashboardSideBar from "../DashboardSideBar/DashboardSideBar";
 
 function AddProperty() {
-  const format = {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-  }
   const router = useRouter();
   const { user } = useContext(AuthContext);
   const options = {
@@ -149,7 +144,7 @@ function AddProperty() {
         ],
         completation_status: status,
         property_picture: propertyImgBbData.data.url,
-        post_date: new Date().toLocaleDateString("en-US", format),
+        post_date: new Date().toISOString(),
         advertised: false,
       };
 

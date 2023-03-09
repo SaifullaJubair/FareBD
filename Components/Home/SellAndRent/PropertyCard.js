@@ -108,7 +108,7 @@ const PropertyCard = ({ propertyData }) => {
                 <div className="flex items-center justify-between py-2 pl-5 font-medium bg-gray-100 product-meta-bottom text-primary">
                   <span>
                     <span className="font-normal text-gray-600">
-                      {propertyData?.post_date}
+                      {propertyData?.post_date?.slice(0, 10)}
                     </span>
                   </span>
                   <button
