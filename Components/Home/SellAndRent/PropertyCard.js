@@ -8,7 +8,7 @@ import { TbCurrencyTaka } from "react-icons/tb";
 import soldImg from "../../../assets/images/sold.png";
 const PropertyCard = ({ propertyData }) => {
   const { user } = useContext(AuthContext);
-  console.log(propertyData);
+  // console.log(propertyData);
   function numberWithCommas(x) {
     x = x.toString();
     var pattern = /(-?\d+)(\d{3})/;
@@ -113,7 +113,7 @@ const PropertyCard = ({ propertyData }) => {
                   </span>
                   <button
                     type="submit"
-                    class="text-white bg-secondary px-8 py-2 rounded-l-3xl "
+                    className="text-white bg-secondary px-8 py-2 rounded-l-3xl "
                   >
                     More Details
                   </button>

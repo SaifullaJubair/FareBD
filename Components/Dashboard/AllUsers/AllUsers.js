@@ -10,10 +10,10 @@ const AllUsers = () => {
   const [deleteData, setDeleteData] = useState(null);
   const [editData, setEditData] = useState(null);
   useEffect(() => {
-    fetch("http://localhost:5000/users")
+    fetch("https://server-fare-bd.vercel.app/users")
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        // console.log(data);
         setUsers(data);
       });
   }, [refetch]);
@@ -21,7 +21,7 @@ const AllUsers = () => {
   const handleMakeAdmin = (e) => {
     e.preventDefault();
     const role = e.target.role.value;
-    fetch(`http://localhost:5000/users/update/${editData._id}`, {
+    fetch(`https://server-fare-bd.vercel.app/users/update/${editData._id}`, {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -41,12 +41,12 @@ const AllUsers = () => {
   };
 
   const handleDeleteUser = (user) => {
-    fetch(`http://localhost:5000/users/${user?._id}`, {
+    fetch(`https://server-fare-bd.vercel.app/users/${user?._id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        // console.log(data);
         if (data.deletedCount > 0) {
           setRefetch(!refetch);
           toast(`User ${user.name} deleted successfully`, {
@@ -58,11 +58,11 @@ const AllUsers = () => {
   };
   const showModal = (user) => {
     setDeleteData(user);
-    console.log(user);
+    // console.log(user);
   };
   const showEditModal = (user) => {
     setEditData(user);
-    console.log(user);
+    // console.log(user);
   };
   const onClose = () => {
     setDeleteData(null);

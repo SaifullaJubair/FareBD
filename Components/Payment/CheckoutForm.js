@@ -14,7 +14,7 @@ const CheckoutForm = ({ property }) => {
   const elements = useElements();
 
   useEffect(() => {
-    fetch(`http://localhost:5000/create-payment-intent`, {
+    fetch(`https://server-fare-bd.vercel.app/create-payment-intent`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -70,7 +70,7 @@ const CheckoutForm = ({ property }) => {
         propertyId: _id,
       };
 
-      fetch(`http://localhost:5000/payments`, {
+      fetch(`https://server-fare-bd.vercel.app/payments`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

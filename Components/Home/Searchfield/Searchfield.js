@@ -19,7 +19,7 @@ const Searchfield = () => {
 
   const onSubmit = (data) => {
     // console.log(data);
-    fetch("http://localhost:5000/search", {
+    fetch("https://server-fare-bd.vercel.app/search", {
       method: "POST",
       headers: {
         "content-type": "application/json",

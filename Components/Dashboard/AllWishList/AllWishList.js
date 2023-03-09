@@ -15,7 +15,7 @@ const AllWishList = () => {
   const [deleteData, setDeleteData] = useState(null);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/wishlist`)
+    fetch(`https://server-fare-bd.vercel.app/wishlist`)
       .then(res => res.json())
       .then(data => {
         setWishlistPosts(data);
@@ -23,7 +23,7 @@ const AllWishList = () => {
   }, [refetch])
 
   const handleDeletePost = post => {
-    fetch(`http://localhost:5000/mywishlist/${post?.propertyId}?email=${user?.email}`,
+    fetch(`https://server-fare-bd.vercel.app/mywishlist/${post?.propertyId}?email=${user?.email}`,
       {
         method: "DELETE",
         headers: {
@@ -41,7 +41,7 @@ const AllWishList = () => {
         }
       })
       .catch((err) => {
-        console.log(err);
+        // console.log(err);
         setDeleteData(null);
         toast.error("Something went wrong!")
       });

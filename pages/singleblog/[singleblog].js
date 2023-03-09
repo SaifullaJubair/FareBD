@@ -9,10 +9,10 @@ const singleblog = () => {
     const [singleblog, setSingleBlog] = useState(null);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/getBlog/${SingleBlogId}`)
+        fetch(`https://server-fare-bd.vercel.app/getBlog/${SingleBlogId}`)
             .then((res) => res.json())
             .then((data) => {
-                console.log(data);
+                // console.log(data);
                 setSingleBlog(data);
 
             });

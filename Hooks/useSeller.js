@@ -10,7 +10,7 @@ export default function useSeller(email) {
       const checkSeller = async function () {
         try {
           const res = await fetch(
-            `http://localhost:5000/users/checkSeller?email=${email}`
+            `https://server-fare-bd.vercel.app/users/checkSeller?email=${email}`
           );
 
           const data = await res.json();

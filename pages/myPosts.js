@@ -12,7 +12,7 @@ const myPosts = () => {
     const [myPosts, setMyPosts] = useState([]);
 
     const getMyPosts = async () => {
-        const res = await fetch(`http://localhost:5000/my-posts`, {
+        const res = await fetch(`https://server-fare-bd.vercel.app/my-posts`, {
             headers: {
                 email: user?.email
             }
@@ -30,7 +30,7 @@ const myPosts = () => {
 
     const post = myPosts?.filter(userPost => userPost?.user_email === user?.email)
 
-    console.log(myPosts);
+    // console.log(myPosts);
     return (
         <div className="min-h-screen">
             <h3 className="text-center text-3xl font-semibold py-8">All my property post</h3>

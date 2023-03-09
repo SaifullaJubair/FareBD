@@ -41,7 +41,7 @@ const blog = () => {
                         email: user?.email,
                         data,
                     }
-                    fetch(`http://localhost:5000/postBlog`, {
+                    fetch(`https://server-fare-bd.vercel.app/postBlog`, {
                         method: 'POST',
                         headers: {
 
@@ -54,7 +54,7 @@ const blog = () => {
                             setLoading(false)
                             toast.success('Success')
                             refetch();
-                            console.log('Success log');
+                            // console.log('Success log');
                         })
                 }
             })
@@ -66,14 +66,14 @@ const blog = () => {
         queryKey: ['user'],
         queryFn: async () => {
             try {
-                const res = await fetch('http://localhost:5000/getBlog', {
+                const res = await fetch('https://server-fare-bd.vercel.app/getBlog', {
 
 
                 })
                 const data = await res.json();
                 return data;
             } catch (error) {
-                console.log(error);
+                // console.log(error);
             }
         }
     })

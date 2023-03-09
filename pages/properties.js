@@ -17,10 +17,10 @@ const properties = () => {
 
 
     useEffect(() => {
-        fetch(`http://localhost:5000/property`)
+        fetch(`https://server-fare-bd.vercel.app/property`)
             .then((res) => res.json())
             .then((data) => {
-                console.log(data);
+                // console.log(data);
                 setDivision(data);
 
             });
@@ -35,9 +35,9 @@ const properties = () => {
 
     const handlePageClick = (event) => {
         const newOffset = (event.selected * itemsPerPage) % divisions.length;
-        console.log(
-            `User requested page number ${event.selected}, which is offset ${newOffset}`
-        );
+        // console.log(
+        //     `User requested page number ${event.selected}, which is offset ${newOffset}`
+        // );
         setItemOffset(newOffset);
     };
 

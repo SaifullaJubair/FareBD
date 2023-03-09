@@ -6,7 +6,7 @@ const Blogs = ({ blogtext }) => {
 
     const titles = title.slice(0, 30)
     const messages = message.slice(0, 200)
-    console.log(titles, blogtext);
+    // console.log(titles, blogtext);
     return (
         <div>
             <Link href={`/singleblog/${blogtext?._id}`}>

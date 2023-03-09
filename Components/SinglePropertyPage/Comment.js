@@ -15,12 +15,12 @@ const Comment = ({ comments, id, commentRefetch }) => {
    const onchangeUpdate = (e) => {
       const update = e.target.value;
       setCommentUpdate({ 'commentUpdate': update })
-      console.log('test', update)
+      // console.log('test', update)
 
    }
 
    const handleMakeAdmin = (e) => {
-      fetch(`http://localhost:5000/commentupdate/${editData?._id}`, {
+      fetch(`https://server-fare-bd.vercel.app/commentupdate/${editData?._id}`, {
          method: "PUT",
          headers: {
             'content-type': "application/json"
@@ -38,12 +38,12 @@ const Comment = ({ comments, id, commentRefetch }) => {
    }
 
    const handleDeleteUser = user => {
-      fetch(`http://localhost:5000/comment/${user?._id}`, {
+      fetch(`https://server-fare-bd.vercel.app/comment/${user?._id}`, {
          method: 'DELETE'
       })
          .then(res => res.json())
          .then(data => {
-            console.log(data)
+            // console.log(data)
             if (data.deletedCount > 0) {
 
                toast(`comment  deleted successfully`, {
@@ -59,11 +59,11 @@ const Comment = ({ comments, id, commentRefetch }) => {
    }
    const showModal = (user) => {
       setDeleteData(user)
-      console.log(user);
+      // console.log(user);
    }
    const showEditModal = (user) => {
       setEditData(user)
-      console.log(user);
+      // console.log(user);
    }
    const onClose = () => {
       setDeleteData(null)
@@ -80,8 +80,8 @@ const Comment = ({ comments, id, commentRefetch }) => {
             id ? <div className='my-3'>
                {
                   comments?.map(comment =>
-                     <div class="flex border-b-2 pb-2 gap-3 my-3 ">
-                        <img class="inline-block h-12 w-12 rounded-full   border-blue " src={comment?.img} />
+                     <div className="flex border-b-2 pb-2 gap-3 my-3 ">
+                        <img className="inline-block h-12 w-12 rounded-full   border-blue " src={comment?.img} />
                         <div className='flex justify-between w-full'>
 
                            <div>
@@ -106,17 +106,17 @@ const Comment = ({ comments, id, commentRefetch }) => {
                                     tabindex="-1"
                                     className="fixed flex items-center justify-center top-0 left-0 right-0 z-50  p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-modal md:h-full"
                                  >
-                                    <div class="relative w-full h-full max-w-md md:h-auto">
-                                       <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                                    <div className="relative w-full h-full max-w-md md:h-auto">
+                                       <div className="relative bg-white rounded-lg shadow dark:bg-gray-700">
                                           <button
                                              onClick={() => setDeleteData(null)}
                                              type="button"
-                                             class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white"
+                                             className="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white"
                                              data-modal-hide="popup-modal"
                                           >
                                              <svg
                                                 aria-hidden="true"
-                                                class="w-5 h-5"
+                                                className="w-5 h-5"
                                                 fill="currentColor"
                                                 viewBox="0 0 20 20"
                                                 xmlns="http://www.w3.org/2000/svg"
@@ -127,12 +127,12 @@ const Comment = ({ comments, id, commentRefetch }) => {
                                                    clip-rule="evenodd"
                                                 ></path>
                                              </svg>
-                                             <span class="sr-only">Close modal</span>
+                                             <span className="sr-only">Close modal</span>
                                           </button>
-                                          <div class="p-6 text-center">
+                                          <div className="p-6 text-center">
                                              <svg
                                                 aria-hidden="true"
-                                                class="mx-auto mb-4 text-gray-400 w-14 h-14 dark:text-gray-200"
+                                                className="mx-auto mb-4 text-gray-400 w-14 h-14 dark:text-gray-200"
                                                 fill="none"
                                                 stroke="currentColor"
                                                 viewBox="0 0 24 24"
@@ -145,14 +145,14 @@ const Comment = ({ comments, id, commentRefetch }) => {
                                                    d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
                                                 ></path>
                                              </svg>
-                                             <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">
+                                             <h3 className="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">
                                                 Are you sure you want to delete this product?
                                              </h3>
                                              <button
                                                 onClick={() => handleDeleteUser(deleteData)}
                                                 data-modal-hide="popup-modal"
                                                 type="button"
-                                                class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2"
+                                                className="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2"
                                              >
                                                 Yes, I'm sure
                                              </button>
@@ -160,7 +160,7 @@ const Comment = ({ comments, id, commentRefetch }) => {
                                                 onClick={onClose}
                                                 data-modal-hide="popup-modal"
                                                 type="button"
-                                                class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600"
+                                                className="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600"
                                              >
                                                 No, cancel
                                              </button>
@@ -178,17 +178,17 @@ const Comment = ({ comments, id, commentRefetch }) => {
                                     tabindex="-1"
                                     className="fixed flex items-center justify-center top-0 left-0 right-0 z-50  p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-modal md:h-full"
                                  >
-                                    <div class="relative w-full h-full max-w-md md:h-auto">
-                                       <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                                    <div className="relative w-full h-full max-w-md md:h-auto">
+                                       <div className="relative bg-white rounded-lg shadow dark:bg-gray-700">
                                           <button
                                              onClick={() => setEditData(null)}
                                              type="button"
-                                             class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white"
+                                             className="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white"
                                              data-modal-hide="popup-modal"
                                           >
                                              <svg
                                                 aria-hidden="true"
-                                                class="w-5 h-5"
+                                                className="w-5 h-5"
                                                 fill="currentColor"
                                                 viewBox="0 0 20 20"
                                                 xmlns="http://www.w3.org/2000/svg"
@@ -199,7 +199,7 @@ const Comment = ({ comments, id, commentRefetch }) => {
                                                    clip-rule="evenodd"
                                                 ></path>
                                              </svg>
-                                             <span class="sr-only">Close modal</span>
+                                             <span className="sr-only">Close modal</span>
                                           </button>
                                           <div className="py-16 px-6 text-center">
                                              <div>

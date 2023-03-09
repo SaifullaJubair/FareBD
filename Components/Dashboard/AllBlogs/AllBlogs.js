@@ -20,21 +20,21 @@ const AllBlogs = () => {
         queryKey: ['user'],
         queryFn: async () => {
             try {
-                const res = await fetch('http://localhost:5000/getBlog', {
+                const res = await fetch('https://server-fare-bd.vercel.app/getBlog', {
 
 
                 })
                 const data = await res.json();
                 return data;
             } catch (error) {
-                console.log(error);
+                // console.log(error);
             }
         }
     })
 
     // delete
     const deleteBlog = (blog) => {
-        fetch(`http://localhost:5000/getBlog/${blog?._id}`, {
+        fetch(`https://server-fare-bd.vercel.app/getBlog/${blog?._id}`, {
             method: 'DELETE',
             headers: {
                 // authorization: `bearer ${localStorage.getItem('accessToken')}`
@@ -54,7 +54,7 @@ const AllBlogs = () => {
     }
 
     const userBlog = blogs?.data?.filter(blog => blog?.email === user?.email)
-    console.log(userBlog);
+    // console.log(userBlog);
     return (
         <div className='flex'>
             <DashboardSideBar></DashboardSideBar>

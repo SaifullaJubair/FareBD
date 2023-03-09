@@ -43,7 +43,7 @@ const Login = () => {
     providerLogin(googleProvider)
       .then((result) => {
         const user = result.user;
-        console.log(user);
+        // console.log(user);
 
         const currentUser = {
           displayName: user.displayName,
@@ -54,7 +54,7 @@ const Login = () => {
             saveUser(user.displayName, user.email, user.photoURL);
           })
           .catch((error) => console.error(error));
-        console.log(currentUser);
+        // console.log(currentUser);
         setError("");
       })
       .catch((error) => console.error(error, error.message));
@@ -69,7 +69,7 @@ const Login = () => {
       createdAt,
       img: photoURL,
     };
-    fetch("http://localhost:5000/adduser", {
+    fetch("https://server-fare-bd.vercel.app/adduser", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -78,9 +78,9 @@ const Login = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        // console.log(data);
         setCreateUserEmail(user.email);
-        console.log(user.email);
+        // console.log(user.email);
         toast("Register success", {
           position: toast.POSITION.TOP_CENTER,
         });
@@ -93,11 +93,11 @@ const Login = () => {
     signIn(email, password)
       .then((result) => {
         const user = result.user;
-        console.log(result);
+        // console.log(result);
         const currentUser = {
           email: user.email,
         };
-        console.log(currentUser);
+        // console.log(currentUser);
 
         setError("");
         toast("login success", {
@@ -105,9 +105,9 @@ const Login = () => {
         });
       })
       .catch((e) => {
-        console.error(e);
+        // console.error(e);
 
-        console.error(e.message);
+        // console.error(e.message);
 
         setError(e.message);
       });
@@ -117,13 +117,13 @@ const Login = () => {
     const form = event.target;
     const email = form.value;
     setUserEmail(email);
-    console.log(email);
+    // console.log(email);
   };
 
   const handleForgotPassword = (event) => {
     event.preventDefault();
 
-    console.log(userEmail);
+    // console.log(userEmail);
 
     forgotPassword(userEmail)
       .then(() => {

@@ -36,19 +36,11 @@ const Header = () => {
 
   return (
     <div className="pt-14 pb-10 max-w-[1440px] w-[95%] mx-auto">
-      {/* <div className="flex flex-col-reverse items-center justify-between gap-10 overflow-x-hidden lg:gap-0 lg:flex-row py-14"> */}
-      {/* <div className="w-full max-w-[530px] mx-auto">
-        <h1 className="text-4xl font-semibold">
-          Find your destination in an easy way
-        </h1>
-        <p className="mt-8 mb-5">
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sapiente
-          natus aliquam pariatur blanditiis corrupti esse.
-        </p>
-        <button className="px-5 py-2 font-semibold text-white transition duration-300 rounded-sm shadow-md bg-secondary shadow-secondary/60 hover:shadow-secondary/90 active:shadow-sm">
-          Find Now!
-        </button>
-      </div> */}
+
+      <h1 className="xl:text-4xl text-3xl text-center text-gray-800 font-extrabold pb-6 sm:w-4/6 w-5/6 mx-auto">
+        Photo Gallery
+      </h1>
+
 
       <Swiper
         loop={loopTrigger}

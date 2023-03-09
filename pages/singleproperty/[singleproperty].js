@@ -13,7 +13,7 @@ const singleproperty = () => {
     const PropertyId = (router.query.singleproperty);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/singleproperty/${PropertyId ? PropertyId : ''}`)
+        fetch(`https://server-fare-bd.vercel.app/singleproperty/${PropertyId ? PropertyId : ''}`)
             .then(res => res.json())
             .then(data => {
                 setPropertyDetails(data)

@@ -10,7 +10,7 @@ const ContactUs = () => {
    }
    return (
       <div>
-         <section className="py-6 bg-primary text-gray-50 ">
+         <section className="py-6 bg-primary text-gray-50 mb-16">
             <div className="grid py-14 max-w-[1440px] w-[95%] mx-auto grid-cols-1 items-center md:grid-cols-2 md:divide-x">
                <div className="py-6 md:py-0 md:px-6">
                   <h1 className="text-4xl font-bold">Get in touch</h1>

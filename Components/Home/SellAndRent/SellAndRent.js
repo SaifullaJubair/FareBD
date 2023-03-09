@@ -20,20 +20,20 @@ const SellAndRent = () => {
    }
 
    useEffect(() => {
-      fetch('http://localhost:5000/forSell')
+      fetch('https://server-fare-bd.vercel.app/forSell')
          .then(res => res.json())
          .then(data => {
             setToSell(data)
          })
    }, []);
    const forSell = toSell.slice(-6)
-   
+
    useEffect(() => {
-      fetch('http://localhost:5000/forRent')
-      .then(res => res.json())
-      .then(data => {
-         setToRent(data)
-      })
+      fetch('https://server-fare-bd.vercel.app/forRent')
+         .then(res => res.json())
+         .then(data => {
+            setToRent(data)
+         })
    }, []);
    const forRent = toRent.slice(-6)
 
